@@ -79,11 +79,13 @@
 struct ngx_command_s {
     ngx_str_t             name; //name是词条指令的名称,配置项名称
     ngx_uint_t            type; //type使用掩码标志位方式配置指令参数，指定配置项可以出现的位置，及可带的参数的个数
-	//set一个函数指针，用于指定一个参数转化函数，这个函数一般是将配置文件中相关指令的参数转化成需要的格式并存入配置结构体
+	//set一个函数指针，用于指定一个参数转化函数，这个函数一般是将配置文件中相关指令的参数转化成需要的格式并存入配置结构体。conf是http框架传给用户的在ngx_http_**_conf回调中分配的配置结构体；
     char               *(*set)(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
-    ngx_uint_t            conf; //用于指定Nginx相应配置文件内存其实地址，一般可以通过内置常量指定
+	//在配置文件中的偏移量
+    ngx_uint_t            conf; //用于指定Nginx相应配置文件内存其实地址，一般可以通过内置常量指定 //通常用于预设的解析方法解析配置项，这是配置模块的一个优秀设计。它需要与conf配合使用。仅在type中没有设置NGX_DIRECT_CONF和NGX_MAIN_CONF时才会生效。对于http模块，conf是必须要设置的，它的取值范围4-3
+	//offset表示当前配置项在整个存储配置项的结构体中的偏移位置(以字节为单位)。有什么作用呢？若使用nginx预设的解析配置项方法，就必须设置offset，这样nginx首先通过conf成员找到应该用哪个结构体来存放，然后通过offset成员找到这个结构体中的相应成员，以便存放该配置。若是自定义的专用配置项解析方法，则可以不设置offset的值
     ngx_uint_t            offset; //offset指定此条指令的参数的偏移量
-	//配置项读取后的处理方法，必须是ngx_conf_post_结构的指针
+	//配置项读取后的处理方法，必须是ngx_conf_post_t结构的指针  图4-4说明了post相对于14个预设方法的用途
     void                 *post;
 };
 
@@ -103,18 +105,18 @@ struct ngx_open_file_s {
 #define NGX_MODULE_V1_PADDING  0, 0, 0, 0, 0, 0, 0, 0
 
 struct ngx_module_s {
-	//对于一类模块来说，表示当前模块在这类模块中的序号
+	//对于一类模块来说，表示当前模块在这类模块中的序号。这个成员常常是由管理这类模块的一个nginx核心模块设置的，对于所有的http模块而言，ctx_index是由核心模块ngx_http_module设置的。ctx_index非常重要，nginx的模块化设计非常依赖于各个模块的顺序，它们既用于表达优先级，也用于表明每个模块的位置，帮助nginx框架快速获得某个模块的数据(http框架设置ctx_index)
     ngx_uint_t            ctx_index;
-	//表示当前模块在ngx_modules数组中的序号
+	//表示当前模块在ngx_modules数组中的序号，表示当前模块在所有模块中的序号
     ngx_uint_t            index;
 	//spare暂时未使用
     ngx_uint_t            spare0;
     ngx_uint_t            spare1;
     ngx_uint_t            spare2;
     ngx_uint_t            spare3;
-	//模块的版本
+	//模块的版本。目前只有一种，默认为1
     ngx_uint_t            version;
-	//ctx用于指向一类模块的上下文结构，在http模块中指向ngx_http_module_t接口
+	//ctx用于指向一类模块的上下文结构，在http模块中指向ngx_http_module_t接口。为什么需要ctx呢？因为nginx有很多种类，不同类模块间的功能差别很大。例如，事件类型的模块主要处理IO事件相关的功能，http类型的模块主要处理http应用层的功能。这样，每个模块都有了自己的特性，而ctx将会指向特定类型模块的公共接口。
     void                 *ctx;
 	//commands将处理nginx.conf中的配置项
     ngx_command_t        *commands;
@@ -169,6 +171,7 @@ typedef char *(*ngx_conf_handler_pt)(ngx_conf_t *cf,
 
 struct ngx_conf_s {
     char                 *name;
+	//是1个ngx_array_t队列，它的成员都是ngx_str_t结构。args->elts即是表示第一个参数
     ngx_array_t          *args;
 
     ngx_cycle_t          *cycle;
@@ -256,7 +259,7 @@ char *ngx_conf_check_num_bounds(ngx_conf_t *cf, void *post, void *data);
         conf = default;                                                      \
     }
 
-#define ngx_conf_merge_value(conf, prev, default)                            \
+#define ngx_conf_merge_value(conf, prev, defaulTt)                            \
     if (conf == NGX_CONF_UNSET) {                                            \
         conf = (prev == NGX_CONF_UNSET) ? default : prev;                    \
     }

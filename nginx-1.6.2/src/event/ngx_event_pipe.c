@@ -18,7 +18,7 @@ static ngx_int_t ngx_event_pipe_write_chain_to_temp_file(ngx_event_pipe_t *p);
 static ngx_inline void ngx_event_pipe_remove_shadow_links(ngx_buf_t *buf);
 static ngx_int_t ngx_event_pipe_drain_chains(ngx_event_pipe_t *p);
 
-
+//p: 负责转发响应的ngx_event_pipe_t结构体，而do_write则是标志位，为1时表示需要向下游客户端发送响应，为0时表示仅需要由上游客户端接收响应
 ngx_int_t
 ngx_event_pipe(ngx_event_pipe_t *p, ngx_int_t do_write)
 {

@@ -88,11 +88,15 @@ typedef struct {
     ngx_array_t      *dns_wc_tail_hash;
 } ngx_hash_keys_arrays_t;
 
-
+//此结构是为http头部量身订制的，其中key存储头部名称，value存储对应的值，lowcase_key是为了忽略http头部名称的大小写，hash 用于快速检索头部 3.6.3中
 typedef struct {
+	//表明ngx_table_elt_t也可以是某个散列表数据结构(ngx_hash_t类型)中的成员
     ngx_uint_t        hash;
+	//名字
     ngx_str_t         key;
+	//值字符串
     ngx_str_t         value;
+	//指向的是全小写的key字符串
     u_char           *lowcase_key;
 } ngx_table_elt_t;
 

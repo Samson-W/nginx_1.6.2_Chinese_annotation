@@ -132,11 +132,11 @@ typedef volatile ngx_atomic_uint_t  ngx_atomic_t;
 #if ( __SUNPRO_C )
 
 #define NGX_HAVE_ATOMIC_OPS  1
-
+//将old与原子变量lock的值做比较，若它们相等，则把lock设为参数set,同时方法返回1，；若它们不等，则不做任何修改，返回0.
 ngx_atomic_uint_t
 ngx_atomic_cmp_set(ngx_atomic_t *lock, ngx_atomic_uint_t old,
     ngx_atomic_uint_t set);
-
+//把原子变量value的值加上参数add,同时返回之前的value的值 
 ngx_atomic_int_t
 ngx_atomic_fetch_add(ngx_atomic_t *value, ngx_atomic_int_t add);
 

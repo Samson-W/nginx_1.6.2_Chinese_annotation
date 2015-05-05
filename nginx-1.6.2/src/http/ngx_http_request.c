@@ -2278,7 +2278,7 @@ ngx_http_finalize_request(ngx_http_request_t *r, ngx_int_t rc)
         ngx_http_core_run_phases(r);
         return;
     }
-
+	//如果当前请求属于某个原始请求的子请求 此时的r变量是子请求 不是父请求
     if (r != r->main && r->post_subrequest) {
         rc = r->post_subrequest->handler(r, r->post_subrequest->data, rc);
     }

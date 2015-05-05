@@ -14,6 +14,7 @@
 ngx_int_t
 ngx_shm_alloc(ngx_shm_t *shm)
 {
+	//开辟一块shm->size大小可以读写的共享内存，内存首地址存放在addr中
     shm->addr = (u_char *) mmap(NULL, shm->size,
                                 PROT_READ|PROT_WRITE,
                                 MAP_ANON|MAP_SHARED, -1, 0);
@@ -31,6 +32,7 @@ ngx_shm_alloc(ngx_shm_t *shm)
 void
 ngx_shm_free(ngx_shm_t *shm)
 {
+	//使用ngx_shm_t中的addr和size参数调用munmap释放共享内在即可
     if (munmap((void *) shm->addr, shm->size) == -1) {
         ngx_log_error(NGX_LOG_ALERT, shm->log, ngx_errno,
                       "munmap(%p, %uz) failed", shm->addr, shm->size);

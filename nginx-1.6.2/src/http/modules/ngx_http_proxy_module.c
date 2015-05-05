@@ -215,7 +215,7 @@ static ngx_conf_enum_t  ngx_http_proxy_http_version[] = {
 
 ngx_module_t  ngx_http_proxy_module;
 
-//ngx_command_t数组表示模块所能接收的所有模块，其中每一个元素表示一条指令
+//ngx_command_t数组用于定义模块的配置文件参数，每个元素都是ngx_command_t类型，数组的结尾用ngx_null_command表示。nginx在解析配置文件中的一个配置项时首先会遍历所有的模块，对于每一个模块而言，即通过遍历commands数组进行，另外，在数组中检查到ngx_null_command时，会停止使用当前模块解析该配置项。每个ngx_command_t结构体定义了自己感兴趣的一个配置项
 static ngx_command_t  ngx_http_proxy_commands[] = {
 
     { ngx_string("proxy_pass"),

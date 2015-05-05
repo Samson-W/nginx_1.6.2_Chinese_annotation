@@ -325,7 +325,7 @@ ngx_next_temp_number(ngx_uint_t collision)
     return n + add;
 }
 
-
+//这个方法用于设置路径，配置项后必须携带1个参数，表示1个有意义的路径。此接口将会把参数转化为ngx_path_t结构
 char *
 ngx_conf_set_path_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
@@ -425,7 +425,7 @@ ngx_conf_merge_path_value(ngx_conf_t *cf, ngx_path_t **path, ngx_path_t *prev,
     return NGX_CONF_OK;
 }
 
-
+//这个方法用于设置目录或文件的读写权限。配置项后可携带1～3个参数，可以是如下形式：user:rw group:rw all:rw。注意，它的意义与linux上文件或目录的权限意义是一致的，但是user/group/all后面的权限只可以设为rw或r，不可有其他任何形式，如w或rx等。此接口将会把这些参数转化为一个整型
 char *
 ngx_conf_set_access_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {

@@ -35,7 +35,7 @@ typedef struct {
     char       *(*init_main_conf)(ngx_conf_t *cf, void *conf);
 	//当需要创建数据结构用于存储srv级别(直属于虚拟主机server{}块配置)的配置项时，可以通过此回调方法创建存储srv级别配置项的结构体
     void       *(*create_srv_conf)(ngx_conf_t *cf);
-	//此回调方法主要用于合并main级别和srv级别下的同名配置项
+	//此回调方法主要用于合并main级别和srv级别下的同名配置项,cf提供一些基本的数据结构，如内存池，日志。我们需要关注的是第2 3个参数，其中第2个参数void *prev是指解析父配置块时生成的结构体，而第3个参数void *conf则指出的是保存子配置块的结构体。
     char       *(*merge_srv_conf)(ngx_conf_t *cf, void *prev, void *conf);
 	//当需要创建数据结构体用于存储loc级别(直属于location{}块的配置项)的配置项时，可以实现此回调
     void       *(*create_loc_conf)(ngx_conf_t *cf);
@@ -45,18 +45,26 @@ typedef struct {
 
 
 #define NGX_HTTP_MODULE           0x50545448   /* "HTTP" */
-
+//配置项可以出现在http{}块内
 #define NGX_HTTP_MAIN_CONF        0x02000000
+//配置项可以出现在server{}块内，然而该server块必须属于http{}块
 #define NGX_HTTP_SRV_CONF         0x04000000
+//配置项可以出现在location{}块内，然而该location块必须属于http块
 #define NGX_HTTP_LOC_CONF         0x08000000
+//配置项可以出现在upstream{}块内。然而该upstream块必须属于http块
 #define NGX_HTTP_UPS_CONF         0x10000000
+//配置项可以出现在location块内的if{}块中。目前仅有rewrite模块会使用，该if块必须属于http{}块
 #define NGX_HTTP_SIF_CONF         0x20000000
+//配置项可以出现在location块内的if{}块中。目前仅有rewrite模块会使用，该if块必须属于http{}块
 #define NGX_HTTP_LIF_CONF         0x40000000
+//配置项可以出现在limit_except{}块内，然而该limit_except块必须属于http{}块
 #define NGX_HTTP_LMT_CONF         0x80000000
 
-
+//使用create_main_conf方法产生的结构体来存储解析出的配置项参数
 #define NGX_HTTP_MAIN_CONF_OFFSET  offsetof(ngx_http_conf_ctx_t, main_conf)
+//使用create_srv_conf方法产生的结构体来存储解析出的配置项参数
 #define NGX_HTTP_SRV_CONF_OFFSET   offsetof(ngx_http_conf_ctx_t, srv_conf)
+//使用create_loc_conf方法产生的结构体来存储解析出的配置项参数
 #define NGX_HTTP_LOC_CONF_OFFSET   offsetof(ngx_http_conf_ctx_t, loc_conf)
 
 

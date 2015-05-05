@@ -129,7 +129,7 @@ NGX_CASA	src/os/unix/ngx_gcc_atomic_sparc64.h	27;"	d
 NGX_CASA	src/os/unix/ngx_gcc_atomic_sparc64.h	29;"	d
 NGX_CASA	src/os/unix/ngx_sunpro_atomic_sparc64.h	11;"	d
 NGX_CASA	src/os/unix/ngx_sunpro_atomic_sparc64.h	9;"	d
-NGX_CHAIN_ERROR	src/core/ngx_buf.h	120;"	d
+NGX_CHAIN_ERROR	src/core/ngx_buf.h	138;"	d
 NGX_CHANGEBIN_SIGNAL	src/core/ngx_config.h	67;"	d
 NGX_CHANGEBIN_SIGNAL	src/core/ngx_config.h	70;"	d
 NGX_CLEAR_EVENT	src/event/ngx_event.h	408;"	d
@@ -149,7 +149,7 @@ NGX_CONF_1MORE	src/core/ngx_conf_file.h	47;"	d
 NGX_CONF_2MORE	src/core/ngx_conf_file.h	48;"	d
 NGX_CONF_ANY	src/core/ngx_conf_file.h	46;"	d
 NGX_CONF_ARGS_NUMBER	src/core/ngx_conf_file.h	43;"	d
-NGX_CONF_BITMASK_SET	src/core/ngx_conf_file.h	217;"	d
+NGX_CONF_BITMASK_SET	src/core/ngx_conf_file.h	219;"	d
 NGX_CONF_BLOCK	src/core/ngx_conf_file.h	44;"	d
 NGX_CONF_BLOCK_DONE	src/core/ngx_conf_file.h	69;"	d
 NGX_CONF_BLOCK_START	src/core/ngx_conf_file.h	68;"	d
@@ -823,8 +823,8 @@ NGX_MAX_UINT32_VALUE	src/core/ngx_config.h	126;"	d
 NGX_MAX_UINT32_VALUE	src/core/ngx_config.h	128;"	d
 NGX_MIN_POOL_SIZE	src/core/ngx_palloc.h	25;"	d
 NGX_MIN_READ_AHEAD	src/core/ngx_open_file_cache.c	21;"	d	file:
-NGX_MODULE_V1	src/core/ngx_conf_file.h	102;"	d
-NGX_MODULE_V1_PADDING	src/core/ngx_conf_file.h	103;"	d
+NGX_MODULE_V1	src/core/ngx_conf_file.h	104;"	d
+NGX_MODULE_V1_PADDING	src/core/ngx_conf_file.h	105;"	d
 NGX_MUTEX_LIGHT	src/os/unix/ngx_freebsd_rfork_thread.h	24;"	d
 NGX_MUTEX_LIGHT	src/os/unix/ngx_thread.h	48;"	d
 NGX_MUTEX_LOCK_BUSY	src/os/unix/ngx_freebsd_rfork_thread.h	26;"	d
@@ -1219,7 +1219,7 @@ accept_language	src/http/ngx_http_request.h	/^    ngx_table_elt_t               
 accept_mutex	src/event/ngx_event.h	/^    ngx_flag_t    accept_mutex;$/;"	m	struct:__anon40
 accept_mutex_delay	src/event/ngx_event.h	/^    ngx_msec_t    accept_mutex_delay;$/;"	m	struct:__anon40
 accept_ranges	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *accept_ranges;$/;"	m	struct:__anon127
-accept_ranges	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *accept_ranges;$/;"	m	struct:__anon346
+accept_ranges	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *accept_ranges;$/;"	m	struct:__anon347
 access	src/core/ngx_file.h	/^    ngx_uint_t                 access;$/;"	m	struct:__anon92
 access	src/core/ngx_file.h	/^    ngx_uint_t                 access;$/;"	m	struct:__anon93
 access	src/core/ngx_file.h	/^    ngx_uint_t                 access;$/;"	m	struct:__anon94
@@ -1235,8 +1235,8 @@ acv	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_http_complex_value
 add	src/event/ngx_event.h	/^    ngx_int_t  (*add)(ngx_event_t *ev, ngx_int_t event, ngx_uint_t flags);$/;"	m	struct:__anon39
 add	src/http/modules/ngx_http_browser_module.c	/^    size_t                      add;$/;"	m	struct:__anon286	file:
 add	src/http/modules/ngx_http_browser_module.c	/^    size_t                      add;$/;"	m	struct:__anon287	file:
-add_args	src/http/ngx_http_script.h	/^    uintptr_t                   add_args:1;$/;"	m	struct:__anon330
 add_args	src/http/ngx_http_script.h	/^    uintptr_t                   add_args:1;$/;"	m	struct:__anon331
+add_args	src/http/ngx_http_script.h	/^    uintptr_t                   add_args:1;$/;"	m	struct:__anon332
 add_conn	src/event/ngx_event.h	/^    ngx_int_t  (*add_conn)(ngx_connection_t *c);$/;"	m	struct:__anon39
 add_deferred	src/core/ngx_connection.h	/^    unsigned            add_deferred:1;$/;"	m	struct:ngx_listening_s
 add_uri_to_alias	src/http/ngx_http_request.h	/^    unsigned                          add_uri_to_alias:1;$/;"	m	struct:ngx_http_request_s
@@ -1250,7 +1250,7 @@ addr	src/http/modules/ngx_http_access_module.c	/^    struct in6_addr   addr;$/;"
 addr	src/http/modules/ngx_http_upstream_ip_hash_module.c	/^    u_char                            *addr;$/;"	m	struct:__anon215	file:
 addr	src/http/ngx_http_core_module.h	/^    in_addr_t                  addr;$/;"	m	struct:__anon304
 addr	src/http/ngx_http_core_module.h	/^    u_char                     addr[NGX_SOCKADDR_STRLEN + 1];$/;"	m	struct:__anon295
-addr	src/http/ngx_http_upstream.h	/^    ngx_addr_t                      *addr;$/;"	m	struct:__anon343
+addr	src/http/ngx_http_upstream.h	/^    ngx_addr_t                      *addr;$/;"	m	struct:__anon344
 addr	src/mail/ngx_mail.h	/^    in_addr_t               addr;$/;"	m	struct:__anon9
 addr	src/mail/ngx_mail_auth_http_module.c	/^    ngx_str_t                       addr;$/;"	m	struct:ngx_mail_auth_http_ctx_s	file:
 addr	src/os/unix/ngx_files.h	/^    void                        *addr;$/;"	m	struct:__anon110
@@ -1283,8 +1283,8 @@ addrs	src/event/ngx_event_openssl_stapling.c	/^    ngx_addr_t                  *
 addrs	src/event/ngx_event_openssl_stapling.c	/^    ngx_addr_t                  *addrs;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 addrs	src/http/ngx_http_core_module.h	/^    ngx_array_t                addrs;     \/* array of ngx_http_conf_addr_t *\/$/;"	m	struct:__anon307
 addrs	src/http/ngx_http_core_module.h	/^    void                      *addrs;$/;"	m	struct:__anon306
-addrs	src/http/ngx_http_upstream.h	/^    ngx_addr_t                      *addrs;$/;"	m	struct:__anon342
-addrs	src/http/ngx_http_upstream.h	/^    ngx_addr_t                      *addrs;$/;"	m	struct:__anon347
+addrs	src/http/ngx_http_upstream.h	/^    ngx_addr_t                      *addrs;$/;"	m	struct:__anon343
+addrs	src/http/ngx_http_upstream.h	/^    ngx_addr_t                      *addrs;$/;"	m	struct:__anon348
 addrs	src/mail/ngx_mail.h	/^    ngx_array_t             addrs;       \/* array of ngx_mail_conf_addr_t *\/$/;"	m	struct:__anon12
 addrs	src/mail/ngx_mail.h	/^    void                   *addrs;$/;"	m	struct:__anon11
 addrs6	src/core/ngx_resolver.h	/^        struct in6_addr      *addrs6;$/;"	m	union:__anon62::__anon64	typeref:struct:__anon62::__anon64::in6_addr
@@ -1320,10 +1320,10 @@ arg_start	src/mail/ngx_mail.h	/^    u_char                 *arg_start;$/;"	m	str
 args	src/core/ngx_conf_file.h	/^    ngx_array_t          *args;$/;"	m	struct:ngx_conf_s
 args	src/http/ngx_http_core_module.h	/^    ngx_str_t                  args;$/;"	m	struct:__anon309
 args	src/http/ngx_http_request.h	/^    ngx_str_t                         args;$/;"	m	struct:ngx_http_request_s
-args	src/http/ngx_http_script.h	/^    u_char                     *args;$/;"	m	struct:__anon322
-args	src/http/ngx_http_script.h	/^    uintptr_t                   args:1;$/;"	m	struct:__anon330
+args	src/http/ngx_http_script.h	/^    u_char                     *args;$/;"	m	struct:__anon323
 args	src/http/ngx_http_script.h	/^    uintptr_t                   args:1;$/;"	m	struct:__anon331
-args	src/http/ngx_http_script.h	/^    unsigned                    args:1;$/;"	m	struct:__anon323
+args	src/http/ngx_http_script.h	/^    uintptr_t                   args:1;$/;"	m	struct:__anon332
+args	src/http/ngx_http_script.h	/^    unsigned                    args:1;$/;"	m	struct:__anon324
 args	src/mail/ngx_mail.h	/^    ngx_array_t             args;$/;"	m	struct:__anon20
 args_start	src/http/ngx_http_request.h	/^    u_char                           *args_start;$/;"	m	struct:ngx_http_request_s
 argument_number	src/core/ngx_conf_file.c	/^static ngx_uint_t argument_number[] = {$/;"	v	file:
@@ -1346,15 +1346,15 @@ b:did_indent	contrib/vim/indent/nginx.vim	/^let b:did_indent = 1$/;"	v
 backlog	src/core/ngx_connection.h	/^    int                 backlog;$/;"	m	struct:ngx_listening_s
 backlog	src/http/ngx_http_core_module.h	/^    int                        backlog;$/;"	m	struct:__anon295
 backslash	src/mail/ngx_mail.h	/^    unsigned                backslash:1;$/;"	m	struct:__anon20
-backup	src/http/ngx_http_upstream.h	/^    unsigned                         backup:1;$/;"	m	struct:__anon342
+backup	src/http/ngx_http_upstream.h	/^    unsigned                         backup:1;$/;"	m	struct:__anon343
 before_body	src/http/modules/ngx_http_addition_filter_module.c	/^    ngx_str_t     before_body;$/;"	m	struct:__anon238	file:
 before_body_sent	src/http/modules/ngx_http_addition_filter_module.c	/^    ngx_uint_t    before_body_sent;$/;"	m	struct:__anon239	file:
 binary_include	src/http/modules/ngx_http_geo_module.c	/^    unsigned                         binary_include:1;$/;"	m	struct:__anon232	file:
 bind	src/http/ngx_http_core_module.h	/^    unsigned                   bind:1;$/;"	m	struct:__anon295
 bind	src/mail/ngx_mail.h	/^    unsigned                bind:1;$/;"	m	struct:__anon13
 bind	src/mail/ngx_mail.h	/^    unsigned                bind:1;$/;"	m	struct:__anon7
-bl_state	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       bl_state;$/;"	m	struct:__anon339
-bl_time	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       bl_time;$/;"	m	struct:__anon339
+bl_state	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       bl_state;$/;"	m	struct:__anon340
+bl_time	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       bl_time;$/;"	m	struct:__anon340
 block	src/http/modules/ngx_http_ssi_filter_module.h	/^    unsigned                  block:1;$/;"	m	struct:__anon223
 block	src/http/modules/ngx_http_ssi_filter_module.h	/^    unsigned                  block:1;$/;"	m	struct:__anon225
 blocked	src/http/ngx_http_request.h	/^    unsigned                          blocked:8;$/;"	m	struct:ngx_http_request_s
@@ -1373,7 +1373,7 @@ body_start	src/http/ngx_http_cache.h	/^    u_short                          body
 bound	src/core/ngx_connection.h	/^    unsigned            bound:1;       \/* already bound *\/$/;"	m	struct:ngx_listening_s
 boundary_header	src/http/modules/ngx_http_range_filter_module.c	/^    ngx_str_t    boundary_header;$/;"	m	struct:__anon180	file:
 br	src/http/modules/ngx_http_fastcgi_module.c	/^    ngx_http_fastcgi_begin_request_t  br;$/;"	m	struct:__anon175	file:
-break_cycle	src/http/ngx_http_script.h	/^    uintptr_t                   break_cycle:1;$/;"	m	struct:__anon330
+break_cycle	src/http/ngx_http_script.h	/^    uintptr_t                   break_cycle:1;$/;"	m	struct:__anon331
 browser	src/http/modules/ngx_http_browser_module.c	/^    u_char                      browser[12];$/;"	m	struct:__anon286	file:
 bsize	src/http/ngx_http_cache.h	/^    size_t                           bsize;$/;"	m	struct:ngx_http_file_cache_s
 bucket_size	src/core/ngx_hash.h	/^    ngx_uint_t        bucket_size;$/;"	m	struct:__anon71
@@ -1385,7 +1385,7 @@ buf	src/http/modules/ngx_http_ssi_filter_module.h	/^    ngx_buf_t               
 buf	src/http/modules/ngx_http_sub_filter_module.c	/^    ngx_buf_t                 *buf;$/;"	m	struct:__anon202	file:
 buf	src/http/ngx_http_cache.h	/^    ngx_buf_t                       *buf;$/;"	m	struct:ngx_http_cache_s
 buf	src/http/ngx_http_request.h	/^    ngx_buf_t                        *buf;$/;"	m	struct:__anon128
-buf	src/http/ngx_http_script.h	/^    ngx_str_t                   buf;$/;"	m	struct:__anon322
+buf	src/http/ngx_http_script.h	/^    ngx_str_t                   buf;$/;"	m	struct:__anon323
 buf_size	src/core/ngx_file.h	/^    size_t                     buf_size;$/;"	m	struct:__anon94
 buf_to_file	src/event/ngx_event_pipe.h	/^    ngx_buf_t         *buf_to_file;$/;"	m	struct:ngx_event_pipe_s
 buffer	src/core/ngx_conf_file.h	/^    ngx_buf_t            *buffer;$/;"	m	struct:__anon55
@@ -1405,14 +1405,14 @@ buffer_size	src/http/modules/ngx_http_image_filter_module.c	/^    size_t        
 buffer_size	src/http/modules/ngx_http_mp4_module.c	/^    size_t                buffer_size;$/;"	m	struct:__anon240	file:
 buffer_size	src/http/modules/ngx_http_mp4_module.c	/^    size_t                buffer_size;$/;"	m	struct:__anon243	file:
 buffer_size	src/http/modules/ngx_http_ssl_module.h	/^    size_t                          buffer_size;$/;"	m	struct:__anon263
-buffer_size	src/http/ngx_http_upstream.h	/^    size_t                           buffer_size;$/;"	m	struct:__anon344
+buffer_size	src/http/ngx_http_upstream.h	/^    size_t                           buffer_size;$/;"	m	struct:__anon345
 buffer_size	src/mail/ngx_mail_proxy_module.c	/^    size_t      buffer_size;$/;"	m	struct:__anon23	file:
 buffer_start	src/http/modules/ngx_http_mp4_module.c	/^    u_char               *buffer_start;$/;"	m	struct:__anon243	file:
 buffer_used	src/http/ngx_http_spdy.h	/^    size_t                           buffer_used;$/;"	m	struct:ngx_http_spdy_connection_s
 buffered	src/core/ngx_connection.h	/^    unsigned            buffered:8;$/;"	m	struct:ngx_connection_s
 buffered	src/http/ngx_http_request.h	/^    unsigned                          buffered:4;$/;"	m	struct:ngx_http_request_s
 buffering	src/http/modules/ngx_http_gzip_filter_module.c	/^    unsigned             buffering:1;$/;"	m	struct:__anon196	file:
-buffering	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       buffering;$/;"	m	struct:__anon344
+buffering	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       buffering;$/;"	m	struct:__anon345
 buffering	src/http/ngx_http_upstream.h	/^    unsigned                         buffering:1;$/;"	m	struct:ngx_http_upstream_s
 bufs	src/core/ngx_buf.h	/^    ngx_bufs_t                   bufs;$/;"	m	struct:ngx_output_chain_ctx_s
 bufs	src/event/ngx_event_pipe.h	/^    ngx_bufs_t         bufs;$/;"	m	struct:ngx_event_pipe_s
@@ -1423,7 +1423,7 @@ bufs	src/http/modules/ngx_http_gzip_filter_module.c	/^    ngx_int_t            b
 bufs	src/http/modules/ngx_http_ssi_filter_module.c	/^    ngx_chain_t  *bufs;$/;"	m	struct:__anon155	file:
 bufs	src/http/ngx_http_copy_filter_module.c	/^    ngx_bufs_t  bufs;$/;"	m	struct:__anon312	file:
 bufs	src/http/ngx_http_request.h	/^    ngx_chain_t                      *bufs;$/;"	m	struct:__anon128
-bufs	src/http/ngx_http_upstream.h	/^    ngx_bufs_t                       bufs;$/;"	m	struct:__anon344
+bufs	src/http/ngx_http_upstream.h	/^    ngx_bufs_t                       bufs;$/;"	m	struct:__anon345
 builtin_session_cache	src/http/modules/ngx_http_ssl_module.h	/^    ssize_t                         builtin_session_cache;$/;"	m	struct:__anon263
 builtin_session_cache	src/mail/ngx_mail_ssl_module.h	/^    ssize_t          builtin_session_cache;$/;"	m	struct:__anon24
 burst	src/http/modules/ngx_http_limit_req_module.c	/^    ngx_uint_t                   burst;$/;"	m	struct:__anon191	file:
@@ -1439,8 +1439,8 @@ busy	src/http/modules/ngx_http_sub_filter_module.c	/^    ngx_chain_t            
 busy	src/http/ngx_http_busy_lock.h	/^    int                 busy;$/;"	m	struct:__anon293
 busy	src/http/ngx_http_request.h	/^    ngx_buf_t                       **busy;$/;"	m	struct:__anon129
 busy	src/http/ngx_http_request.h	/^    ngx_chain_t                      *busy;$/;"	m	struct:__anon128
-busy_buffers_size	src/http/ngx_http_upstream.h	/^    size_t                           busy_buffers_size;$/;"	m	struct:__anon344
-busy_buffers_size_conf	src/http/ngx_http_upstream.h	/^    size_t                           busy_buffers_size_conf;$/;"	m	struct:__anon344
+busy_buffers_size	src/http/ngx_http_upstream.h	/^    size_t                           busy_buffers_size;$/;"	m	struct:__anon345
+busy_buffers_size_conf	src/http/ngx_http_upstream.h	/^    size_t                           busy_buffers_size_conf;$/;"	m	struct:__anon345
 busy_bufs	src/http/ngx_http_upstream.h	/^    ngx_chain_t                     *busy_bufs;$/;"	m	struct:ngx_http_upstream_s
 busy_count	src/core/ngx_connection.h	/^    unsigned            busy_count:2;$/;"	m	struct:ngx_connection_s
 busy_sendfile	src/core/ngx_connection.h	/^    ngx_buf_t          *busy_sendfile;$/;"	m	struct:ngx_connection_s
@@ -1452,23 +1452,23 @@ cache	src/core/ngx_open_file_cache.h	/^    ngx_open_file_cache_t   *cache;$/;"	m
 cache	src/core/ngx_open_file_cache.h	/^    ngx_open_file_cache_t   *cache;$/;"	m	struct:__anon98
 cache	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    ngx_queue_t                        cache;$/;"	m	struct:__anon273	file:
 cache	src/http/ngx_http_request.h	/^    ngx_http_cache_t                 *cache;$/;"	m	struct:ngx_http_request_s
-cache	src/http/ngx_http_upstream.h	/^    ngx_shm_zone_t                  *cache;$/;"	m	struct:__anon344
-cache_bypass	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *cache_bypass;$/;"	m	struct:__anon344
+cache	src/http/ngx_http_upstream.h	/^    ngx_shm_zone_t                  *cache;$/;"	m	struct:__anon345
+cache_bypass	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *cache_bypass;$/;"	m	struct:__anon345
 cache_control	src/http/ngx_http_request.h	/^    ngx_array_t                       cache_control;$/;"	m	struct:__anon127
-cache_control	src/http/ngx_http_upstream.h	/^    ngx_array_t                      cache_control;$/;"	m	struct:__anon346
+cache_control	src/http/ngx_http_upstream.h	/^    ngx_array_t                      cache_control;$/;"	m	struct:__anon347
 cache_key	src/http/modules/ngx_http_fastcgi_module.c	/^    ngx_http_complex_value_t       cache_key;$/;"	m	struct:__anon168	file:
 cache_key	src/http/modules/ngx_http_proxy_module.c	/^    ngx_http_complex_value_t       cache_key;$/;"	m	struct:__anon143	file:
 cache_key	src/http/modules/ngx_http_scgi_module.c	/^    ngx_http_complex_value_t   cache_key;$/;"	m	struct:__anon208	file:
 cache_key	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_http_complex_value_t   cache_key;$/;"	m	struct:__anon213	file:
-cache_lock	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       cache_lock;$/;"	m	struct:__anon344
-cache_lock_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       cache_lock_timeout;$/;"	m	struct:__anon344
-cache_methods	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       cache_methods;$/;"	m	struct:__anon344
-cache_min_uses	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       cache_min_uses;$/;"	m	struct:__anon344
-cache_revalidate	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       cache_revalidate;$/;"	m	struct:__anon344
+cache_lock	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       cache_lock;$/;"	m	struct:__anon345
+cache_lock_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       cache_lock_timeout;$/;"	m	struct:__anon345
+cache_methods	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       cache_methods;$/;"	m	struct:__anon345
+cache_min_uses	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       cache_min_uses;$/;"	m	struct:__anon345
+cache_revalidate	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       cache_revalidate;$/;"	m	struct:__anon345
 cache_status	src/http/ngx_http_upstream.h	/^    unsigned                         cache_status:3;$/;"	m	struct:ngx_http_upstream_s
 cache_updated	src/event/ngx_event_busy_lock.h	/^    unsigned                    cache_updated:1;$/;"	m	struct:ngx_event_busy_lock_ctx_s
-cache_use_stale	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       cache_use_stale;$/;"	m	struct:__anon344
-cache_valid	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *cache_valid;$/;"	m	struct:__anon344
+cache_use_stale	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       cache_use_stale;$/;"	m	struct:__anon345
+cache_valid	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *cache_valid;$/;"	m	struct:__anon345
 cacheable	src/event/ngx_event_busy_lock.h	/^    ngx_uint_t                  cacheable;$/;"	m	struct:__anon36
 cacheable	src/event/ngx_event_pipe.h	/^    unsigned           cacheable:1;$/;"	m	struct:ngx_event_pipe_s
 cacheable	src/http/ngx_http_busy_lock.h	/^    int                 cacheable;$/;"	m	struct:__anon293
@@ -1494,7 +1494,7 @@ captures	src/http/ngx_http_core_module.h	/^    unsigned                    captu
 captures	src/http/ngx_http_request.h	/^    int                              *captures;$/;"	m	struct:ngx_http_request_s
 captures_data	src/http/modules/ngx_http_ssi_filter_module.h	/^    u_char                   *captures_data;$/;"	m	struct:__anon223
 captures_data	src/http/ngx_http_request.h	/^    u_char                           *captures_data;$/;"	m	struct:ngx_http_request_s
-captures_mask	src/http/ngx_http_script.h	/^    ngx_uint_t                  captures_mask;$/;"	m	struct:__anon323
+captures_mask	src/http/ngx_http_script.h	/^    ngx_uint_t                  captures_mask;$/;"	m	struct:__anon324
 catch_stderr	src/http/modules/ngx_http_fastcgi_module.c	/^    ngx_array_t                   *catch_stderr;$/;"	m	struct:__anon168	file:
 cert	src/event/ngx_event_openssl_stapling.c	/^    X509                        *cert;$/;"	m	struct:__anon35	file:
 cert	src/event/ngx_event_openssl_stapling.c	/^    X509                        *cert;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
@@ -1503,10 +1503,10 @@ certificate	src/mail/ngx_mail_ssl_module.h	/^    ngx_str_t        certificate;$/
 certificate_key	src/http/modules/ngx_http_ssl_module.h	/^    ngx_str_t                       certificate_key;$/;"	m	struct:__anon263
 certificate_key	src/mail/ngx_mail_ssl_module.h	/^    ngx_str_t        certificate_key;$/;"	m	struct:__anon24
 cf	src/http/modules/ngx_http_map_module.c	/^    ngx_conf_t                 *cf;$/;"	m	struct:__anon177	file:
-cf	src/http/ngx_http_script.h	/^    ngx_conf_t                 *cf;$/;"	m	struct:__anon323
-cf	src/http/ngx_http_script.h	/^    ngx_conf_t                 *cf;$/;"	m	struct:__anon325
+cf	src/http/ngx_http_script.h	/^    ngx_conf_t                 *cf;$/;"	m	struct:__anon324
+cf	src/http/ngx_http_script.h	/^    ngx_conf_t                 *cf;$/;"	m	struct:__anon326
 chain	src/core/ngx_palloc.h	/^    ngx_chain_t          *chain;$/;"	m	struct:ngx_pool_s
-change_buffering	src/http/ngx_http_upstream.h	/^    unsigned                         change_buffering:1;$/;"	m	struct:__anon344
+change_buffering	src/http/ngx_http_upstream.h	/^    unsigned                         change_buffering:1;$/;"	m	struct:__anon345
 change_index	src/event/modules/ngx_devpoll_module.c	/^static ngx_event_t    **change_index;$/;"	v	file:
 change_list	src/event/modules/ngx_devpoll_module.c	/^static struct pollfd   *change_list, *event_list;$/;"	v	typeref:struct:pollfd	file:
 change_list	src/event/modules/ngx_kqueue_module.c	/^static struct kevent  *change_list, *change_list0, *change_list1;$/;"	v	typeref:struct:kevent	file:
@@ -1533,7 +1533,7 @@ chunked	src/http/modules/ngx_http_proxy_module.c	/^    ngx_http_chunked_t       
 chunked	src/http/ngx_http_request.h	/^    ngx_http_chunked_t               *chunked;$/;"	m	struct:__anon128
 chunked	src/http/ngx_http_request.h	/^    unsigned                          chunked:1;$/;"	m	struct:__anon126
 chunked	src/http/ngx_http_request.h	/^    unsigned                          chunked:1;$/;"	m	struct:ngx_http_request_s
-chunked	src/http/ngx_http_upstream.h	/^    unsigned                         chunked:1;$/;"	m	struct:__anon346
+chunked	src/http/ngx_http_upstream.h	/^    unsigned                         chunked:1;$/;"	m	struct:__anon347
 chunked_transfer_encoding	src/http/ngx_http_core_module.h	/^    ngx_flag_t    chunked_transfer_encoding; \/* chunked_transfer_encoding *\/$/;"	m	struct:ngx_http_core_loc_conf_s
 chunks	src/http/modules/ngx_http_mp4_module.c	/^    uint32_t              chunks;$/;"	m	struct:__anon242	file:
 ciphers	src/http/modules/ngx_http_ssl_module.h	/^    ngx_str_t                       ciphers;$/;"	m	struct:__anon263
@@ -1576,7 +1576,6 @@ code	src/core/ngx_resolver.h	/^    u_char                    code;$/;"	m	struct:
 code	src/event/ngx_event_openssl_stapling.c	/^    ngx_uint_t                   code;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 code	src/http/ngx_http.h	/^    ngx_uint_t           code;$/;"	m	struct:__anon317
 code	src/http/ngx_http_core_module.h	/^    unsigned                   code:10;$/;"	m	struct:__anon310
-code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon326
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon327
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon328
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon329
@@ -1584,10 +1583,11 @@ code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	st
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon331
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon332
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon333
-code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon335
+code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon334
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon336
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon337
 code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon338
+code	src/http/ngx_http_script.h	/^    ngx_http_script_code_pt     code;$/;"	m	struct:__anon339
 codes	src/http/modules/ngx_http_rewrite_module.c	/^    ngx_array_t  *codes;        \/* uintptr_t *\/$/;"	m	struct:__anon276	file:
 cold	src/http/ngx_http_cache.h	/^    ngx_atomic_t                     cold;$/;"	m	struct:__anon137
 color	src/core/ngx_rbtree.h	/^    u_char                 color;$/;"	m	struct:ngx_rbtree_node_s
@@ -1599,13 +1599,13 @@ command	src/mail/ngx_mail.h	/^    ngx_uint_t              command;$/;"	m	struct:
 command	src/os/unix/ngx_channel.h	/^     ngx_uint_t  command;$/;"	m	struct:__anon118
 commands	src/core/ngx_conf_file.h	/^    ngx_command_t        *commands;$/;"	m	struct:ngx_module_s
 commands	src/http/modules/ngx_http_ssi_filter_module.h	/^    ngx_hash_keys_arrays_t    commands;$/;"	m	struct:__anon222
-compile_args	src/http/ngx_http_script.h	/^    unsigned                    compile_args:1;$/;"	m	struct:__anon323
+compile_args	src/http/ngx_http_script.h	/^    unsigned                    compile_args:1;$/;"	m	struct:__anon324
 complete	src/event/ngx_event.h	/^    unsigned         complete:1;$/;"	m	struct:ngx_event_s
-complete_lengths	src/http/ngx_http_script.h	/^    unsigned                    complete_lengths:1;$/;"	m	struct:__anon323
-complete_values	src/http/ngx_http_script.h	/^    unsigned                    complete_values:1;$/;"	m	struct:__anon323
+complete_lengths	src/http/ngx_http_script.h	/^    unsigned                    complete_lengths:1;$/;"	m	struct:__anon324
+complete_values	src/http/ngx_http_script.h	/^    unsigned                    complete_values:1;$/;"	m	struct:__anon324
 complex	src/http/modules/ngx_http_proxy_module.c	/^        ngx_http_complex_value_t   complex;$/;"	m	union:ngx_http_proxy_rewrite_s::__anon141	file:
 complex_uri	src/http/ngx_http_request.h	/^    unsigned                          complex_uri:1;$/;"	m	struct:ngx_http_request_s
-complex_value	src/http/ngx_http_script.h	/^    ngx_http_complex_value_t   *complex_value;$/;"	m	struct:__anon325
+complex_value	src/http/ngx_http_script.h	/^    ngx_http_complex_value_t   *complex_value;$/;"	m	struct:__anon326
 composition_offset_entries	src/http/modules/ngx_http_mp4_module.c	/^    uint32_t              composition_offset_entries;$/;"	m	struct:__anon242	file:
 concurrent_streams	src/http/ngx_http_spdy_module.h	/^    ngx_uint_t                      concurrent_streams;$/;"	m	struct:__anon291
 cond	src/os/unix/ngx_thread.h	/^    pthread_cond_t    cond;$/;"	m	struct:__anon116
@@ -1617,7 +1617,7 @@ conf	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    ngx_http_upstre
 conf	src/http/ngx_http_core_module.h	/^    ngx_http_addr_conf_t       conf;$/;"	m	struct:__anon304
 conf	src/http/ngx_http_core_module.h	/^    ngx_http_addr_conf_t       conf;$/;"	m	struct:__anon305
 conf	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_conf_t        *conf;$/;"	m	struct:ngx_http_upstream_s
-conf	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       conf;$/;"	m	struct:__anon345
+conf	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       conf;$/;"	m	struct:__anon346
 conf	src/mail/ngx_mail.h	/^    ngx_mail_addr_conf_t    conf;$/;"	m	struct:__anon10
 conf	src/mail/ngx_mail.h	/^    ngx_mail_addr_conf_t    conf;$/;"	m	struct:__anon9
 conf_ctx	src/core/ngx_cycle.h	/^    void                  ****conf_ctx; \/*配置上下文数组(含所有模块，所有模块的配置结构体)，首先指向一个成员皆为指针的数组，其中每个成员指针又指向另外一个成员皆为指针的数组，第二2个数组中的成员指针才会指向各模块生成的配置结构体*\/$/;"	m	struct:ngx_cycle_s
@@ -1627,12 +1627,12 @@ conf_file	src/core/ngx_cycle.h	/^    ngx_str_t                 conf_file; \/*配
 conf_file	src/core/ngx_file.h	/^    u_char                    *conf_file;$/;"	m	struct:__anon90
 conf_param	src/core/ngx_cycle.h	/^    ngx_str_t                 conf_param; \/*配置参数*\/$/;"	m	struct:ngx_cycle_s
 conf_prefix	src/core/ngx_cycle.h	/^    ngx_str_t                 conf_prefix; \/*配置前缀*\/$/;"	m	struct:ngx_cycle_s
-conf_prefix	src/http/ngx_http_script.h	/^    uintptr_t                   conf_prefix;$/;"	m	struct:__anon332
-conf_prefix	src/http/ngx_http_script.h	/^    unsigned                    conf_prefix:1;$/;"	m	struct:__anon323
-conf_prefix	src/http/ngx_http_script.h	/^    unsigned                    conf_prefix:1;$/;"	m	struct:__anon325
+conf_prefix	src/http/ngx_http_script.h	/^    uintptr_t                   conf_prefix;$/;"	m	struct:__anon333
+conf_prefix	src/http/ngx_http_script.h	/^    unsigned                    conf_prefix:1;$/;"	m	struct:__anon324
+conf_prefix	src/http/ngx_http_script.h	/^    unsigned                    conf_prefix:1;$/;"	m	struct:__anon326
 conn	src/http/modules/ngx_http_limit_conn_module.c	/^    ngx_uint_t          conn;$/;"	m	struct:__anon280	file:
 conn	src/http/modules/ngx_http_limit_conn_module.c	/^    u_short             conn;$/;"	m	struct:__anon277	file:
-connect_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       connect_timeout;$/;"	m	struct:__anon344
+connect_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       connect_timeout;$/;"	m	struct:__anon345
 connection	src/core/ngx_buf.h	/^    ngx_connection_t            *connection;$/;"	m	struct:__anon105
 connection	src/core/ngx_connection.h	/^    ngx_connection_t   *connection;$/;"	m	struct:ngx_listening_s
 connection	src/core/ngx_log.h	/^    ngx_atomic_uint_t    connection;$/;"	m	struct:ngx_log_s
@@ -1646,9 +1646,9 @@ connection	src/http/ngx_http_request.h	/^    ngx_connection_t                 *c
 connection	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *connection;$/;"	m	struct:__anon126
 connection	src/http/ngx_http_spdy.h	/^    ngx_connection_t                *connection;$/;"	m	struct:ngx_http_spdy_connection_s
 connection	src/http/ngx_http_spdy.h	/^    ngx_http_spdy_connection_t      *connection;$/;"	m	struct:ngx_http_spdy_stream_s
-connection	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *connection;$/;"	m	struct:__anon346
+connection	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *connection;$/;"	m	struct:__anon347
 connection	src/mail/ngx_mail.h	/^    ngx_connection_t       *connection;$/;"	m	struct:__anon20
-connection_close	src/http/ngx_http_upstream.h	/^    unsigned                         connection_close:1;$/;"	m	struct:__anon346
+connection_close	src/http/ngx_http_upstream.h	/^    unsigned                         connection_close:1;$/;"	m	struct:__anon347
 connection_counter	src/event/ngx_event.c	/^static ngx_atomic_t   connection_counter = 1;$/;"	v	file:
 connection_n	src/core/ngx_cycle.h	/^    ngx_uint_t                connection_n; \/*连接个数*\/$/;"	m	struct:ngx_cycle_s
 connection_pool_size	src/http/ngx_http_core_module.h	/^    size_t                      connection_pool_size;$/;"	m	struct:__anon301
@@ -1658,22 +1658,22 @@ connections	src/event/ngx_event.h	/^    ngx_uint_t    connections;$/;"	m	struct:
 conns	src/http/modules/ngx_http_upstream_least_conn_module.c	/^    ngx_uint_t                        *conns;$/;"	m	struct:__anon206	file:
 conns	src/http/modules/ngx_http_upstream_least_conn_module.c	/^    ngx_uint_t                        *conns;$/;"	m	struct:__anon207	file:
 content_encoding	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *content_encoding;$/;"	m	struct:__anon127
-content_encoding	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *content_encoding;$/;"	m	struct:__anon346
+content_encoding	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *content_encoding;$/;"	m	struct:__anon347
 content_handler	src/http/ngx_http_request.h	/^    ngx_http_handler_pt               content_handler;$/;"	m	struct:ngx_http_request_s
 content_length	src/http/modules/ngx_http_mp4_module.c	/^    off_t                 content_length;$/;"	m	struct:__anon243	file:
 content_length	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *content_length;$/;"	m	struct:__anon126
 content_length	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *content_length;$/;"	m	struct:__anon127
-content_length	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *content_length;$/;"	m	struct:__anon346
+content_length	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *content_length;$/;"	m	struct:__anon347
 content_length_hi	src/http/modules/ngx_http_fastcgi_module.c	/^    u_char  content_length_hi;$/;"	m	struct:__anon172	file:
 content_length_lo	src/http/modules/ngx_http_fastcgi_module.c	/^    u_char  content_length_lo;$/;"	m	struct:__anon172	file:
 content_length_n	src/http/ngx_http_request.h	/^    off_t                             content_length_n;$/;"	m	struct:__anon126
 content_length_n	src/http/ngx_http_request.h	/^    off_t                             content_length_n;$/;"	m	struct:__anon127
-content_length_n	src/http/ngx_http_upstream.h	/^    off_t                            content_length_n;$/;"	m	struct:__anon346
+content_length_n	src/http/ngx_http_upstream.h	/^    off_t                            content_length_n;$/;"	m	struct:__anon347
 content_range	src/http/modules/ngx_http_range_filter_module.c	/^    ngx_str_t    content_range;$/;"	m	struct:__anon179	file:
 content_range	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *content_range;$/;"	m	struct:__anon127
 content_type	src/http/ngx_http_request.h	/^    ngx_str_t                         content_type;$/;"	m	struct:__anon127
 content_type	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *content_type;$/;"	m	struct:__anon126
-content_type	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *content_type;$/;"	m	struct:__anon346
+content_type	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *content_type;$/;"	m	struct:__anon347
 content_type_hash	src/http/ngx_http_request.h	/^    ngx_uint_t                        content_type_hash;$/;"	m	struct:__anon127
 content_type_len	src/http/ngx_http_request.h	/^    size_t                            content_type_len;$/;"	m	struct:__anon127
 content_type_lowcase	src/http/ngx_http_request.h	/^    u_char                           *content_type_lowcase;$/;"	m	struct:__anon127
@@ -1685,7 +1685,7 @@ copied	src/http/modules/ngx_http_gzip_filter_module.c	/^    ngx_chain_t         
 copy_buf	src/http/modules/ngx_http_gzip_filter_module.c	/^    ngx_chain_t         *copy_buf;$/;"	m	struct:__anon196	file:
 copy_end	src/http/modules/ngx_http_ssi_filter_module.h	/^    u_char                   *copy_end;$/;"	m	struct:__anon223
 copy_end	src/http/modules/ngx_http_sub_filter_module.c	/^    u_char                    *copy_end;$/;"	m	struct:__anon202	file:
-copy_handler	src/http/ngx_http_upstream.h	/^    ngx_http_header_handler_pt       copy_handler;$/;"	m	struct:__anon345
+copy_handler	src/http/ngx_http_upstream.h	/^    ngx_http_header_handler_pt       copy_handler;$/;"	m	struct:__anon346
 copy_start	src/http/modules/ngx_http_ssi_filter_module.h	/^    u_char                   *copy_start;$/;"	m	struct:__anon223
 copy_start	src/http/modules/ngx_http_sub_filter_module.c	/^    u_char                    *copy_start;$/;"	m	struct:__anon202	file:
 count	src/core/ngx_open_file_cache.h	/^    unsigned                 count:24;$/;"	m	struct:ngx_cached_open_file_s
@@ -1711,12 +1711,12 @@ create_conf	src/core/ngx_conf_file.h	/^    void               *(*create_conf)(ng
 create_conf	src/event/ngx_event.h	/^    void                 *(*create_conf)(ngx_cycle_t *cycle);$/;"	m	struct:__anon41
 create_full_put_path	src/http/modules/ngx_http_dav_module.c	/^    ngx_flag_t  create_full_put_path;$/;"	m	struct:__anon157	file:
 create_key	src/http/ngx_http_upstream.h	/^    ngx_int_t                      (*create_key)(ngx_http_request_t *r);$/;"	m	struct:ngx_http_upstream_s
-create_loc_conf	src/http/ngx_http_config.h	/^    void       *(*create_loc_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon321
-create_main_conf	src/http/ngx_http_config.h	/^    void       *(*create_main_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon321
+create_loc_conf	src/http/ngx_http_config.h	/^    void       *(*create_loc_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon322
+create_main_conf	src/http/ngx_http_config.h	/^    void       *(*create_main_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon322
 create_main_conf	src/mail/ngx_mail.h	/^    void                       *(*create_main_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon22
 create_path	src/core/ngx_file.h	/^    unsigned                   create_path:1;$/;"	m	struct:__anon93
 create_request	src/http/ngx_http_upstream.h	/^    ngx_int_t                      (*create_request)(ngx_http_request_t *r);$/;"	m	struct:ngx_http_upstream_s
-create_srv_conf	src/http/ngx_http_config.h	/^    void       *(*create_srv_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon321
+create_srv_conf	src/http/ngx_http_config.h	/^    void       *(*create_srv_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon322
 create_srv_conf	src/mail/ngx_mail.h	/^    void                       *(*create_srv_conf)(ngx_conf_t *cf);$/;"	m	struct:__anon22
 created	src/core/ngx_open_file_cache.h	/^    time_t                   created;$/;"	m	struct:ngx_cached_open_file_s
 creation_time	src/http/modules/ngx_http_mp4_module.c	/^    u_char    creation_time[4];$/;"	m	struct:__anon247	file:
@@ -1733,7 +1733,7 @@ ctx	src/core/ngx_conf_file.h	/^    void                 *ctx;$/;"	m	struct:ngx_m
 ctx	src/event/ngx_event_openssl.h	/^    SSL_CTX                    *ctx;$/;"	m	struct:__anon25
 ctx	src/http/ngx_http_core_module.h	/^    ngx_http_conf_ctx_t        *ctx;$/;"	m	struct:__anon301
 ctx	src/http/ngx_http_request.h	/^    void                            **ctx;$/;"	m	struct:ngx_http_request_s
-ctx	src/http/ngx_http_upstream.h	/^    ngx_resolver_ctx_t              *ctx;$/;"	m	struct:__anon347
+ctx	src/http/ngx_http_upstream.h	/^    ngx_resolver_ctx_t              *ctx;$/;"	m	struct:__anon348
 ctx	src/mail/ngx_mail.h	/^    ngx_mail_conf_ctx_t    *ctx;$/;"	m	struct:__anon13
 ctx	src/mail/ngx_mail.h	/^    ngx_mail_conf_ctx_t    *ctx;$/;"	m	struct:__anon15
 ctx	src/mail/ngx_mail.h	/^    ngx_mail_conf_ctx_t    *ctx;$/;"	m	struct:__anon7
@@ -1751,7 +1751,7 @@ current_weight	src/http/ngx_http_upstream_round_robin.h	/^    ngx_int_t         
 cv	src/os/unix/ngx_thread.h	/^    ngx_cond_t  *cv;$/;"	m	struct:__anon117
 cycle	src/core/ngx_conf_file.h	/^    ngx_cycle_t          *cycle;$/;"	m	struct:ngx_conf_s
 cyclic_temp_file	src/event/ngx_event_pipe.h	/^    unsigned           cyclic_temp_file:1;$/;"	m	struct:ngx_event_pipe_s
-cyclic_temp_file	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       cyclic_temp_file;$/;"	m	struct:__anon344
+cyclic_temp_file	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       cyclic_temp_file;$/;"	m	struct:__anon345
 d	src/core/ngx_md5.h	/^    uint32_t  a, b, c, d;$/;"	m	struct:__anon81
 d	src/core/ngx_palloc.h	/^    ngx_pool_data_t       d;$/;"	m	struct:ngx_pool_s
 dTHXa	src/http/modules/perl/ngx_http_perl_module.h	55;"	d
@@ -1786,8 +1786,8 @@ data	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    void           
 data	src/http/modules/ngx_http_xslt_filter_module.c	/^    void                      *data;$/;"	m	struct:__anon216	file:
 data	src/http/ngx_http_request.h	/^    void                             *data;$/;"	m	struct:__anon130
 data	src/http/ngx_http_request.h	/^    void                             *data;$/;"	m	struct:ngx_http_cleanup_s
-data	src/http/ngx_http_script.h	/^    uintptr_t                   data;$/;"	m	struct:__anon328
-data	src/http/ngx_http_upstream.h	/^    void                            *data;$/;"	m	struct:__anon341
+data	src/http/ngx_http_script.h	/^    uintptr_t                   data;$/;"	m	struct:__anon329
+data	src/http/ngx_http_upstream.h	/^    void                            *data;$/;"	m	struct:__anon342
 data	src/http/ngx_http_upstream_round_robin.h	/^    uintptr_t                       data;$/;"	m	struct:__anon319
 data	src/http/ngx_http_variables.h	/^    uintptr_t                     data;$/;"	m	struct:ngx_http_variable_s
 data	src/os/unix/ngx_process.h	/^    void               *data;$/;"	m	struct:__anon106
@@ -1796,7 +1796,7 @@ date	src/http/ngx_http_cache.h	/^    time_t                           date;$/;"	
 date	src/http/ngx_http_cache.h	/^    time_t                           date;$/;"	m	struct:ngx_http_cache_s
 date	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *date;$/;"	m	struct:__anon126
 date	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *date;$/;"	m	struct:__anon127
-date	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *date;$/;"	m	struct:__anon346
+date	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *date;$/;"	m	struct:__anon347
 date_time	src/http/ngx_http_request.h	/^    time_t                            date_time;$/;"	m	struct:__anon127
 de	src/os/unix/ngx_files.h	/^    struct dirent               *de;$/;"	m	struct:__anon111	typeref:struct:__anon111::dirent
 debug_connection	src/event/ngx_event.h	/^    ngx_array_t   debug_connection;$/;"	m	struct:__anon40
@@ -1866,7 +1866,7 @@ done	src/http/modules/ngx_http_gzip_filter_module.c	/^    unsigned             d
 done	src/http/modules/ngx_http_xslt_filter_module.c	/^    ngx_uint_t                 done;         \/* unsigned  done:1; *\/$/;"	m	struct:__anon221	file:
 done	src/http/modules/perl/ngx_http_perl_module.h	/^    ngx_uint_t                done;       \/* unsigned  done:1; *\/$/;"	m	struct:__anon268
 done	src/http/ngx_http_request.h	/^    unsigned                          done:1;$/;"	m	struct:ngx_http_request_s
-down	src/http/ngx_http_upstream.h	/^    unsigned                         down:1;$/;"	m	struct:__anon342
+down	src/http/ngx_http_upstream.h	/^    unsigned                         down:1;$/;"	m	struct:__anon343
 down	src/http/ngx_http_upstream_round_robin.h	/^    ngx_uint_t                      down;          \/* unsigned  down:1; *\/$/;"	m	struct:__anon318
 downstream	src/event/ngx_event_pipe.h	/^    ngx_connection_t  *downstream;$/;"	m	struct:ngx_event_pipe_s
 downstream_done	src/event/ngx_event_pipe.h	/^    unsigned           downstream_done:1;$/;"	m	struct:ngx_event_pipe_s
@@ -1883,7 +1883,7 @@ dtd_files	src/http/modules/ngx_http_xslt_filter_module.c	/^    ngx_array_t      
 dumb	src/core/ngx_cycle.c	/^static ngx_connection_t  dumb;$/;"	v	file:
 dummy	src/core/ngx_resolver.h	/^    void                     *dummy;$/;"	m	struct:__anon65
 dummy	src/http/modules/ngx_http_limit_req_module.c	/^    u_char                       dummy;$/;"	m	struct:__anon188	file:
-dup_capture	src/http/ngx_http_script.h	/^    unsigned                    dup_capture:1;$/;"	m	struct:__anon323
+dup_capture	src/http/ngx_http_script.h	/^    unsigned                    dup_capture:1;$/;"	m	struct:__anon324
 duration	src/http/modules/ngx_http_mp4_module.c	/^    u_char    duration[4];$/;"	m	struct:__anon247	file:
 duration	src/http/modules/ngx_http_mp4_module.c	/^    u_char    duration[4];$/;"	m	struct:__anon249	file:
 duration	src/http/modules/ngx_http_mp4_module.c	/^    u_char    duration[4];$/;"	m	struct:__anon251	file:
@@ -1894,6 +1894,7 @@ duration	src/http/modules/ngx_http_mp4_module.c	/^    u_char    duration[8];$/;"
 dvpoll	src/event/modules/ngx_devpoll_module.c	/^struct dvpoll {$/;"	s	file:
 ecdh_curve	src/http/modules/ngx_http_ssl_module.h	/^    ngx_str_t                       ecdh_curve;$/;"	m	struct:__anon263
 ecdh_curve	src/mail/ngx_mail_ssl_module.h	/^    ngx_str_t        ecdh_curve;$/;"	m	struct:__anon24
+ed	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^	ngx_str_t ed;$/;"	m	struct:__anon320	file:
 effective_weight	src/http/ngx_http_upstream_round_robin.h	/^    ngx_int_t                       effective_weight;$/;"	m	struct:__anon318
 elts	src/core/ngx_array.h	/^    void        *elts;$/;"	m	struct:__anon89
 elts	src/core/ngx_list.h	/^    void             *elts;$/;"	m	struct:ngx_list_part_s
@@ -1977,7 +1978,7 @@ escape_html	src/http/modules/ngx_http_autoindex_module.c	/^    size_t         es
 esmtp	src/mail/ngx_mail.h	/^    unsigned                esmtp:1;$/;"	m	struct:__anon20
 etag	src/http/ngx_http_core_module.h	/^    ngx_flag_t    etag;                    \/* etag *\/$/;"	m	struct:ngx_http_core_loc_conf_s
 etag	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *etag;$/;"	m	struct:__anon127
-etag	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *etag;$/;"	m	struct:__anon346
+etag	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *etag;$/;"	m	struct:__anon347
 event	src/core/ngx_open_file_cache.h	/^    ngx_event_t             *event;$/;"	m	struct:ngx_cached_open_file_s
 event	src/core/ngx_resolver.h	/^    ngx_event_t              *event;$/;"	m	struct:__anon65
 event	src/core/ngx_resolver.h	/^    ngx_event_t              *event;$/;"	m	struct:ngx_resolver_ctx_s
@@ -2034,11 +2035,11 @@ expires	src/http/modules/ngx_http_secure_link_module.c	/^    ngx_str_t          
 expires	src/http/modules/ngx_http_userid_filter_module.c	/^    time_t      expires;$/;"	m	struct:__anon193	file:
 expires	src/http/modules/ngx_http_userid_filter_module.c	/^static u_char expires[] = "; expires=Thu, 31-Dec-37 23:55:55 GMT";$/;"	v	file:
 expires	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *expires;$/;"	m	struct:__anon127
-expires	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *expires;$/;"	m	struct:__anon346
+expires	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *expires;$/;"	m	struct:__anon347
 expires_time	src/http/modules/ngx_http_headers_filter_module.c	/^    time_t                   expires_time;$/;"	m	struct:__anon205	file:
 exten	src/http/ngx_http_request.h	/^    ngx_str_t                         exten;$/;"	m	struct:ngx_http_request_s
 extra	src/core/ngx_regex.h	/^    pcre_extra  *extra;$/;"	m	struct:__anon99
-fail_timeout	src/http/ngx_http_upstream.h	/^    time_t                           fail_timeout;$/;"	m	struct:__anon342
+fail_timeout	src/http/ngx_http_upstream.h	/^    time_t                           fail_timeout;$/;"	m	struct:__anon343
 fail_timeout	src/http/ngx_http_upstream_round_robin.h	/^    time_t                          fail_timeout;$/;"	m	struct:__anon318
 failed	src/core/ngx_open_file_cache.h	/^    char                    *failed;$/;"	m	struct:__anon95
 failed	src/core/ngx_palloc.h	/^    ngx_uint_t            failed;$/;"	m	struct:__anon86
@@ -2124,14 +2125,14 @@ flush	src/http/modules/ngx_http_gunzip_filter_module.c	/^    unsigned           
 flush	src/http/modules/ngx_http_gzip_filter_module.c	/^    unsigned             flush:4;$/;"	m	struct:__anon196	file:
 flush	src/http/modules/ngx_http_log_module.c	/^    ngx_msec_t                  flush;$/;"	m	struct:__anon148	file:
 flush	src/http/modules/ngx_http_ssi_filter_module.h	/^    unsigned                  flush:1;$/;"	m	struct:__anon225
-flushed	src/http/ngx_http_script.h	/^    unsigned                    flushed:1;$/;"	m	struct:__anon322
+flushed	src/http/ngx_http_script.h	/^    unsigned                    flushed:1;$/;"	m	struct:__anon323
 flushes	src/http/modules/ngx_http_fastcgi_module.c	/^    ngx_array_t                   *flushes;$/;"	m	struct:__anon168	file:
 flushes	src/http/modules/ngx_http_log_module.c	/^    ngx_array_t                *flushes;$/;"	m	struct:__anon146	file:
 flushes	src/http/modules/ngx_http_proxy_module.c	/^    ngx_array_t                   *flushes;$/;"	m	struct:__anon143	file:
 flushes	src/http/modules/ngx_http_scgi_module.c	/^    ngx_array_t               *flushes;$/;"	m	struct:__anon208	file:
 flushes	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_array_t               *flushes;$/;"	m	struct:__anon213	file:
-flushes	src/http/ngx_http_script.h	/^    ngx_array_t               **flushes;$/;"	m	struct:__anon323
-flushes	src/http/ngx_http_script.h	/^    ngx_uint_t                 *flushes;$/;"	m	struct:__anon324
+flushes	src/http/ngx_http_script.h	/^    ngx_array_t               **flushes;$/;"	m	struct:__anon324
+flushes	src/http/ngx_http_script.h	/^    ngx_uint_t                 *flushes;$/;"	m	struct:__anon325
 force	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_uint_t                   force;$/;"	m	struct:__anon212	file:
 format	src/http/modules/ngx_http_log_module.c	/^    ngx_http_log_fmt_t         *format;$/;"	m	struct:__anon150	file:
 formats	src/http/modules/ngx_http_log_module.c	/^    ngx_array_t                 formats;    \/* array of ngx_http_log_fmt_t *\/$/;"	m	struct:__anon147	file:
@@ -2223,11 +2224,11 @@ handler	src/http/ngx_http_core_module.h	/^    ngx_http_handler_pt  handler;$/;"	
 handler	src/http/ngx_http_request.h	/^    ngx_http_cleanup_pt               handler;$/;"	m	struct:ngx_http_cleanup_s
 handler	src/http/ngx_http_request.h	/^    ngx_http_header_handler_pt        handler;$/;"	m	struct:__anon124
 handler	src/http/ngx_http_request.h	/^    ngx_http_post_subrequest_pt       handler;$/;"	m	struct:__anon130
-handler	src/http/ngx_http_script.h	/^    ngx_http_set_variable_pt    handler;$/;"	m	struct:__anon328
+handler	src/http/ngx_http_script.h	/^    ngx_http_set_variable_pt    handler;$/;"	m	struct:__anon329
 handler	src/http/ngx_http_spdy.c	/^    ngx_int_t   (*handler)(ngx_http_request_t *r);$/;"	m	struct:__anon132	file:
 handler	src/http/ngx_http_spdy.h	/^    ngx_http_spdy_handler_pt         handler;$/;"	m	struct:ngx_http_spdy_connection_s
 handler	src/http/ngx_http_spdy.h	/^    ngx_int_t                      (*handler)(ngx_http_spdy_connection_t *sc,$/;"	m	struct:ngx_http_spdy_out_frame_s
-handler	src/http/ngx_http_upstream.h	/^    ngx_http_header_handler_pt       handler;$/;"	m	struct:__anon345
+handler	src/http/ngx_http_upstream.h	/^    ngx_http_header_handler_pt       handler;$/;"	m	struct:__anon346
 handler	src/mail/ngx_mail_auth_http_module.c	/^    ngx_mail_auth_http_handler_pt   handler;$/;"	m	struct:ngx_mail_auth_http_ctx_s	file:
 handler	src/os/unix/ngx_process.c	/^    void  (*handler)(int signo);$/;"	m	struct:__anon121	file:
 handler	src/os/unix/ngx_process_cycle.h	/^    ngx_event_handler_pt       handler;$/;"	m	struct:__anon114
@@ -2285,7 +2286,7 @@ header_start	src/mail/ngx_mail_auth_http_module.c	/^    u_char                  
 headers	src/http/modules/ngx_http_headers_filter_module.c	/^    ngx_array_t             *headers;$/;"	m	struct:__anon205	file:
 headers	src/http/ngx_http_request.h	/^    ngx_list_t                        headers;$/;"	m	struct:__anon126
 headers	src/http/ngx_http_request.h	/^    ngx_list_t                        headers;$/;"	m	struct:__anon127
-headers	src/http/ngx_http_upstream.h	/^    ngx_list_t                       headers;$/;"	m	struct:__anon346
+headers	src/http/ngx_http_upstream.h	/^    ngx_list_t                       headers;$/;"	m	struct:__anon347
 headers	src/mail/ngx_mail_auth_http_module.c	/^    ngx_array_t                    *headers;$/;"	m	struct:__anon2	file:
 headers_comp	src/http/ngx_http_spdy_module.h	/^    ngx_int_t                       headers_comp;$/;"	m	struct:__anon291
 headers_hash	src/http/modules/ngx_http_fastcgi_module.c	/^    ngx_hash_t                     headers_hash;$/;"	m	struct:__anon168	file:
@@ -2296,7 +2297,7 @@ headers_hash_max_size	src/http/modules/ngx_http_proxy_module.c	/^    ngx_uint_t 
 headers_in	src/http/ngx_http_request.h	/^    ngx_http_headers_in_t             headers_in;$/;"	m	struct:ngx_http_request_s
 headers_in	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_headers_in_t   headers_in;$/;"	m	struct:ngx_http_upstream_s
 headers_in_hash	src/http/ngx_http_core_module.h	/^    ngx_hash_t                 headers_in_hash;$/;"	m	struct:__anon300
-headers_in_hash	src/http/ngx_http_upstream.h	/^    ngx_hash_t                       headers_in_hash;$/;"	m	struct:__anon340
+headers_in_hash	src/http/ngx_http_upstream.h	/^    ngx_hash_t                       headers_in_hash;$/;"	m	struct:__anon341
 headers_out	src/http/ngx_http_request.h	/^    ngx_http_headers_out_t            headers_out;$/;"	m	struct:ngx_http_request_s
 headers_set	src/http/modules/ngx_http_proxy_module.c	/^    ngx_array_t                   *headers_set;$/;"	m	struct:__anon143	file:
 headers_set_hash	src/http/modules/ngx_http_proxy_module.c	/^    ngx_hash_t                     headers_set_hash;$/;"	m	struct:__anon143	file:
@@ -2306,8 +2307,8 @@ height	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_uint_t         
 height	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_uint_t                   height;$/;"	m	struct:__anon212	file:
 heigth	src/http/modules/ngx_http_mp4_module.c	/^    u_char    heigth[4];$/;"	m	struct:__anon249	file:
 heigth	src/http/modules/ngx_http_mp4_module.c	/^    u_char    heigth[4];$/;"	m	struct:__anon250	file:
-hide_headers	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *hide_headers;$/;"	m	struct:__anon344
-hide_headers_hash	src/http/ngx_http_upstream.h	/^    ngx_hash_t                       hide_headers_hash;$/;"	m	struct:__anon344
+hide_headers	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *hide_headers;$/;"	m	struct:__anon345
+hide_headers_hash	src/http/ngx_http_upstream.h	/^    ngx_hash_t                       hide_headers_hash;$/;"	m	struct:__anon345
 high	src/core/ngx_conf_file.h	/^    ngx_int_t                 high;$/;"	m	struct:__anon58
 high	src/http/modules/ngx_http_geo_module.c	/^        ngx_http_geo_high_ranges_t   high;$/;"	m	union:__anon233::__anon234	file:
 high	src/http/modules/ngx_http_geo_module.c	/^    ngx_http_geo_high_ranges_t       high;$/;"	m	struct:__anon232	file:
@@ -2316,7 +2317,7 @@ host	src/core/ngx_inet.h	/^    ngx_str_t                 host;$/;"	m	struct:__an
 host	src/event/ngx_event_openssl_stapling.c	/^    ngx_str_t                    host;$/;"	m	struct:__anon35	file:
 host	src/event/ngx_event_openssl_stapling.c	/^    ngx_str_t                    host;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 host	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *host;$/;"	m	struct:__anon126
-host	src/http/ngx_http_upstream.h	/^    ngx_str_t                        host;$/;"	m	struct:__anon347
+host	src/http/ngx_http_upstream.h	/^    ngx_str_t                        host;$/;"	m	struct:__anon348
 host	src/http/ngx_http_upstream.h	/^    ngx_str_t                        host;$/;"	m	struct:ngx_http_upstream_srv_conf_s
 host	src/mail/ngx_mail.h	/^    ngx_str_t               host;$/;"	m	struct:__anon20
 host_end	src/http/ngx_http_request.h	/^    u_char                           *host_end;$/;"	m	struct:ngx_http_request_s
@@ -2351,9 +2352,9 @@ if_none_match	src/http/ngx_http_request.h	/^    ngx_table_elt_t                 
 if_range	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *if_range;$/;"	m	struct:__anon126
 if_unmodified_since	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *if_unmodified_since;$/;"	m	struct:__anon126
 ignore	src/core/ngx_connection.h	/^    unsigned            ignore:1;$/;"	m	struct:ngx_listening_s
-ignore_client_abort	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       ignore_client_abort;$/;"	m	struct:__anon344
+ignore_client_abort	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       ignore_client_abort;$/;"	m	struct:__anon345
 ignore_content_encoding	src/http/ngx_http_request.h	/^    unsigned                          ignore_content_encoding:1;$/;"	m	struct:ngx_http_request_s
-ignore_headers	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       ignore_headers;$/;"	m	struct:__anon344
+ignore_headers	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       ignore_headers;$/;"	m	struct:__anon345
 ignore_invalid_headers	src/http/ngx_http_core_module.h	/^    ngx_flag_t                  ignore_invalid_headers;$/;"	m	struct:__anon301
 ignore_recycled_buffers	src/http/modules/ngx_http_ssi_filter_module.c	/^    ngx_flag_t    ignore_recycled_buffers;$/;"	m	struct:__anon153	file:
 image	src/http/modules/ngx_http_image_filter_module.c	/^    u_char                      *image;$/;"	m	struct:__anon212	file:
@@ -2394,7 +2395,7 @@ index	src/http/modules/ngx_http_limit_conn_module.c	/^    ngx_int_t           in
 index	src/http/modules/ngx_http_limit_req_module.c	/^    ngx_int_t                    index;$/;"	m	struct:__anon190	file:
 index	src/http/modules/ngx_http_memcached_module.c	/^    ngx_int_t                  index;$/;"	m	struct:__anon282	file:
 index	src/http/modules/ngx_http_ssi_filter_module.h	/^    ngx_uint_t                index;$/;"	m	struct:__anon224
-index	src/http/ngx_http_script.h	/^    uintptr_t                   index;$/;"	m	struct:__anon327
+index	src/http/ngx_http_script.h	/^    uintptr_t                   index;$/;"	m	struct:__anon328
 index	src/http/ngx_http_spdy.h	/^    ngx_http_spdy_stream_t          *index;$/;"	m	struct:ngx_http_spdy_stream_s
 index	src/http/ngx_http_variables.h	/^    ngx_int_t                     index;$/;"	m	struct:__anon313
 index	src/http/ngx_http_variables.h	/^    ngx_uint_t                    index;$/;"	m	struct:ngx_http_variable_s
@@ -2404,11 +2405,11 @@ info	src/os/unix/ngx_files.h	/^    struct stat                  info;$/;"	m	stru
 inherited	src/core/ngx_connection.h	/^    unsigned            inherited:1;   \/* inherited from previous process *\/$/;"	m	struct:ngx_listening_s
 init	src/core/ngx_cycle.h	/^    ngx_shm_zone_init_pt      init;$/;"	m	struct:ngx_shm_zone_s
 init	src/event/ngx_event.h	/^    ngx_int_t  (*init)(ngx_cycle_t *cycle, ngx_msec_t timer);$/;"	m	struct:__anon39
-init	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_init_peer_pt   init;$/;"	m	struct:__anon341
+init	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_init_peer_pt   init;$/;"	m	struct:__anon342
 init_conf	src/core/ngx_conf_file.h	/^    char               *(*init_conf)(ngx_cycle_t *cycle, void *conf);$/;"	m	struct:__anon54
 init_conf	src/event/ngx_event.h	/^    char                 *(*init_conf)(ngx_cycle_t *cycle, void *conf);$/;"	m	struct:__anon41
 init_handler	src/core/ngx_file.h	/^    ngx_tree_init_handler_pt   init_handler;$/;"	m	struct:ngx_tree_ctx_s
-init_main_conf	src/http/ngx_http_config.h	/^    char       *(*init_main_conf)(ngx_conf_t *cf, void *conf);$/;"	m	struct:__anon321
+init_main_conf	src/http/ngx_http_config.h	/^    char       *(*init_main_conf)(ngx_conf_t *cf, void *conf);$/;"	m	struct:__anon322
 init_main_conf	src/mail/ngx_mail.h	/^    char                       *(*init_main_conf)(ngx_conf_t *cf, void *conf);$/;"	m	struct:__anon22
 init_master	src/core/ngx_conf_file.h	/^    ngx_int_t           (*init_master)(ngx_log_t *log);$/;"	m	struct:ngx_module_s
 init_module	src/core/ngx_conf_file.h	/^    ngx_int_t           (*init_module)(ngx_cycle_t *cycle);$/;"	m	struct:ngx_module_s
@@ -2416,7 +2417,7 @@ init_process	src/core/ngx_conf_file.h	/^    ngx_int_t           (*init_process)(
 init_protocol	src/mail/ngx_mail.h	/^    ngx_mail_init_protocol_pt   init_protocol;$/;"	m	struct:ngx_mail_protocol_s
 init_session	src/mail/ngx_mail.h	/^    ngx_mail_init_session_pt    init_session;$/;"	m	struct:ngx_mail_protocol_s
 init_thread	src/core/ngx_conf_file.h	/^    ngx_int_t           (*init_thread)(ngx_cycle_t *cycle);$/;"	m	struct:ngx_module_s
-init_upstream	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_init_pt        init_upstream;$/;"	m	struct:__anon341
+init_upstream	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_init_pt        init_upstream;$/;"	m	struct:__anon342
 init_window	src/http/ngx_http_spdy.h	/^    size_t                           init_window;$/;"	m	struct:ngx_http_spdy_connection_s
 input_ctx	src/event/ngx_event_pipe.h	/^    void                             *input_ctx;$/;"	m	struct:ngx_event_pipe_s
 input_filter	src/event/ngx_event_pipe.h	/^    ngx_event_pipe_input_filter_pt    input_filter;$/;"	m	struct:ngx_event_pipe_s
@@ -2425,8 +2426,8 @@ input_filter_ctx	src/http/ngx_http_upstream.h	/^    void                        
 input_filter_init	src/http/ngx_http_upstream.h	/^    ngx_int_t                      (*input_filter_init)(void *data);$/;"	m	struct:ngx_http_upstream_s
 insert	src/core/ngx_rbtree.h	/^    ngx_rbtree_insert_pt   insert;$/;"	m	struct:ngx_rbtree_s
 instance	src/event/ngx_event.h	/^    unsigned         instance:1;$/;"	m	struct:ngx_event_s
-intercept_404	src/http/ngx_http_upstream.h	/^    unsigned                         intercept_404:1;$/;"	m	struct:__anon344
-intercept_errors	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       intercept_errors;$/;"	m	struct:__anon344
+intercept_404	src/http/ngx_http_upstream.h	/^    unsigned                         intercept_404:1;$/;"	m	struct:__anon345
+intercept_errors	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       intercept_errors;$/;"	m	struct:__anon345
 interlace	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_flag_t                   interlace;$/;"	m	struct:__anon211	file:
 internal	src/http/ngx_http_core_module.h	/^    ngx_flag_t    internal;                \/* internal *\/$/;"	m	struct:ngx_http_core_loc_conf_s
 internal	src/http/ngx_http_request.h	/^    unsigned                          internal:1;$/;"	m	struct:ngx_http_request_s
@@ -2438,13 +2439,13 @@ io_event	src/event/modules/ngx_epoll_module.c	/^struct io_event {$/;"	s	file:
 io_getevents	src/event/modules/ngx_epoll_module.c	/^io_getevents(aio_context_t ctx, long min_nr, long nr, struct io_event *events,$/;"	f	file:
 io_setup	src/event/modules/ngx_epoll_module.c	/^io_setup(u_int nr_reqs, aio_context_t *ctx)$/;"	f	file:
 io_submit	src/os/unix/ngx_linux_aio_read.c	/^io_submit(aio_context_t ctx, long n, struct iocb **paiocb)$/;"	f	file:
-ip	src/http/ngx_http_script.h	/^    u_char                     *ip;$/;"	m	struct:__anon322
+ip	src/http/ngx_http_script.h	/^    u_char                     *ip;$/;"	m	struct:__anon323
 ipv6	src/core/ngx_resolver.h	/^    ngx_uint_t                ipv6;                 \/* unsigned  ipv6:1; *\/$/;"	m	struct:__anon65
 ipv6only	src/core/ngx_connection.h	/^    unsigned            ipv6only:1;$/;"	m	struct:ngx_listening_s
 ipv6only	src/http/ngx_http_core_module.h	/^    unsigned                   ipv6only:1;$/;"	m	struct:__anon295
 ipv6only	src/mail/ngx_mail.h	/^    unsigned                ipv6only:1;$/;"	m	struct:__anon13
 ipv6only	src/mail/ngx_mail.h	/^    unsigned                ipv6only:1;$/;"	m	struct:__anon7
-is_args	src/http/ngx_http_script.h	/^    unsigned                    is_args:1;$/;"	m	struct:__anon322
+is_args	src/http/ngx_http_script.h	/^    unsigned                    is_args:1;$/;"	m	struct:__anon323
 is_dir	src/core/ngx_open_file_cache.h	/^    unsigned                 is_dir:1;$/;"	m	struct:__anon95
 is_dir	src/core/ngx_open_file_cache.h	/^    unsigned                 is_dir:1;$/;"	m	struct:ngx_cached_open_file_s
 is_directio	src/core/ngx_open_file_cache.h	/^    unsigned                 is_directio:1;$/;"	m	struct:__anon95
@@ -2490,7 +2491,7 @@ key	src/http/modules/ngx_http_ssi_filter_module.c	/^    ngx_uint_t    key;$/;"	m
 key	src/http/modules/ngx_http_ssi_filter_module.h	/^    ngx_uint_t                key;$/;"	m	struct:__anon223
 key	src/http/ngx_http_cache.h	/^    u_char                           key[NGX_HTTP_CACHE_KEY_LEN$/;"	m	struct:__anon135
 key	src/http/ngx_http_cache.h	/^    u_char                           key[NGX_HTTP_CACHE_KEY_LEN];$/;"	m	struct:ngx_http_cache_s
-key	src/http/ngx_http_upstream.h	/^    ngx_str_t   key;$/;"	m	struct:__anon349
+key	src/http/ngx_http_upstream.h	/^    ngx_str_t   key;$/;"	m	struct:__anon350
 key_hash	src/core/ngx_hash.h	/^    ngx_uint_t        key_hash;$/;"	m	struct:__anon69
 key_start	src/http/modules/ngx_http_proxy_module.c	/^    ngx_str_t                      key_start;$/;"	m	struct:__anon142	file:
 keys	src/core/ngx_hash.h	/^    ngx_array_t       keys;$/;"	m	struct:__anon72
@@ -2531,7 +2532,7 @@ last_modified	src/http/modules/ngx_http_xslt_filter_module.c	/^    ngx_flag_t   
 last_modified	src/http/ngx_http_cache.h	/^    time_t                           last_modified;$/;"	m	struct:__anon136
 last_modified	src/http/ngx_http_cache.h	/^    time_t                           last_modified;$/;"	m	struct:ngx_http_cache_s
 last_modified	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *last_modified;$/;"	m	struct:__anon127
-last_modified	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *last_modified;$/;"	m	struct:__anon346
+last_modified	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *last_modified;$/;"	m	struct:__anon347
 last_modified_time	src/http/ngx_http_request.h	/^    time_t                            last_modified_time;$/;"	m	struct:__anon127
 last_offset	src/event/ngx_event.h	/^    off_t                      last_offset;$/;"	m	struct:ngx_event_aio_s
 last_out	src/http/modules/ngx_http_gunzip_filter_module.c	/^    ngx_chain_t        **last_out;$/;"	m	struct:__anon163	file:
@@ -2558,7 +2559,7 @@ len	src/http/modules/ngx_http_limit_req_module.c	/^    u_short                  
 len	src/http/modules/ngx_http_log_module.c	/^    size_t                      len;$/;"	m	struct:__anon152	file:
 len	src/http/modules/ngx_http_log_module.c	/^    size_t                      len;$/;"	m	struct:ngx_http_log_op_s	file:
 len	src/http/ngx_http_core_module.h	/^    u_char                           len;$/;"	m	struct:ngx_http_location_tree_node_s
-len	src/http/ngx_http_script.h	/^    uintptr_t                   len;$/;"	m	struct:__anon326
+len	src/http/ngx_http_script.h	/^    uintptr_t                   len;$/;"	m	struct:__anon327
 len	src/http/ngx_http_spdy.c	/^    u_char        len;$/;"	m	struct:__anon132	file:
 len_hi	src/core/ngx_resolver.c	/^    u_char  len_hi;$/;"	m	struct:__anon84	file:
 len_lo	src/core/ngx_resolver.c	/^    u_char  len_lo;$/;"	m	struct:__anon84	file:
@@ -2576,10 +2577,10 @@ length	src/http/ngx_http_upstream.h	/^    off_t                            lengt
 lengths	src/http/modules/ngx_http_index_module.c	/^    ngx_array_t             *lengths;$/;"	m	struct:__anon226	file:
 lengths	src/http/modules/ngx_http_log_module.c	/^    ngx_array_t                *lengths;$/;"	m	struct:__anon149	file:
 lengths	src/http/ngx_http_core_module.h	/^    ngx_array_t               *lengths;$/;"	m	struct:__anon310
-lengths	src/http/ngx_http_script.h	/^    ngx_array_t                *lengths;$/;"	m	struct:__anon330
-lengths	src/http/ngx_http_script.h	/^    ngx_array_t                *lengths;$/;"	m	struct:__anon337
-lengths	src/http/ngx_http_script.h	/^    ngx_array_t               **lengths;$/;"	m	struct:__anon323
-lengths	src/http/ngx_http_script.h	/^    void                       *lengths;$/;"	m	struct:__anon324
+lengths	src/http/ngx_http_script.h	/^    ngx_array_t                *lengths;$/;"	m	struct:__anon331
+lengths	src/http/ngx_http_script.h	/^    ngx_array_t                *lengths;$/;"	m	struct:__anon338
+lengths	src/http/ngx_http_script.h	/^    ngx_array_t               **lengths;$/;"	m	struct:__anon324
+lengths	src/http/ngx_http_script.h	/^    void                       *lengths;$/;"	m	struct:__anon325
 level	src/core/ngx_file.h	/^    size_t                     level[3];$/;"	m	struct:__anon90
 level	src/core/ngx_file.h	/^    size_t                     level[3];$/;"	m	struct:__anon91
 level	src/http/modules/ngx_http_gzip_filter_module.c	/^    ngx_int_t            level;$/;"	m	struct:__anon195	file:
@@ -2599,7 +2600,7 @@ line	src/core/ngx_conf_file.h	/^    ngx_uint_t            line;$/;"	m	struct:__a
 line	src/core/ngx_file.h	/^    ngx_uint_t                 line;$/;"	m	struct:__anon90
 line	src/http/modules/ngx_http_ssl_module.h	/^    ngx_uint_t                      line;$/;"	m	struct:__anon263
 line	src/http/ngx_http_core_module.h	/^    ngx_uint_t                       line;$/;"	m	struct:__anon311
-line	src/http/ngx_http_script.h	/^    ngx_str_t                   line;$/;"	m	struct:__anon322
+line	src/http/ngx_http_script.h	/^    ngx_str_t                   line;$/;"	m	struct:__anon323
 line	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       line;$/;"	m	struct:ngx_http_upstream_srv_conf_s
 line	src/mail/ngx_mail.h	/^    ngx_int_t               line;$/;"	m	struct:__anon15
 line	src/mail/ngx_mail_auth_http_module.c	/^    ngx_uint_t                      line;$/;"	m	struct:__anon2	file:
@@ -2625,18 +2626,18 @@ loader_sleep	src/http/ngx_http_cache.h	/^    ngx_msec_t                       lo
 loader_threshold	src/http/ngx_http_cache.h	/^    ngx_msec_t                       loader_threshold;$/;"	m	struct:ngx_http_file_cache_s
 loading	src/event/ngx_event_openssl_stapling.c	/^    unsigned                     loading:1;$/;"	m	struct:__anon35	file:
 loading	src/http/ngx_http_cache.h	/^    ngx_atomic_t                     loading;$/;"	m	struct:__anon137
-loc_conf	src/http/ngx_http_config.h	/^    void        **loc_conf;$/;"	m	struct:__anon320
+loc_conf	src/http/ngx_http_config.h	/^    void        **loc_conf;$/;"	m	struct:__anon321
 loc_conf	src/http/ngx_http_core_module.h	/^    void        **loc_conf;$/;"	m	struct:ngx_http_core_loc_conf_s
 loc_conf	src/http/ngx_http_request.h	/^    void                            **loc_conf;$/;"	m	struct:ngx_http_request_s
-loc_conf	src/http/ngx_http_script.h	/^    void                      **loc_conf;$/;"	m	struct:__anon336
+loc_conf	src/http/ngx_http_script.h	/^    void                      **loc_conf;$/;"	m	struct:__anon337
 local	src/event/ngx_event_connect.h	/^    ngx_addr_t                      *local;$/;"	m	struct:ngx_peer_connection_s
-local	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_local_t       *local;$/;"	m	struct:__anon344
+local	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_local_t       *local;$/;"	m	struct:__anon345
 local_sockaddr	src/core/ngx_connection.h	/^    struct sockaddr    *local_sockaddr;$/;"	m	struct:ngx_connection_s	typeref:struct:ngx_connection_s::sockaddr
 local_socklen	src/core/ngx_connection.h	/^    socklen_t           local_socklen;$/;"	m	struct:ngx_connection_s
 localtime	src/http/modules/ngx_http_autoindex_module.c	/^    ngx_flag_t     localtime;$/;"	m	struct:__anon140	file:
 location	src/http/modules/ngx_http_proxy_module.c	/^    ngx_str_t                      location;$/;"	m	struct:__anon143	file:
 location	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *location;$/;"	m	struct:__anon127
-location	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *location;$/;"	m	struct:__anon346
+location	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *location;$/;"	m	struct:__anon347
 location_rewrite_index	src/http/ngx_http_core_module.h	/^    ngx_uint_t                 location_rewrite_index;$/;"	m	struct:__anon298
 locations	src/http/ngx_http_core_module.h	/^    ngx_queue_t  *locations;$/;"	m	struct:ngx_http_core_loc_conf_s
 lock	src/core/ngx_connection.h	/^    ngx_atomic_t        lock;$/;"	m	struct:ngx_connection_s
@@ -2673,7 +2674,7 @@ log	src/event/ngx_event_openssl.h	/^    ngx_log_t                  *log;$/;"	m	s
 log	src/event/ngx_event_openssl_stapling.c	/^    ngx_log_t                   *log;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 log	src/event/ngx_event_pipe.h	/^    ngx_log_t         *log;$/;"	m	struct:ngx_event_pipe_s
 log	src/http/modules/ngx_http_rewrite_module.c	/^    ngx_flag_t    log;$/;"	m	struct:__anon276	file:
-log	src/http/ngx_http_script.h	/^    unsigned                    log:1;$/;"	m	struct:__anon322
+log	src/http/ngx_http_script.h	/^    unsigned                    log:1;$/;"	m	struct:__anon323
 log	src/os/unix/ngx_files.h	/^    ngx_log_t                   *log;$/;"	m	struct:__anon110
 log	src/os/unix/ngx_files.h	/^    ngx_log_t                   *log;$/;"	m	struct:__anon112
 log	src/os/unix/ngx_freebsd_rfork_thread.h	/^    ngx_log_t    *log;$/;"	m	struct:__anon119
@@ -2709,8 +2710,8 @@ lowcase_key	src/core/ngx_hash.h	/^    u_char           *lowcase_key;$/;"	m	struc
 mail_state	src/mail/ngx_mail.h	/^    ngx_uint_t              mail_state;$/;"	m	struct:__anon20
 main	src/core/nginx.c	/^main(int argc, char *const *argv)$/;"	f
 main	src/http/ngx_http_request.h	/^    ngx_http_request_t               *main;$/;"	m	struct:ngx_http_request_s
-main	src/http/ngx_http_script.h	/^    void                       *main;$/;"	m	struct:__anon323
-main_conf	src/http/ngx_http_config.h	/^    void        **main_conf;$/;"	m	struct:__anon320
+main	src/http/ngx_http_script.h	/^    void                       *main;$/;"	m	struct:__anon324
+main_conf	src/http/ngx_http_config.h	/^    void        **main_conf;$/;"	m	struct:__anon321
 main_conf	src/http/ngx_http_request.h	/^    void                            **main_conf;$/;"	m	struct:ngx_http_request_s
 main_conf	src/mail/ngx_mail.h	/^    void                  **main_conf;$/;"	m	struct:__anon20
 main_conf	src/mail/ngx_mail.h	/^    void                  **main_conf;$/;"	m	struct:__anon6
@@ -2724,7 +2725,7 @@ mask	src/core/ngx_inet.h	/^    in_addr_t                 mask;$/;"	m	struct:__an
 mask	src/core/ngx_inet.h	/^    struct in6_addr           mask;$/;"	m	struct:__anon49	typeref:struct:__anon49::in6_addr
 mask	src/http/modules/ngx_http_access_module.c	/^    in_addr_t         mask;$/;"	m	struct:__anon264	file:
 mask	src/http/modules/ngx_http_access_module.c	/^    struct in6_addr   mask;$/;"	m	struct:__anon265	typeref:struct:__anon265::in6_addr	file:
-mask	src/http/ngx_http_upstream.h	/^    ngx_uint_t                      mask;$/;"	m	struct:__anon348
+mask	src/http/ngx_http_upstream.h	/^    ngx_uint_t                      mask;$/;"	m	struct:__anon349
 master	src/core/ngx_cycle.h	/^     ngx_flag_t               master;$/;"	m	struct:__anon78
 master_process	src/os/unix/ngx_process_cycle.c	/^static u_char  master_process[] = "master process";$/;"	v	file:
 master_read_fd_set	src/event/modules/ngx_select_module.c	/^static fd_set         master_read_fd_set;$/;"	v	file:
@@ -2745,7 +2746,7 @@ max_busy	src/http/ngx_http_busy_lock.h	/^    int                 max_busy;$/;"	m
 max_cached	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    ngx_uint_t                         max_cached;$/;"	m	struct:__anon273	file:
 max_changes	src/event/modules/ngx_devpoll_module.c	/^static ngx_uint_t       nchanges, max_changes, nevents;$/;"	v	file:
 max_changes	src/event/modules/ngx_kqueue_module.c	/^static ngx_uint_t      max_changes, nchanges, nevents;$/;"	v	file:
-max_fails	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       max_fails;$/;"	m	struct:__anon342
+max_fails	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       max_fails;$/;"	m	struct:__anon343
 max_fails	src/http/ngx_http_upstream_round_robin.h	/^    ngx_uint_t                      max_fails;$/;"	m	struct:__anon318
 max_fd	src/event/modules/ngx_select_module.c	/^static ngx_int_t      max_fd;$/;"	v	file:
 max_height	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_uint_t                   max_height;$/;"	m	struct:__anon212	file:
@@ -2755,8 +2756,8 @@ max_read	src/event/modules/ngx_win32_select_module.c	/^static ngx_uint_t     max
 max_size	src/core/ngx_hash.h	/^    ngx_uint_t        max_size;$/;"	m	struct:__anon71
 max_size	src/http/ngx_http_cache.h	/^    off_t                            max_size;$/;"	m	struct:ngx_http_file_cache_s
 max_temp_file_size	src/event/ngx_event_pipe.h	/^    off_t              max_temp_file_size;$/;"	m	struct:ngx_event_pipe_s
-max_temp_file_size	src/http/ngx_http_upstream.h	/^    size_t                           max_temp_file_size;$/;"	m	struct:__anon344
-max_temp_file_size_conf	src/http/ngx_http_upstream.h	/^    size_t                           max_temp_file_size_conf;$/;"	m	struct:__anon344
+max_temp_file_size	src/http/ngx_http_upstream.h	/^    size_t                           max_temp_file_size;$/;"	m	struct:__anon345
+max_temp_file_size_conf	src/http/ngx_http_upstream.h	/^    size_t                           max_temp_file_size_conf;$/;"	m	struct:__anon345
 max_threads	src/os/unix/ngx_freebsd_rfork_thread.c	/^static ngx_uint_t     max_threads;$/;"	v	file:
 max_threads	src/os/unix/ngx_pthread_thread.c	/^static ngx_uint_t   max_threads;$/;"	v	file:
 max_waiting	src/event/ngx_event_busy_lock.h	/^    ngx_uint_t                  max_waiting;$/;"	m	struct:__anon36
@@ -2784,9 +2785,9 @@ media_size	src/http/modules/ngx_http_mp4_module.c	/^    u_char    media_size[4];
 memlevel	src/http/modules/ngx_http_gzip_filter_module.c	/^    int                  memlevel;$/;"	m	struct:__anon196	file:
 memlevel	src/http/modules/ngx_http_gzip_filter_module.c	/^    size_t               memlevel;$/;"	m	struct:__anon195	file:
 memory	src/core/ngx_buf.h	/^    unsigned         memory:1;$/;"	m	struct:ngx_buf_s
-merge_loc_conf	src/http/ngx_http_config.h	/^    char       *(*merge_loc_conf)(ngx_conf_t *cf, void *prev, void *conf);$/;"	m	struct:__anon321
+merge_loc_conf	src/http/ngx_http_config.h	/^    char       *(*merge_loc_conf)(ngx_conf_t *cf, void *prev, void *conf);$/;"	m	struct:__anon322
 merge_slashes	src/http/ngx_http_core_module.h	/^    ngx_flag_t                  merge_slashes;$/;"	m	struct:__anon301
-merge_srv_conf	src/http/ngx_http_config.h	/^    char       *(*merge_srv_conf)(ngx_conf_t *cf, void *prev, void *conf);$/;"	m	struct:__anon321
+merge_srv_conf	src/http/ngx_http_config.h	/^    char       *(*merge_srv_conf)(ngx_conf_t *cf, void *prev, void *conf);$/;"	m	struct:__anon322
 merge_srv_conf	src/mail/ngx_mail.h	/^    char                       *(*merge_srv_conf)(ngx_conf_t *cf, void *prev,$/;"	m	struct:__anon22
 method	src/http/modules/ngx_http_proxy_module.c	/^    ngx_str_t                      method;$/;"	m	struct:__anon143	file:
 method	src/http/ngx_http_core_module.c	/^    uint32_t   method;$/;"	m	struct:__anon133	file:
@@ -2816,7 +2817,7 @@ modification_time	src/http/modules/ngx_http_mp4_module.c	/^    u_char    modific
 modification_time	src/http/modules/ngx_http_mp4_module.c	/^    u_char    modification_time[8];$/;"	m	struct:__anon252	file:
 modifier1	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_uint_t                 modifier1;$/;"	m	struct:__anon213	file:
 modifier2	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_uint_t                 modifier2;$/;"	m	struct:__anon213	file:
-module	src/http/ngx_http_upstream.h	/^    ngx_str_t                        module;$/;"	m	struct:__anon344
+module	src/http/ngx_http_upstream.h	/^    ngx_str_t                        module;$/;"	m	struct:__anon345
 module_type	src/core/ngx_conf_file.h	/^    ngx_uint_t            module_type;$/;"	m	struct:ngx_conf_s
 modules	src/http/modules/perl/ngx_http_perl_module.c	/^    ngx_array_t       *modules;$/;"	m	struct:__anon270	file:
 months	src/core/ngx_times.c	/^static char  *months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",$/;"	v	file:
@@ -2841,15 +2842,15 @@ mutex	src/http/ngx_http_busy_lock.h	/^    ngx_event_mutex_t  *mutex;$/;"	m	struc
 mutex	src/os/unix/ngx_thread.h	/^    pthread_mutex_t   mutex;$/;"	m	struct:__anon115
 mvhd_atom	src/http/modules/ngx_http_mp4_module.c	/^    ngx_chain_t           mvhd_atom;$/;"	m	struct:__anon243	file:
 mvhd_atom_buf	src/http/modules/ngx_http_mp4_module.c	/^    ngx_buf_t             mvhd_atom_buf;$/;"	m	struct:__anon243	file:
-n	src/http/ngx_http_script.h	/^    uintptr_t                   n;$/;"	m	struct:__anon329
+n	src/http/ngx_http_script.h	/^    uintptr_t                   n;$/;"	m	struct:__anon330
 n	src/os/unix/ngx_files.h	/^    size_t                       n;$/;"	m	struct:__anon112
 naddrs	src/core/ngx_inet.h	/^    ngx_uint_t                naddrs;$/;"	m	struct:__anon53
 naddrs	src/core/ngx_resolver.h	/^    ngx_uint_t                naddrs;$/;"	m	struct:ngx_resolver_ctx_s
 naddrs	src/core/ngx_resolver.h	/^    u_short                   naddrs;$/;"	m	struct:__anon62
 naddrs	src/event/ngx_event_openssl_stapling.c	/^    ngx_uint_t                   naddrs;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 naddrs	src/http/ngx_http_core_module.h	/^    ngx_uint_t                 naddrs;$/;"	m	struct:__anon306
-naddrs	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       naddrs;$/;"	m	struct:__anon342
-naddrs	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       naddrs;$/;"	m	struct:__anon347
+naddrs	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       naddrs;$/;"	m	struct:__anon343
+naddrs	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       naddrs;$/;"	m	struct:__anon348
 naddrs	src/mail/ngx_mail.h	/^    ngx_uint_t              naddrs;$/;"	m	struct:__anon11
 naddrs6	src/core/ngx_resolver.h	/^    u_short                   naddrs6;$/;"	m	struct:__anon62
 nalloc	src/core/ngx_array.h	/^    ngx_uint_t   nalloc;$/;"	m	struct:__anon89
@@ -2918,8 +2919,8 @@ name	src/http/ngx_http_core_module.h	/^    ngx_str_t     name;          \/* loca
 name	src/http/ngx_http_core_module.h	/^    u_char                           name[1];$/;"	m	struct:ngx_http_location_tree_node_s
 name	src/http/ngx_http_request.h	/^    ngx_str_t                         name;$/;"	m	struct:__anon124
 name	src/http/ngx_http_request.h	/^    ngx_str_t                         name;$/;"	m	struct:__anon125
-name	src/http/ngx_http_script.h	/^    ngx_str_t                   name;$/;"	m	struct:__anon330
-name	src/http/ngx_http_upstream.h	/^    ngx_str_t                        name;$/;"	m	struct:__anon345
+name	src/http/ngx_http_script.h	/^    ngx_str_t                   name;$/;"	m	struct:__anon331
+name	src/http/ngx_http_upstream.h	/^    ngx_str_t                        name;$/;"	m	struct:__anon346
 name	src/http/ngx_http_upstream_round_robin.h	/^    ngx_str_t                       name;$/;"	m	struct:__anon318
 name	src/http/ngx_http_upstream_round_robin.h	/^    ngx_str_t                      *name;$/;"	m	struct:ngx_http_upstream_rr_peers_s
 name	src/http/ngx_http_variables.h	/^    ngx_str_t                     name;   \/* must be first to build the hash *\/$/;"	m	struct:ngx_http_variable_s
@@ -2952,14 +2953,14 @@ nbytes	src/event/ngx_event.h	/^    size_t                     nbytes;$/;"	m	stru
 ncaptures	src/http/modules/ngx_http_ssi_filter_module.h	/^    ngx_uint_t                ncaptures;$/;"	m	struct:__anon223
 ncaptures	src/http/ngx_http_core_module.h	/^    ngx_uint_t                 ncaptures;$/;"	m	struct:__anon300
 ncaptures	src/http/ngx_http_request.h	/^    ngx_uint_t                        ncaptures;$/;"	m	struct:ngx_http_request_s
-ncaptures	src/http/ngx_http_script.h	/^    ngx_uint_t                  ncaptures;$/;"	m	struct:__anon323
+ncaptures	src/http/ngx_http_script.h	/^    ngx_uint_t                  ncaptures;$/;"	m	struct:__anon324
 ncaptures	src/http/ngx_http_variables.h	/^    ngx_uint_t                    ncaptures;$/;"	m	struct:__anon314
 nchanges	src/event/modules/ngx_devpoll_module.c	/^static ngx_uint_t       nchanges, max_changes, nevents;$/;"	v	file:
 nchanges	src/event/modules/ngx_kqueue_module.c	/^static ngx_uint_t      max_changes, nchanges, nevents;$/;"	v	file:
 need_in_memory	src/core/ngx_buf.h	/^    unsigned                     need_in_memory:1;$/;"	m	struct:ngx_output_chain_ctx_s
 need_in_temp	src/core/ngx_buf.h	/^    unsigned                     need_in_temp:1;$/;"	m	struct:ngx_output_chain_ctx_s
 need_last_buf	src/core/ngx_connection.h	/^    unsigned            need_last_buf:1;$/;"	m	struct:ngx_connection_s
-negative_test	src/http/ngx_http_script.h	/^    uintptr_t                   negative_test:1;$/;"	m	struct:__anon330
+negative_test	src/http/ngx_http_script.h	/^    uintptr_t                   negative_test:1;$/;"	m	struct:__anon331
 nelts	src/core/ngx_array.h	/^    ngx_uint_t   nelts;$/;"	m	struct:__anon89
 nelts	src/core/ngx_list.h	/^    ngx_uint_t        nelts;$/;"	m	struct:ngx_list_part_s
 net	src/http/modules/ngx_http_geo_module.c	/^    ngx_str_t                       *net;$/;"	m	struct:__anon232	file:
@@ -2989,13 +2990,13 @@ next	src/http/ngx_http_core_module.h	/^    ngx_uint_t                 next;$/;"	
 next	src/http/ngx_http_request.h	/^    ngx_http_cleanup_t               *next;$/;"	m	struct:ngx_http_cleanup_s
 next	src/http/ngx_http_request.h	/^    ngx_http_posted_request_t        *next;$/;"	m	struct:ngx_http_posted_request_s
 next	src/http/ngx_http_request.h	/^    ngx_http_postponed_request_t     *next;$/;"	m	struct:ngx_http_postponed_request_s
-next	src/http/ngx_http_script.h	/^    uintptr_t                   next;$/;"	m	struct:__anon330
-next	src/http/ngx_http_script.h	/^    uintptr_t                   next;$/;"	m	struct:__anon336
+next	src/http/ngx_http_script.h	/^    uintptr_t                   next;$/;"	m	struct:__anon331
+next	src/http/ngx_http_script.h	/^    uintptr_t                   next;$/;"	m	struct:__anon337
 next	src/http/ngx_http_spdy.h	/^    ngx_http_spdy_out_frame_t       *next;$/;"	m	struct:ngx_http_spdy_out_frame_s
 next	src/http/ngx_http_upstream_round_robin.h	/^    ngx_http_upstream_rr_peers_t   *next;$/;"	m	struct:ngx_http_upstream_rr_peers_s
 next_track_id	src/http/modules/ngx_http_mp4_module.c	/^    u_char    next_track_id[4];$/;"	m	struct:__anon247	file:
 next_track_id	src/http/modules/ngx_http_mp4_module.c	/^    u_char    next_track_id[4];$/;"	m	struct:__anon248	file:
-next_upstream	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       next_upstream;$/;"	m	struct:__anon344
+next_upstream	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       next_upstream;$/;"	m	struct:__anon345
 nfree	src/http/ngx_http_request.h	/^    ngx_int_t                         nfree;$/;"	m	struct:__anon129
 nginx	src/http/modules/perl/nginx.pm	/^package nginx;$/;"	p
 nginx	src/http/modules/perl/ngx_http_perl_module.c	/^    HV                *nginx;$/;"	m	struct:__anon270	file:
@@ -3037,7 +3038,7 @@ ngx_aiocb_t	src/os/unix/ngx_posix_config.h	/^typedef struct aiocb  ngx_aiocb_t;$
 ngx_align	src/core/ngx_config.h	97;"	d
 ngx_align_ptr	src/core/ngx_config.h	98;"	d
 ngx_alloc	src/os/unix/ngx_alloc.c	/^ngx_alloc(size_t size, ngx_log_t *log)$/;"	f
-ngx_alloc_buf	src/core/ngx_buf.h	142;"	d
+ngx_alloc_buf	src/core/ngx_buf.h	160;"	d
 ngx_alloc_chain_link	src/core/ngx_buf.c	/^ngx_alloc_chain_link(ngx_pool_t *pool)$/;"	f
 ngx_argc	src/os/unix/ngx_process.c	/^int              ngx_argc;$/;"	v
 ngx_argv	src/os/unix/ngx_process.c	/^char           **ngx_argv;$/;"	v
@@ -3086,12 +3087,12 @@ ngx_blocking	src/os/unix/ngx_socket.c	/^ngx_blocking(ngx_socket_t s)$/;"	f
 ngx_blocking	src/os/unix/ngx_socket.h	36;"	d
 ngx_blocking_n	src/os/unix/ngx_socket.h	29;"	d
 ngx_blocking_n	src/os/unix/ngx_socket.h	37;"	d
-ngx_buf_in_memory	src/core/ngx_buf.h	123;"	d
-ngx_buf_in_memory_only	src/core/ngx_buf.h	124;"	d
+ngx_buf_in_memory	src/core/ngx_buf.h	141;"	d
+ngx_buf_in_memory_only	src/core/ngx_buf.h	142;"	d
 ngx_buf_s	src/core/ngx_buf.h	/^struct ngx_buf_s {$/;"	s
-ngx_buf_size	src/core/ngx_buf.h	134;"	d
-ngx_buf_special	src/core/ngx_buf.h	126;"	d
-ngx_buf_sync_only	src/core/ngx_buf.h	130;"	d
+ngx_buf_size	src/core/ngx_buf.h	152;"	d
+ngx_buf_special	src/core/ngx_buf.h	144;"	d
+ngx_buf_sync_only	src/core/ngx_buf.h	148;"	d
 ngx_buf_t	src/core/ngx_buf.h	/^typedef struct ngx_buf_s  ngx_buf_t;$/;"	t	typeref:struct:ngx_buf_s
 ngx_buf_tag_t	src/core/ngx_buf.h	/^typedef void *            ngx_buf_tag_t;$/;"	t
 ngx_bufs_t	src/core/ngx_buf.h	/^} ngx_bufs_t;$/;"	t	typeref:struct:__anon104
@@ -3110,7 +3111,7 @@ ngx_cached_open_file_t	src/core/ngx_open_file_cache.h	/^typedef struct ngx_cache
 ngx_cached_time	src/core/ngx_times.c	/^volatile ngx_time_t     *ngx_cached_time;$/;"	v
 ngx_cacheline_size	src/os/unix/ngx_alloc.c	/^ngx_uint_t  ngx_cacheline_size;$/;"	v
 ngx_calloc	src/os/unix/ngx_alloc.c	/^ngx_calloc(size_t size, ngx_log_t *log)$/;"	f
-ngx_calloc_buf	src/core/ngx_buf.h	143;"	d
+ngx_calloc_buf	src/core/ngx_buf.h	161;"	d
 ngx_cdecl	src/core/ngx_config.h	73;"	d
 ngx_chain_add_copy	src/core/ngx_buf.c	/^ngx_chain_add_copy(ngx_pool_t *pool, ngx_chain_t **chain, ngx_chain_t *in)$/;"	f
 ngx_chain_get_free_buf	src/core/ngx_buf.c	/^ngx_chain_get_free_buf(ngx_pool_t *p, ngx_chain_t **free)$/;"	f
@@ -3174,23 +3175,23 @@ ngx_conf_full_name	src/core/ngx_conf_file.c	/^ngx_conf_full_name(ngx_cycle_t *cy
 ngx_conf_handler	src/core/ngx_conf_file.c	/^ngx_conf_handler(ngx_conf_t *cf, ngx_int_t last)$/;"	f	file:
 ngx_conf_handler_pt	src/core/ngx_conf_file.h	/^typedef char *(*ngx_conf_handler_pt)(ngx_conf_t *cf,$/;"	t
 ngx_conf_include	src/core/ngx_conf_file.c	/^ngx_conf_include(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f
-ngx_conf_init_msec_value	src/core/ngx_conf_file.h	254;"	d
-ngx_conf_init_ptr_value	src/core/ngx_conf_file.h	239;"	d
-ngx_conf_init_size_value	src/core/ngx_conf_file.h	249;"	d
-ngx_conf_init_uint_value	src/core/ngx_conf_file.h	244;"	d
-ngx_conf_init_value	src/core/ngx_conf_file.h	234;"	d
+ngx_conf_init_msec_value	src/core/ngx_conf_file.h	256;"	d
+ngx_conf_init_ptr_value	src/core/ngx_conf_file.h	241;"	d
+ngx_conf_init_size_value	src/core/ngx_conf_file.h	251;"	d
+ngx_conf_init_uint_value	src/core/ngx_conf_file.h	246;"	d
+ngx_conf_init_value	src/core/ngx_conf_file.h	236;"	d
 ngx_conf_log_error	src/core/ngx_conf_file.c	/^ngx_conf_log_error(ngx_uint_t level, ngx_conf_t *cf, ngx_err_t err,$/;"	f
-ngx_conf_merge_bitmask_value	src/core/ngx_conf_file.h	316;"	d
-ngx_conf_merge_bufs_value	src/core/ngx_conf_file.h	305;"	d
-ngx_conf_merge_msec_value	src/core/ngx_conf_file.h	274;"	d
-ngx_conf_merge_off_value	src/core/ngx_conf_file.h	289;"	d
+ngx_conf_merge_bitmask_value	src/core/ngx_conf_file.h	318;"	d
+ngx_conf_merge_bufs_value	src/core/ngx_conf_file.h	307;"	d
+ngx_conf_merge_msec_value	src/core/ngx_conf_file.h	276;"	d
+ngx_conf_merge_off_value	src/core/ngx_conf_file.h	291;"	d
 ngx_conf_merge_path_value	src/core/ngx_file.c	/^ngx_conf_merge_path_value(ngx_conf_t *cf, ngx_path_t **path, ngx_path_t *prev,$/;"	f
-ngx_conf_merge_ptr_value	src/core/ngx_conf_file.h	264;"	d
-ngx_conf_merge_sec_value	src/core/ngx_conf_file.h	279;"	d
-ngx_conf_merge_size_value	src/core/ngx_conf_file.h	284;"	d
-ngx_conf_merge_str_value	src/core/ngx_conf_file.h	294;"	d
-ngx_conf_merge_uint_value	src/core/ngx_conf_file.h	269;"	d
-ngx_conf_merge_value	src/core/ngx_conf_file.h	259;"	d
+ngx_conf_merge_ptr_value	src/core/ngx_conf_file.h	266;"	d
+ngx_conf_merge_sec_value	src/core/ngx_conf_file.h	281;"	d
+ngx_conf_merge_size_value	src/core/ngx_conf_file.h	286;"	d
+ngx_conf_merge_str_value	src/core/ngx_conf_file.h	296;"	d
+ngx_conf_merge_uint_value	src/core/ngx_conf_file.h	271;"	d
+ngx_conf_merge_value	src/core/ngx_conf_file.h	261;"	d
 ngx_conf_module	src/core/ngx_conf_file.c	/^ngx_module_t  ngx_conf_module = {$/;"	v
 ngx_conf_num_bounds_t	src/core/ngx_conf_file.h	/^} ngx_conf_num_bounds_t;$/;"	t	typeref:struct:__anon58
 ngx_conf_open_file	src/core/ngx_conf_file.c	/^ngx_conf_open_file(ngx_cycle_t *cycle, ngx_str_t *name)$/;"	f
@@ -3523,7 +3524,7 @@ ngx_filename_cmp	src/core/ngx_string.c	/^ngx_filename_cmp(u_char *s1, u_char *s2
 ngx_flag_t	src/core/ngx_config.h	/^typedef intptr_t        ngx_flag_t;$/;"	t
 ngx_flv_header	src/http/modules/ngx_http_flv_module.c	/^static u_char  ngx_flv_header[] = "FLV\\x1\\x5\\0\\0\\0\\x9\\0\\0\\0\\0";$/;"	v	file:
 ngx_free	src/os/unix/ngx_alloc.h	19;"	d
-ngx_free_chain	src/core/ngx_buf.h	146;"	d
+ngx_free_chain	src/core/ngx_buf.h	164;"	d
 ngx_free_connection	src/core/ngx_connection.c	/^ngx_free_connection(ngx_connection_t *c)$/;"	f
 ngx_freebsd_hw_ncpu	src/os/unix/ngx_freebsd_init.c	/^int     ngx_freebsd_hw_ncpu;$/;"	v
 ngx_freebsd_io	src/os/unix/ngx_freebsd_init.c	/^static ngx_os_io_t ngx_freebsd_io = {$/;"	v	file:
@@ -3538,7 +3539,7 @@ ngx_freebsd_sendfile_chain	src/os/unix/ngx_freebsd_sendfile_chain.c	/^ngx_freebs
 ngx_freebsd_sendfile_nbytes_bug	src/os/unix/ngx_freebsd_init.c	/^ngx_uint_t  ngx_freebsd_sendfile_nbytes_bug;$/;"	v
 ngx_freebsd_use_tcp_nopush	src/os/unix/ngx_freebsd_init.c	/^ngx_uint_t  ngx_freebsd_use_tcp_nopush;$/;"	v
 ngx_fs_bsize	src/os/unix/ngx_files.c	/^ngx_fs_bsize(u_char *name)$/;"	f
-ngx_get_conf	src/core/ngx_conf_file.h	230;"	d
+ngx_get_conf	src/core/ngx_conf_file.h	232;"	d
 ngx_get_connection	src/core/ngx_connection.c	/^ngx_get_connection(ngx_socket_t s, ngx_log_t *log)$/;"	f
 ngx_get_cpu_affinity	src/core/nginx.c	/^ngx_get_cpu_affinity(ngx_uint_t n)$/;"	f
 ngx_get_full_name	src/core/ngx_file.c	/^ngx_get_full_name(ngx_pool_t *pool, ngx_str_t *prefix, ngx_str_t *name)$/;"	f
@@ -3559,7 +3560,7 @@ ngx_google_perftools_module_ctx	src/misc/ngx_google_perftools_module.c	/^static 
 ngx_google_perftools_worker	src/misc/ngx_google_perftools_module.c	/^ngx_google_perftools_worker(ngx_cycle_t *cycle)$/;"	f	file:
 ngx_handle_read_event	src/event/ngx_event.c	/^ngx_handle_read_event(ngx_event_t *rev, ngx_uint_t flags)$/;"	f
 ngx_handle_write_event	src/event/ngx_event.c	/^ngx_handle_write_event(ngx_event_t *wev, size_t lowat)$/;"	f
-ngx_hash	src/core/ngx_hash.h	111;"	d
+ngx_hash	src/core/ngx_hash.h	115;"	d
 ngx_hash_add_key	src/core/ngx_hash.c	/^ngx_hash_add_key(ngx_hash_keys_arrays_t *ha, ngx_str_t *key, void *value,$/;"	f
 ngx_hash_combined_t	src/core/ngx_hash.h	/^} ngx_hash_combined_t;$/;"	t	typeref:struct:__anon70
 ngx_hash_elt_t	src/core/ngx_hash.h	/^} ngx_hash_elt_t;$/;"	t	typeref:struct:__anon66
@@ -3732,11 +3733,11 @@ ngx_http_cleanup_add	src/http/ngx_http_core_module.c	/^ngx_http_cleanup_add(ngx_
 ngx_http_cleanup_pt	src/http/ngx_http_request.h	/^typedef void (*ngx_http_cleanup_pt)(void *data);$/;"	t
 ngx_http_cleanup_s	src/http/ngx_http_request.h	/^struct ngx_http_cleanup_s {$/;"	s
 ngx_http_cleanup_t	src/http/ngx_http_request.h	/^typedef struct ngx_http_cleanup_s  ngx_http_cleanup_t;$/;"	t	typeref:struct:ngx_http_cleanup_s
-ngx_http_clear_accept_ranges	src/http/ngx_http_core_module.h	562;"	d
-ngx_http_clear_content_length	src/http/ngx_http_core_module.h	554;"	d
-ngx_http_clear_etag	src/http/ngx_http_core_module.h	585;"	d
-ngx_http_clear_last_modified	src/http/ngx_http_core_module.h	570;"	d
-ngx_http_clear_location	src/http/ngx_http_core_module.h	578;"	d
+ngx_http_clear_accept_ranges	src/http/ngx_http_core_module.h	565;"	d
+ngx_http_clear_content_length	src/http/ngx_http_core_module.h	557;"	d
+ngx_http_clear_etag	src/http/ngx_http_core_module.h	588;"	d
+ngx_http_clear_last_modified	src/http/ngx_http_core_module.h	573;"	d
+ngx_http_clear_location	src/http/ngx_http_core_module.h	581;"	d
 ngx_http_client_body_handler_pt	src/http/ngx_http_request.h	/^typedef void (*ngx_http_client_body_handler_pt)(ngx_http_request_t *r);$/;"	t
 ngx_http_client_errors	src/http/ngx_http_request.c	/^static char *ngx_http_client_errors[] = {$/;"	v	file:
 ngx_http_client_temp_path	src/http/ngx_http_core_module.c	/^static ngx_path_init_t  ngx_http_client_temp_path = {$/;"	v	file:
@@ -3749,16 +3750,16 @@ ngx_http_cmp_referer_wildcards	src/http/modules/ngx_http_referer_module.c	/^ngx_
 ngx_http_combined_fmt	src/http/modules/ngx_http_log_module.c	/^static ngx_str_t  ngx_http_combined_fmt =$/;"	v	file:
 ngx_http_commands	src/http/ngx_http.c	/^static ngx_command_t  ngx_http_commands[] = {$/;"	v	file:
 ngx_http_compile_complex_value	src/http/ngx_http_script.c	/^ngx_http_compile_complex_value(ngx_http_compile_complex_value_t *ccv)$/;"	f
-ngx_http_compile_complex_value_t	src/http/ngx_http_script.h	/^} ngx_http_compile_complex_value_t;$/;"	t	typeref:struct:__anon325
+ngx_http_compile_complex_value_t	src/http/ngx_http_script.h	/^} ngx_http_compile_complex_value_t;$/;"	t	typeref:struct:__anon326
 ngx_http_complex_value	src/http/ngx_http_script.c	/^ngx_http_complex_value(ngx_http_request_t *r, ngx_http_complex_value_t *val,$/;"	f
-ngx_http_complex_value_t	src/http/ngx_http_script.h	/^} ngx_http_complex_value_t;$/;"	t	typeref:struct:__anon324
+ngx_http_complex_value_t	src/http/ngx_http_script.h	/^} ngx_http_complex_value_t;$/;"	t	typeref:struct:__anon325
 ngx_http_conf_addr_t	src/http/ngx_http_core_module.h	/^} ngx_http_conf_addr_t;$/;"	t	typeref:struct:__anon308
-ngx_http_conf_ctx_t	src/http/ngx_http_config.h	/^} ngx_http_conf_ctx_t;$/;"	t	typeref:struct:__anon320
+ngx_http_conf_ctx_t	src/http/ngx_http_config.h	/^} ngx_http_conf_ctx_t;$/;"	t	typeref:struct:__anon321
 ngx_http_conf_get_module_loc_conf	src/http/ngx_http_config.h	73;"	d
 ngx_http_conf_get_module_main_conf	src/http/ngx_http_config.h	69;"	d
 ngx_http_conf_get_module_srv_conf	src/http/ngx_http_config.h	71;"	d
 ngx_http_conf_port_t	src/http/ngx_http_core_module.h	/^} ngx_http_conf_port_t;$/;"	t	typeref:struct:__anon307
-ngx_http_conf_upstream_srv_conf	src/http/ngx_http_upstream.h	383;"	d
+ngx_http_conf_upstream_srv_conf	src/http/ngx_http_upstream.h	408;"	d
 ngx_http_connection_t	src/http/ngx_http_request.h	/^} ngx_http_connection_t;$/;"	t	typeref:struct:__anon129
 ngx_http_cookie_time	src/core/ngx_times.c	/^ngx_http_cookie_time(u_char *buf, time_t t)$/;"	f
 ngx_http_copy_aio_event_handler	src/http/ngx_http_copy_filter_module.c	/^ngx_http_copy_aio_event_handler(ngx_event_t *ev)$/;"	f	file:
@@ -3877,6 +3878,14 @@ ngx_http_discard_request_body	src/http/ngx_http_request_body.c	/^ngx_http_discar
 ngx_http_discard_request_body_filter	src/http/ngx_http_request_body.c	/^ngx_http_discard_request_body_filter(ngx_http_request_t *r, ngx_buf_t *b)$/;"	f	file:
 ngx_http_discarded_request_body_handler	src/http/ngx_http_request_body.c	/^ngx_http_discarded_request_body_handler(ngx_http_request_t *r)$/;"	f
 ngx_http_do_read_client_request_body	src/http/ngx_http_request_body.c	/^ngx_http_do_read_client_request_body(ngx_http_request_t *r)$/;"	f	file:
+ngx_http_echo	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^ngx_http_echo(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f	file:
+ngx_http_echo_commands	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^static ngx_command_t ngx_http_echo_commands[] = {$/;"	v	file:
+ngx_http_echo_create_loc_conf	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^ngx_http_echo_create_loc_conf(ngx_conf_t *cf)$/;"	f	file:
+ngx_http_echo_handler	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^ngx_http_echo_handler(ngx_http_request_t *r)$/;"	f	file:
+ngx_http_echo_loc_conf_t	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^} ngx_http_echo_loc_conf_t;$/;"	t	typeref:struct:__anon320	file:
+ngx_http_echo_merge_loc_conf	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^ngx_http_echo_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)$/;"	f	file:
+ngx_http_echo_module	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^ngx_module_t ngx_http_echo_module = {$/;"	v
+ngx_http_echo_module_ctx	src/http/ngx_http_mytest/ngx_http_echo_module.c	/^static ngx_http_module_t ngx_http_echo_module_ctx = {$/;"	v	file:
 ngx_http_empty_gif	src/http/modules/ngx_http_empty_gif_module.c	/^ngx_http_empty_gif(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f	file:
 ngx_http_empty_gif_commands	src/http/modules/ngx_http_empty_gif_module.c	/^static ngx_command_t  ngx_http_empty_gif_commands[] = {$/;"	v	file:
 ngx_http_empty_gif_handler	src/http/modules/ngx_http_empty_gif_module.c	/^ngx_http_empty_gif_handler(ngx_http_request_t *r)$/;"	f	file:
@@ -4386,7 +4395,7 @@ ngx_http_modern_browser_t	src/http/modules/ngx_http_browser_module.c	/^} ngx_htt
 ngx_http_modern_browser_value	src/http/modules/ngx_http_browser_module.c	/^ngx_http_modern_browser_value(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f	file:
 ngx_http_module	src/http/ngx_http.c	/^ngx_module_t  ngx_http_module = {$/;"	v
 ngx_http_module_ctx	src/http/ngx_http.c	/^static ngx_core_module_t  ngx_http_module_ctx = {$/;"	v	file:
-ngx_http_module_t	src/http/ngx_http_config.h	/^} ngx_http_module_t;$/;"	t	typeref:struct:__anon321
+ngx_http_module_t	src/http/ngx_http_config.h	/^} ngx_http_module_t;$/;"	t	typeref:struct:__anon322
 ngx_http_mp4	src/http/modules/ngx_http_mp4_module.c	/^ngx_http_mp4(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f	file:
 ngx_http_mp4_adjust_co64_atom	src/http/modules/ngx_http_mp4_module.c	/^ngx_http_mp4_adjust_co64_atom(ngx_http_mp4_file_t *mp4,$/;"	f	file:
 ngx_http_mp4_adjust_stco_atom	src/http/modules/ngx_http_mp4_module.c	/^ngx_http_mp4_adjust_stco_atom(ngx_http_mp4_file_t *mp4,$/;"	f	file:
@@ -4736,60 +4745,60 @@ ngx_http_script_add_var_code	src/http/ngx_http_script.c	/^ngx_http_script_add_va
 ngx_http_script_break_code	src/http/ngx_http_script.c	/^ngx_http_script_break_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_code_pt	src/http/ngx_http_script.h	/^typedef void (*ngx_http_script_code_pt) (ngx_http_script_engine_t *e);$/;"	t
 ngx_http_script_compile	src/http/ngx_http_script.c	/^ngx_http_script_compile(ngx_http_script_compile_t *sc)$/;"	f
-ngx_http_script_compile_t	src/http/ngx_http_script.h	/^} ngx_http_script_compile_t;$/;"	t	typeref:struct:__anon323
+ngx_http_script_compile_t	src/http/ngx_http_script.h	/^} ngx_http_script_compile_t;$/;"	t	typeref:struct:__anon324
 ngx_http_script_complex_value_code	src/http/ngx_http_script.c	/^ngx_http_script_complex_value_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_complex_value_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_complex_value_code_t;$/;"	t	typeref:struct:__anon337
+ngx_http_script_complex_value_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_complex_value_code_t;$/;"	t	typeref:struct:__anon338
 ngx_http_script_copy_capture_code	src/http/ngx_http_script.c	/^ngx_http_script_copy_capture_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_copy_capture_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_copy_capture_code_t;$/;"	t	typeref:struct:__anon329
+ngx_http_script_copy_capture_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_copy_capture_code_t;$/;"	t	typeref:struct:__anon330
 ngx_http_script_copy_capture_len_code	src/http/ngx_http_script.c	/^ngx_http_script_copy_capture_len_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_copy_code	src/http/ngx_http_script.c	/^ngx_http_script_copy_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_copy_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_copy_code_t;$/;"	t	typeref:struct:__anon326
+ngx_http_script_copy_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_copy_code_t;$/;"	t	typeref:struct:__anon327
 ngx_http_script_copy_len_code	src/http/ngx_http_script.c	/^ngx_http_script_copy_len_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_copy_var_code	src/http/ngx_http_script.c	/^ngx_http_script_copy_var_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_copy_var_len_code	src/http/ngx_http_script.c	/^ngx_http_script_copy_var_len_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_done	src/http/ngx_http_script.c	/^ngx_http_script_done(ngx_http_script_compile_t *sc)$/;"	f	file:
-ngx_http_script_engine_t	src/http/ngx_http_script.h	/^} ngx_http_script_engine_t;$/;"	t	typeref:struct:__anon322
+ngx_http_script_engine_t	src/http/ngx_http_script.h	/^} ngx_http_script_engine_t;$/;"	t	typeref:struct:__anon323
 ngx_http_script_equal_code	src/http/ngx_http_script.c	/^ngx_http_script_equal_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_exit	src/http/ngx_http_script.c	30;"	d	file:
 ngx_http_script_exit_code	src/http/ngx_http_script.c	/^static uintptr_t ngx_http_script_exit_code = (uintptr_t) NULL;$/;"	v	file:
 ngx_http_script_file_code	src/http/ngx_http_script.c	/^ngx_http_script_file_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_file_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_file_code_t;$/;"	t	typeref:struct:__anon335
-ngx_http_script_file_dir	src/http/ngx_http_script.h	/^    ngx_http_script_file_dir,$/;"	e	enum:__anon334
-ngx_http_script_file_exec	src/http/ngx_http_script.h	/^    ngx_http_script_file_exec,$/;"	e	enum:__anon334
-ngx_http_script_file_exists	src/http/ngx_http_script.h	/^    ngx_http_script_file_exists,$/;"	e	enum:__anon334
-ngx_http_script_file_not_dir	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_dir,$/;"	e	enum:__anon334
-ngx_http_script_file_not_exec	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_exec$/;"	e	enum:__anon334
-ngx_http_script_file_not_exists	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_exists,$/;"	e	enum:__anon334
-ngx_http_script_file_not_plain	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_plain,$/;"	e	enum:__anon334
-ngx_http_script_file_op_e	src/http/ngx_http_script.h	/^} ngx_http_script_file_op_e;$/;"	t	typeref:enum:__anon334
-ngx_http_script_file_plain	src/http/ngx_http_script.h	/^    ngx_http_script_file_plain = 0,$/;"	e	enum:__anon334
+ngx_http_script_file_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_file_code_t;$/;"	t	typeref:struct:__anon336
+ngx_http_script_file_dir	src/http/ngx_http_script.h	/^    ngx_http_script_file_dir,$/;"	e	enum:__anon335
+ngx_http_script_file_exec	src/http/ngx_http_script.h	/^    ngx_http_script_file_exec,$/;"	e	enum:__anon335
+ngx_http_script_file_exists	src/http/ngx_http_script.h	/^    ngx_http_script_file_exists,$/;"	e	enum:__anon335
+ngx_http_script_file_not_dir	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_dir,$/;"	e	enum:__anon335
+ngx_http_script_file_not_exec	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_exec$/;"	e	enum:__anon335
+ngx_http_script_file_not_exists	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_exists,$/;"	e	enum:__anon335
+ngx_http_script_file_not_plain	src/http/ngx_http_script.h	/^    ngx_http_script_file_not_plain,$/;"	e	enum:__anon335
+ngx_http_script_file_op_e	src/http/ngx_http_script.h	/^} ngx_http_script_file_op_e;$/;"	t	typeref:enum:__anon335
+ngx_http_script_file_plain	src/http/ngx_http_script.h	/^    ngx_http_script_file_plain = 0,$/;"	e	enum:__anon335
 ngx_http_script_flush_complex_value	src/http/ngx_http_script.c	/^ngx_http_script_flush_complex_value(ngx_http_request_t *r,$/;"	f
 ngx_http_script_flush_no_cacheable_variables	src/http/ngx_http_script.c	/^ngx_http_script_flush_no_cacheable_variables(ngx_http_request_t *r,$/;"	f
 ngx_http_script_full_name_code	src/http/ngx_http_script.c	/^ngx_http_script_full_name_code(ngx_http_script_engine_t *e)$/;"	f	file:
-ngx_http_script_full_name_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_full_name_code_t;$/;"	t	typeref:struct:__anon332
+ngx_http_script_full_name_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_full_name_code_t;$/;"	t	typeref:struct:__anon333
 ngx_http_script_full_name_len_code	src/http/ngx_http_script.c	/^ngx_http_script_full_name_len_code(ngx_http_script_engine_t *e)$/;"	f	file:
 ngx_http_script_if_code	src/http/ngx_http_script.c	/^ngx_http_script_if_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_if_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_if_code_t;$/;"	t	typeref:struct:__anon336
+ngx_http_script_if_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_if_code_t;$/;"	t	typeref:struct:__anon337
 ngx_http_script_init_arrays	src/http/ngx_http_script.c	/^ngx_http_script_init_arrays(ngx_http_script_compile_t *sc)$/;"	f	file:
 ngx_http_script_len_code_pt	src/http/ngx_http_script.h	/^typedef size_t (*ngx_http_script_len_code_pt) (ngx_http_script_engine_t *e);$/;"	t
 ngx_http_script_mark_args_code	src/http/ngx_http_script.c	/^ngx_http_script_mark_args_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_nop_code	src/http/ngx_http_script.c	/^ngx_http_script_nop_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_not_equal_code	src/http/ngx_http_script.c	/^ngx_http_script_not_equal_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_regex_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_regex_code_t;$/;"	t	typeref:struct:__anon330
+ngx_http_script_regex_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_regex_code_t;$/;"	t	typeref:struct:__anon331
 ngx_http_script_regex_end_code	src/http/ngx_http_script.c	/^ngx_http_script_regex_end_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_regex_end_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_regex_end_code_t;$/;"	t	typeref:struct:__anon331
+ngx_http_script_regex_end_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_regex_end_code_t;$/;"	t	typeref:struct:__anon332
 ngx_http_script_regex_start_code	src/http/ngx_http_script.c	/^ngx_http_script_regex_start_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_return_code	src/http/ngx_http_script.c	/^ngx_http_script_return_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_return_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_return_code_t;$/;"	t	typeref:struct:__anon333
+ngx_http_script_return_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_return_code_t;$/;"	t	typeref:struct:__anon334
 ngx_http_script_run	src/http/ngx_http_script.c	/^ngx_http_script_run(ngx_http_request_t *r, ngx_str_t *value,$/;"	f
 ngx_http_script_set_var_code	src/http/ngx_http_script.c	/^ngx_http_script_set_var_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_start_args_code	src/http/ngx_http_script.c	/^ngx_http_script_start_args_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_start_code	src/http/ngx_http_script.c	/^ngx_http_script_start_code(ngx_pool_t *pool, ngx_array_t **codes, size_t size)$/;"	f
 ngx_http_script_value_code	src/http/ngx_http_script.c	/^ngx_http_script_value_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_value_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_value_code_t;$/;"	t	typeref:struct:__anon338
+ngx_http_script_value_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_value_code_t;$/;"	t	typeref:struct:__anon339
 ngx_http_script_var_code	src/http/ngx_http_script.c	/^ngx_http_script_var_code(ngx_http_script_engine_t *e)$/;"	f
-ngx_http_script_var_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_var_code_t;$/;"	t	typeref:struct:__anon327
-ngx_http_script_var_handler_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_var_handler_code_t;$/;"	t	typeref:struct:__anon328
+ngx_http_script_var_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_var_code_t;$/;"	t	typeref:struct:__anon328
+ngx_http_script_var_handler_code_t	src/http/ngx_http_script.h	/^} ngx_http_script_var_handler_code_t;$/;"	t	typeref:struct:__anon329
 ngx_http_script_var_set_handler_code	src/http/ngx_http_script.c	/^ngx_http_script_var_set_handler_code(ngx_http_script_engine_t *e)$/;"	f
 ngx_http_script_variables_count	src/http/ngx_http_script.c	/^ngx_http_script_variables_count(ngx_str_t *value)$/;"	f
 ngx_http_secure_link_add_variables	src/http/modules/ngx_http_secure_link_module.c	/^ngx_http_secure_link_add_variables(ngx_conf_t *cf)$/;"	f	file:
@@ -4819,7 +4828,7 @@ ngx_http_set_busy_lock_slot	src/http/ngx_http_busy_lock.c	/^char *ngx_http_set_b
 ngx_http_set_charset	src/http/modules/ngx_http_charset_filter_module.c	/^ngx_http_set_charset(ngx_http_request_t *r, ngx_str_t *charset)$/;"	f	file:
 ngx_http_set_charset_slot	src/http/modules/ngx_http_charset_filter_module.c	/^ngx_http_set_charset_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f	file:
 ngx_http_set_complex_value_slot	src/http/ngx_http_script.c	/^ngx_http_set_complex_value_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f
-ngx_http_set_connection_log	src/http/ngx_http_request.h	598;"	d
+ngx_http_set_connection_log	src/http/ngx_http_request.h	624;"	d
 ngx_http_set_content_type	src/http/ngx_http_core_module.c	/^ngx_http_set_content_type(ngx_http_request_t *r)$/;"	f
 ngx_http_set_ctx	src/http/ngx_http.h	81;"	d
 ngx_http_set_default_types	src/http/ngx_http.c	/^ngx_http_set_default_types(ngx_conf_t *cf, ngx_array_t **types,$/;"	f
@@ -5093,7 +5102,7 @@ ngx_http_upstream_cache_status	src/http/ngx_http_upstream.c	/^ngx_http_upstream_
 ngx_http_upstream_check_broken_connection	src/http/ngx_http_upstream.c	/^ngx_http_upstream_check_broken_connection(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_cleanup	src/http/ngx_http_upstream.c	/^ngx_http_upstream_cleanup(void *data)$/;"	f	file:
 ngx_http_upstream_commands	src/http/ngx_http_upstream.c	/^static ngx_command_t  ngx_http_upstream_commands[] = {$/;"	v	file:
-ngx_http_upstream_conf_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_conf_t;$/;"	t	typeref:struct:__anon344
+ngx_http_upstream_conf_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_conf_t;$/;"	t	typeref:struct:__anon345
 ngx_http_upstream_connect	src/http/ngx_http_upstream.c	/^ngx_http_upstream_connect(ngx_http_request_t *r, ngx_http_upstream_t *u)$/;"	f	file:
 ngx_http_upstream_copy_allow_ranges	src/http/ngx_http_upstream.c	/^ngx_http_upstream_copy_allow_ranges(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_copy_content_encoding	src/http/ngx_http_upstream.c	/^ngx_http_upstream_copy_content_encoding(ngx_http_request_t *r,$/;"	f	file:
@@ -5119,10 +5128,10 @@ ngx_http_upstream_get_peer	src/http/ngx_http_upstream_round_robin.c	/^ngx_http_u
 ngx_http_upstream_get_round_robin_peer	src/http/ngx_http_upstream_round_robin.c	/^ngx_http_upstream_get_round_robin_peer(ngx_peer_connection_t *pc, void *data)$/;"	f
 ngx_http_upstream_handler	src/http/ngx_http_upstream.c	/^ngx_http_upstream_handler(ngx_event_t *ev)$/;"	f	file:
 ngx_http_upstream_handler_pt	src/http/ngx_http_upstream.h	/^typedef void (*ngx_http_upstream_handler_pt)(ngx_http_request_t *r,$/;"	t
-ngx_http_upstream_header_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_header_t;$/;"	t	typeref:struct:__anon345
+ngx_http_upstream_header_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_header_t;$/;"	t	typeref:struct:__anon346
 ngx_http_upstream_header_variable	src/http/ngx_http_upstream.c	/^ngx_http_upstream_header_variable(ngx_http_request_t *r,$/;"	f
 ngx_http_upstream_headers_in	src/http/ngx_http_upstream.c	/^ngx_http_upstream_header_t  ngx_http_upstream_headers_in[] = {$/;"	v
-ngx_http_upstream_headers_in_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_headers_in_t;$/;"	t	typeref:struct:__anon346
+ngx_http_upstream_headers_in_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_headers_in_t;$/;"	t	typeref:struct:__anon347
 ngx_http_upstream_hide_headers_hash	src/http/ngx_http_upstream.c	/^ngx_http_upstream_hide_headers_hash(ngx_conf_t *cf,$/;"	f
 ngx_http_upstream_ignore_header_line	src/http/ngx_http_upstream.c	/^ngx_http_upstream_ignore_header_line(ngx_http_request_t *r, ngx_table_elt_t *h,$/;"	f	file:
 ngx_http_upstream_ignore_headers_masks	src/http/ngx_http_upstream.c	/^ngx_conf_bitmask_t  ngx_http_upstream_ignore_headers_masks[] = {$/;"	v
@@ -5166,18 +5175,18 @@ ngx_http_upstream_least_conn_conf_t	src/http/modules/ngx_http_upstream_least_con
 ngx_http_upstream_least_conn_create_conf	src/http/modules/ngx_http_upstream_least_conn_module.c	/^ngx_http_upstream_least_conn_create_conf(ngx_conf_t *cf)$/;"	f	file:
 ngx_http_upstream_least_conn_module	src/http/modules/ngx_http_upstream_least_conn_module.c	/^ngx_module_t  ngx_http_upstream_least_conn_module = {$/;"	v
 ngx_http_upstream_least_conn_module_ctx	src/http/modules/ngx_http_upstream_least_conn_module.c	/^static ngx_http_module_t  ngx_http_upstream_least_conn_module_ctx = {$/;"	v	file:
-ngx_http_upstream_local_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_local_t;$/;"	t	typeref:struct:__anon343
-ngx_http_upstream_main_conf_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_main_conf_t;$/;"	t	typeref:struct:__anon340
+ngx_http_upstream_local_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_local_t;$/;"	t	typeref:struct:__anon344
+ngx_http_upstream_main_conf_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_main_conf_t;$/;"	t	typeref:struct:__anon341
 ngx_http_upstream_module	src/http/ngx_http_upstream.c	/^ngx_module_t  ngx_http_upstream_module = {$/;"	v
 ngx_http_upstream_module_ctx	src/http/ngx_http_upstream.c	/^static ngx_http_module_t  ngx_http_upstream_module_ctx = {$/;"	v	file:
 ngx_http_upstream_next	src/http/ngx_http_upstream.c	/^ngx_http_upstream_next(ngx_http_request_t *r, ngx_http_upstream_t *u,$/;"	f	file:
 ngx_http_upstream_next_errors	src/http/ngx_http_upstream.c	/^static ngx_http_upstream_next_t  ngx_http_upstream_next_errors[] = {$/;"	v	file:
-ngx_http_upstream_next_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_next_t;$/;"	t	typeref:struct:__anon348
+ngx_http_upstream_next_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_next_t;$/;"	t	typeref:struct:__anon349
 ngx_http_upstream_non_buffered_filter	src/http/ngx_http_upstream.c	/^ngx_http_upstream_non_buffered_filter(void *data, ssize_t bytes)$/;"	f	file:
 ngx_http_upstream_non_buffered_filter_init	src/http/ngx_http_upstream.c	/^ngx_http_upstream_non_buffered_filter_init(void *data)$/;"	f	file:
 ngx_http_upstream_param_set_slot	src/http/ngx_http_upstream.c	/^ngx_http_upstream_param_set_slot(ngx_conf_t *cf, ngx_command_t *cmd,$/;"	f
-ngx_http_upstream_param_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_param_t;$/;"	t	typeref:struct:__anon349
-ngx_http_upstream_peer_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_peer_t;$/;"	t	typeref:struct:__anon341
+ngx_http_upstream_param_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_param_t;$/;"	t	typeref:struct:__anon350
+ngx_http_upstream_peer_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_peer_t;$/;"	t	typeref:struct:__anon342
 ngx_http_upstream_process_accel_expires	src/http/ngx_http_upstream.c	/^ngx_http_upstream_process_accel_expires(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_process_body_in_memory	src/http/ngx_http_upstream.c	/^ngx_http_upstream_process_body_in_memory(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_process_buffering	src/http/ngx_http_upstream.c	/^ngx_http_upstream_process_buffering(ngx_http_request_t *r, ngx_table_elt_t *h,$/;"	f	file:
@@ -5202,7 +5211,7 @@ ngx_http_upstream_process_upstream	src/http/ngx_http_upstream.c	/^ngx_http_upstr
 ngx_http_upstream_rd_check_broken_connection	src/http/ngx_http_upstream.c	/^ngx_http_upstream_rd_check_broken_connection(ngx_http_request_t *r)$/;"	f	file:
 ngx_http_upstream_reinit	src/http/ngx_http_upstream.c	/^ngx_http_upstream_reinit(ngx_http_request_t *r, ngx_http_upstream_t *u)$/;"	f	file:
 ngx_http_upstream_resolve_handler	src/http/ngx_http_upstream.c	/^ngx_http_upstream_resolve_handler(ngx_resolver_ctx_t *ctx)$/;"	f	file:
-ngx_http_upstream_resolved_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_resolved_t;$/;"	t	typeref:struct:__anon347
+ngx_http_upstream_resolved_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_resolved_t;$/;"	t	typeref:struct:__anon348
 ngx_http_upstream_response_length_variable	src/http/ngx_http_upstream.c	/^ngx_http_upstream_response_length_variable(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_response_time_variable	src/http/ngx_http_upstream.c	/^ngx_http_upstream_response_time_variable(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_rewrite_location	src/http/ngx_http_upstream.c	/^ngx_http_upstream_rewrite_location(ngx_http_request_t *r, ngx_table_elt_t *h,$/;"	f	file:
@@ -5218,13 +5227,13 @@ ngx_http_upstream_send_request	src/http/ngx_http_upstream.c	/^ngx_http_upstream_
 ngx_http_upstream_send_request_handler	src/http/ngx_http_upstream.c	/^ngx_http_upstream_send_request_handler(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_send_response	src/http/ngx_http_upstream.c	/^ngx_http_upstream_send_response(ngx_http_request_t *r, ngx_http_upstream_t *u)$/;"	f	file:
 ngx_http_upstream_server	src/http/ngx_http_upstream.c	/^ngx_http_upstream_server(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)$/;"	f	file:
-ngx_http_upstream_server_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_server_t;$/;"	t	typeref:struct:__anon342
+ngx_http_upstream_server_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_server_t;$/;"	t	typeref:struct:__anon343
 ngx_http_upstream_set_round_robin_peer_session	src/http/ngx_http_upstream_round_robin.c	/^ngx_http_upstream_set_round_robin_peer_session(ngx_peer_connection_t *pc,$/;"	f
 ngx_http_upstream_srv_conf_s	src/http/ngx_http_upstream.h	/^struct ngx_http_upstream_srv_conf_s {$/;"	s
 ngx_http_upstream_srv_conf_t	src/http/ngx_http_upstream.h	/^typedef struct ngx_http_upstream_srv_conf_s  ngx_http_upstream_srv_conf_t;$/;"	t	typeref:struct:ngx_http_upstream_srv_conf_s
 ngx_http_upstream_ssl_handshake	src/http/ngx_http_upstream.c	/^ngx_http_upstream_ssl_handshake(ngx_connection_t *c)$/;"	f	file:
 ngx_http_upstream_ssl_init_connection	src/http/ngx_http_upstream.c	/^ngx_http_upstream_ssl_init_connection(ngx_http_request_t *r,$/;"	f	file:
-ngx_http_upstream_state_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_state_t;$/;"	t	typeref:struct:__anon339
+ngx_http_upstream_state_t	src/http/ngx_http_upstream.h	/^} ngx_http_upstream_state_t;$/;"	t	typeref:struct:__anon340
 ngx_http_upstream_status_variable	src/http/ngx_http_upstream.c	/^ngx_http_upstream_status_variable(ngx_http_request_t *r,$/;"	f	file:
 ngx_http_upstream_store	src/http/ngx_http_upstream.c	/^ngx_http_upstream_store(ngx_http_request_t *r, ngx_http_upstream_t *u)$/;"	f	file:
 ngx_http_upstream_t	src/http/ngx_http.h	/^typedef struct ngx_http_upstream_s    ngx_http_upstream_t;$/;"	t	typeref:struct:ngx_http_upstream_s
@@ -5824,7 +5833,7 @@ ngx_nonblocking	src/os/unix/ngx_socket.c	/^ngx_nonblocking(ngx_socket_t s)$/;"	f
 ngx_nonblocking	src/os/unix/ngx_socket.h	33;"	d
 ngx_nonblocking_n	src/os/unix/ngx_socket.h	28;"	d
 ngx_nonblocking_n	src/os/unix/ngx_socket.h	34;"	d
-ngx_null_command	src/core/ngx_conf_file.h	90;"	d
+ngx_null_command	src/core/ngx_conf_file.h	92;"	d
 ngx_null_name	src/http/modules/perl/ngx_http_perl_module.c	/^static ngx_str_t         ngx_null_name = ngx_null_string;$/;"	v	file:
 ngx_null_string	src/core/ngx_string.h	41;"	d
 ngx_old_cycles	src/core/ngx_cycle.c	/^ngx_array_t            ngx_old_cycles;$/;"	v
@@ -6584,11 +6593,11 @@ nns_hi	src/core/ngx_resolver.c	/^    u_char  nns_hi;$/;"	m	struct:__anon82	file:
 nns_lo	src/core/ngx_resolver.c	/^    u_char  nns_lo;$/;"	m	struct:__anon82	file:
 no_buffer	src/http/modules/ngx_http_gzip_filter_module.c	/^    ngx_flag_t           no_buffer;$/;"	m	struct:__anon195	file:
 no_cache	src/http/ngx_http_request.h	/^    unsigned                          no_cache:1;$/;"	m	struct:ngx_http_request_s
-no_cache	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *no_cache;$/;"	m	struct:__anon344
+no_cache	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *no_cache;$/;"	m	struct:__anon345
 no_cacheable	src/core/ngx_string.h	/^    unsigned    no_cacheable:1;$/;"	m	struct:__anon46
 no_port	src/core/ngx_inet.h	/^    unsigned                  no_port:1;$/;"	m	struct:__anon53
 no_port	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       no_port;  \/* unsigned no_port:1 *\/$/;"	m	struct:ngx_http_upstream_srv_conf_s
-no_port	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       no_port; \/* unsigned no_port:1 *\/$/;"	m	struct:__anon347
+no_port	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       no_port; \/* unsigned no_port:1 *\/$/;"	m	struct:__anon348
 no_referer	src/http/modules/ngx_http_referer_module.c	/^    ngx_flag_t               no_referer;$/;"	m	struct:__anon138	file:
 no_resolve	src/core/ngx_inet.h	/^    unsigned                  no_resolve:1;$/;"	m	struct:__anon53
 no_send_shutdown	src/event/ngx_event_openssl.h	/^    unsigned                    no_send_shutdown:1;$/;"	m	struct:__anon26
@@ -6636,7 +6645,7 @@ offset	src/http/modules/ngx_http_mp4_module.c	/^    u_char    offset[4];$/;"	m	s
 offset	src/http/modules/ngx_http_range_filter_module.c	/^    off_t        offset;$/;"	m	struct:__anon180	file:
 offset	src/http/ngx_http_request.h	/^    ngx_uint_t                        offset;$/;"	m	struct:__anon124
 offset	src/http/ngx_http_request.h	/^    ngx_uint_t                        offset;$/;"	m	struct:__anon125
-offset	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       offset;$/;"	m	struct:__anon345
+offset	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       offset;$/;"	m	struct:__anon346
 old_cycle	src/core/ngx_cycle.h	/^    ngx_cycle_t              *old_cycle; \/*old cycle指针*\/$/;"	m	struct:ngx_cycle_s
 old_name	src/core/ngx_conf_file.h	/^    char                     *old_name;$/;"	m	struct:__anon57
 oldpid	src/core/ngx_cycle.h	/^     ngx_str_t                oldpid;$/;"	m	struct:__anon78
@@ -6644,7 +6653,7 @@ once	src/http/modules/ngx_http_sub_filter_module.c	/^    ngx_flag_t             
 once	src/http/modules/ngx_http_sub_filter_module.c	/^    ngx_uint_t                 once;   \/* unsigned  once:1 *\/$/;"	m	struct:__anon202	file:
 one_addr	src/core/ngx_inet.h	/^    unsigned                  one_addr:1;  \/* compatibility *\/$/;"	m	struct:__anon53
 oneshot	src/event/ngx_event.h	/^    unsigned         oneshot:1;$/;"	m	struct:ngx_event_s
-op	src/http/ngx_http_script.h	/^    uintptr_t                   op;$/;"	m	struct:__anon335
+op	src/http/ngx_http_script.h	/^    uintptr_t                   op;$/;"	m	struct:__anon336
 open	src/core/ngx_connection.h	/^    unsigned            open:1;$/;"	m	struct:ngx_listening_s
 open_file_cache	src/http/modules/ngx_http_log_module.c	/^    ngx_open_file_cache_t      *open_file_cache;$/;"	m	struct:__anon151	file:
 open_file_cache	src/http/ngx_http_core_module.h	/^    ngx_open_file_cache_t  *open_file_cache;$/;"	m	struct:ngx_http_core_loc_conf_s
@@ -6730,9 +6739,9 @@ parse_command	src/mail/ngx_mail.h	/^    ngx_mail_parse_command_pt   parse_comman
 part	src/core/ngx_list.h	/^    ngx_list_part_t   part;$/;"	m	struct:__anon80
 parts	src/http/modules/ngx_http_split_clients_module.c	/^    ngx_array_t                 parts;$/;"	m	struct:__anon237	file:
 pass_error_message	src/mail/ngx_mail_proxy_module.c	/^    ngx_flag_t  pass_error_message;$/;"	m	struct:__anon23	file:
-pass_headers	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *pass_headers;$/;"	m	struct:__anon344
-pass_request_body	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       pass_request_body;$/;"	m	struct:__anon344
-pass_request_headers	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       pass_request_headers;$/;"	m	struct:__anon344
+pass_headers	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *pass_headers;$/;"	m	struct:__anon345
+pass_request_body	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       pass_request_body;$/;"	m	struct:__anon345
+pass_request_headers	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       pass_request_headers;$/;"	m	struct:__anon345
 passwd	src/http/modules/ngx_http_auth_basic_module.c	/^    ngx_str_t                 passwd;$/;"	m	struct:__anon284	file:
 passwd	src/http/ngx_http_request.h	/^    ngx_str_t                         passwd;$/;"	m	struct:__anon126
 passwd	src/mail/ngx_mail.h	/^    ngx_str_t               passwd;$/;"	m	struct:__anon20
@@ -6751,7 +6760,7 @@ pcre_jit	src/core/ngx_regex.c	/^    ngx_flag_t  pcre_jit;$/;"	m	struct:__anon43	
 peer	src/event/ngx_event_openssl_stapling.c	/^    ngx_peer_connection_t        peer;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 peer	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_peer_t         peer;$/;"	m	struct:ngx_http_upstream_srv_conf_s
 peer	src/http/ngx_http_upstream.h	/^    ngx_peer_connection_t            peer;$/;"	m	struct:ngx_http_upstream_s
-peer	src/http/ngx_http_upstream.h	/^    ngx_str_t                       *peer;$/;"	m	struct:__anon339
+peer	src/http/ngx_http_upstream.h	/^    ngx_str_t                       *peer;$/;"	m	struct:__anon340
 peer	src/http/ngx_http_upstream_round_robin.h	/^    ngx_http_upstream_rr_peer_t     peer[1];$/;"	m	struct:ngx_http_upstream_rr_peers_s
 peer	src/mail/ngx_mail_auth_http_module.c	/^    ngx_addr_t                     *peer;$/;"	m	struct:__anon2	file:
 peer	src/mail/ngx_mail_auth_http_module.c	/^    ngx_peer_connection_t           peer;$/;"	m	struct:ngx_mail_auth_http_ctx_s	file:
@@ -6805,7 +6814,7 @@ port	src/event/ngx_event_openssl_stapling.c	/^    in_port_t                    p
 port	src/event/ngx_event_openssl_stapling.c	/^    in_port_t                    port;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 port	src/http/modules/ngx_http_proxy_module.c	/^    ngx_str_t                      port;$/;"	m	struct:__anon142	file:
 port	src/http/ngx_http_core_module.h	/^    in_port_t                  port;$/;"	m	struct:__anon307
-port	src/http/ngx_http_upstream.h	/^    in_port_t                        port;$/;"	m	struct:__anon347
+port	src/http/ngx_http_upstream.h	/^    in_port_t                        port;$/;"	m	struct:__anon348
 port	src/http/ngx_http_upstream.h	/^    in_port_t                        port;$/;"	m	struct:ngx_http_upstream_srv_conf_s
 port	src/mail/ngx_mail.h	/^    in_port_t                   port[4];$/;"	m	struct:ngx_mail_protocol_s
 port	src/mail/ngx_mail.h	/^    in_port_t               port;$/;"	m	struct:__anon12
@@ -6834,7 +6843,7 @@ pos	src/http/modules/ngx_http_fastcgi_module.c	/^    u_char                     
 pos	src/http/modules/ngx_http_log_module.c	/^    u_char                     *pos;$/;"	m	struct:__anon148	file:
 pos	src/http/modules/ngx_http_ssi_filter_module.h	/^    u_char                   *pos;$/;"	m	struct:__anon223
 pos	src/http/modules/ngx_http_sub_filter_module.c	/^    u_char                    *pos;$/;"	m	struct:__anon202	file:
-pos	src/http/ngx_http_script.h	/^    u_char                     *pos;$/;"	m	struct:__anon322
+pos	src/http/ngx_http_script.h	/^    u_char                     *pos;$/;"	m	struct:__anon323
 post	src/core/ngx_conf_file.h	/^    void                 *post;$/;"	m	struct:ngx_command_s
 post_accept_buffer_size	src/core/ngx_connection.h	/^    size_t              post_accept_buffer_size;$/;"	m	struct:ngx_listening_s
 post_accept_timeout	src/core/ngx_connection.h	/^    ngx_msec_t          post_accept_timeout;$/;"	m	struct:ngx_listening_s
@@ -6846,7 +6855,7 @@ post_handler	src/core/ngx_conf_file.h	/^    ngx_conf_post_handler_pt  post_handl
 post_handler	src/http/ngx_http_request.h	/^    ngx_http_client_body_handler_pt   post_handler;$/;"	m	struct:__anon128
 post_subrequest	src/http/ngx_http_request.h	/^    ngx_http_post_subrequest_t       *post_subrequest;$/;"	m	struct:ngx_http_request_s
 post_tree_handler	src/core/ngx_file.h	/^    ngx_tree_handler_pt        post_tree_handler;$/;"	m	struct:ngx_tree_ctx_s
-postconfiguration	src/http/ngx_http_config.h	/^    ngx_int_t   (*postconfiguration)(ngx_conf_t *cf);$/;"	m	struct:__anon321
+postconfiguration	src/http/ngx_http_config.h	/^    ngx_int_t   (*postconfiguration)(ngx_conf_t *cf);$/;"	m	struct:__anon322
 posted	src/http/ngx_http_spdy.h	/^    ngx_queue_t                      posted;$/;"	m	struct:ngx_http_spdy_connection_s
 posted_available	src/event/ngx_event.h	/^    int              posted_available;$/;"	m	struct:ngx_event_s
 posted_available	src/event/ngx_event.h	/^    unsigned         posted_available:1;$/;"	m	struct:ngx_event_s
@@ -6862,7 +6871,7 @@ postpone_output	src/http/ngx_http_core_module.h	/^    size_t        postpone_out
 postponed	src/http/ngx_http_request.h	/^    ngx_http_postponed_request_t     *postponed;$/;"	m	struct:ngx_http_request_s
 pre_tree_handler	src/core/ngx_file.h	/^    ngx_tree_handler_pt        pre_tree_handler;$/;"	m	struct:ngx_tree_ctx_s
 preallocated	src/http/modules/ngx_http_gzip_filter_module.c	/^    void                *preallocated;$/;"	m	struct:__anon196	file:
-preconfiguration	src/http/ngx_http_config.h	/^    ngx_int_t   (*preconfiguration)(ngx_conf_t *cf);$/;"	m	struct:__anon321
+preconfiguration	src/http/ngx_http_config.h	/^    ngx_int_t   (*preconfiguration)(ngx_conf_t *cf);$/;"	m	struct:__anon322
 prefer_server_ciphers	src/http/modules/ngx_http_ssl_module.h	/^    ngx_flag_t                      prefer_server_ciphers;$/;"	m	struct:__anon263
 prefer_server_ciphers	src/mail/ngx_mail_ssl_module.h	/^    ngx_flag_t       prefer_server_ciphers;$/;"	m	struct:__anon24
 prefix	src/core/ngx_cycle.h	/^    ngx_str_t                 prefix; \/*前缀*\/$/;"	m	struct:ngx_cycle_s
@@ -6928,7 +6937,7 @@ queued	src/http/ngx_http_spdy.h	/^    ngx_uint_t                       queued;$/
 quick	src/core/ngx_resolver.h	/^    ngx_uint_t                quick;  \/* unsigned  quick:1; *\/$/;"	m	struct:ngx_resolver_ctx_s
 quit	src/mail/ngx_mail.h	/^    unsigned                quit:1;$/;"	m	struct:__anon20
 quote	src/http/modules/ngx_http_xslt_filter_module.c	/^    ngx_uint_t                 quote;        \/* unsigned  quote:1; *\/$/;"	m	struct:__anon218	file:
-quote	src/http/ngx_http_script.h	/^    unsigned                    quote:1;$/;"	m	struct:__anon322
+quote	src/http/ngx_http_script.h	/^    unsigned                    quote:1;$/;"	m	struct:__anon323
 quoted	src/mail/ngx_mail.h	/^    unsigned                quoted:1;$/;"	m	struct:__anon20
 quoted_uri	src/http/ngx_http_request.h	/^    unsigned                          quoted_uri:1;$/;"	m	struct:ngx_http_request_s
 range	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *range;$/;"	m	struct:__anon126
@@ -6955,7 +6964,7 @@ read_event_handler	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_handler_
 read_events	src/core/ngx_cycle.h	/^    ngx_event_t              *read_events; \/*读事件*\/$/;"	m	struct:ngx_cycle_s
 read_length	src/event/ngx_event_pipe.h	/^    off_t              read_length;$/;"	m	struct:ngx_event_pipe_s
 read_timeout	src/event/ngx_event_pipe.h	/^    ngx_msec_t         read_timeout;$/;"	m	struct:ngx_event_pipe_s
-read_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       read_timeout;$/;"	m	struct:__anon344
+read_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       read_timeout;$/;"	m	struct:__anon345
 ready	src/event/ngx_event.h	/^    unsigned         ready:1;$/;"	m	struct:ngx_event_s
 realm	src/http/modules/ngx_http_auth_basic_module.c	/^    ngx_http_complex_value_t  *realm;$/;"	m	struct:__anon285	file:
 recodes	src/http/modules/ngx_http_charset_filter_module.c	/^    ngx_array_t                 recodes;        \/* ngx_http_charset_recode_t *\/$/;"	m	struct:__anon184	file:
@@ -6973,9 +6982,9 @@ recv_window	src/http/ngx_http_spdy.h	/^    size_t                           recv
 recv_window	src/http/ngx_http_spdy.h	/^    size_t                           recv_window;$/;"	m	struct:ngx_http_spdy_stream_s
 recycled	src/core/ngx_buf.h	/^    unsigned         recycled:1;$/;"	m	struct:ngx_buf_s
 redirect	src/http/modules/ngx_http_proxy_module.c	/^    ngx_flag_t                     redirect;$/;"	m	struct:__anon143	file:
-redirect	src/http/ngx_http_script.h	/^    uintptr_t                   redirect:1;$/;"	m	struct:__anon330
 redirect	src/http/ngx_http_script.h	/^    uintptr_t                   redirect:1;$/;"	m	struct:__anon331
-redirect	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       redirect;  \/* unsigned   redirect:1; *\/$/;"	m	struct:__anon345
+redirect	src/http/ngx_http_script.h	/^    uintptr_t                   redirect:1;$/;"	m	struct:__anon332
+redirect	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       redirect;  \/* unsigned   redirect:1; *\/$/;"	m	struct:__anon346
 redirect_args	src/http/modules/perl/ngx_http_perl_module.h	/^    ngx_str_t                 redirect_args;$/;"	m	struct:__anon268
 redirect_uri	src/http/modules/perl/ngx_http_perl_module.h	/^    ngx_str_t                 redirect_uri;$/;"	m	struct:__anon268
 redirects	src/http/modules/ngx_http_proxy_module.c	/^    ngx_array_t                   *redirects;$/;"	m	struct:__anon143	file:
@@ -6993,7 +7002,7 @@ regex	src/http/ngx_http_core_module.h	/^     ngx_http_server_name_t   *regex;$/;
 regex	src/http/ngx_http_core_module.h	/^    ngx_http_regex_t          *regex;$/;"	m	struct:__anon302
 regex	src/http/ngx_http_core_module.h	/^    ngx_http_regex_t  *regex;$/;"	m	struct:ngx_http_core_loc_conf_s
 regex	src/http/ngx_http_core_module.h	/^    ngx_http_server_name_t    *regex;$/;"	m	struct:__anon308
-regex	src/http/ngx_http_script.h	/^    ngx_http_regex_t           *regex;$/;"	m	struct:__anon330
+regex	src/http/ngx_http_script.h	/^    ngx_http_regex_t           *regex;$/;"	m	struct:__anon331
 regex	src/http/ngx_http_variables.h	/^    ngx_http_map_regex_t         *regex;$/;"	m	struct:__anon316
 regex	src/http/ngx_http_variables.h	/^    ngx_http_regex_t             *regex;$/;"	m	struct:__anon315
 regex	src/http/ngx_http_variables.h	/^    ngx_regex_t                  *regex;$/;"	m	struct:__anon314
@@ -7012,7 +7021,7 @@ request	src/http/modules/ngx_http_xslt_filter_module.c	/^    ngx_http_request_t 
 request	src/http/ngx_http.h	/^    ngx_http_request_t  *request;$/;"	m	struct:ngx_http_log_ctx_s
 request	src/http/ngx_http_request.h	/^    ngx_http_request_t               *request;$/;"	m	struct:ngx_http_posted_request_s
 request	src/http/ngx_http_request.h	/^    ngx_http_request_t               *request;$/;"	m	struct:ngx_http_postponed_request_s
-request	src/http/ngx_http_script.h	/^    ngx_http_request_t         *request;$/;"	m	struct:__anon322
+request	src/http/ngx_http_script.h	/^    ngx_http_request_t         *request;$/;"	m	struct:__anon323
 request	src/http/ngx_http_spdy.h	/^    ngx_http_request_t              *request;$/;"	m	struct:ngx_http_spdy_stream_s
 request	src/mail/ngx_mail_auth_http_module.c	/^    ngx_buf_t                      *request;$/;"	m	struct:ngx_mail_auth_http_ctx_s	file:
 request_body	src/http/ngx_http_request.h	/^    ngx_http_request_body_t          *request_body;$/;"	m	struct:ngx_http_request_s
@@ -7066,9 +7075,9 @@ resolver_timeout	src/mail/ngx_mail.h	/^    ngx_msec_t              resolver_time
 respawn	src/os/unix/ngx_process.h	/^    unsigned            respawn:1;$/;"	m	struct:__anon106
 response	src/event/ngx_event_openssl_stapling.c	/^    ngx_buf_t                   *response;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 response	src/mail/ngx_mail_auth_http_module.c	/^    ngx_buf_t                      *response;$/;"	m	struct:ngx_mail_auth_http_ctx_s	file:
-response_length	src/http/ngx_http_upstream.h	/^    off_t                            response_length;$/;"	m	struct:__anon339
-response_msec	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       response_msec;$/;"	m	struct:__anon339
-response_sec	src/http/ngx_http_upstream.h	/^    time_t                           response_sec;$/;"	m	struct:__anon339
+response_length	src/http/ngx_http_upstream.h	/^    off_t                            response_length;$/;"	m	struct:__anon340
+response_msec	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       response_msec;$/;"	m	struct:__anon340
+response_sec	src/http/ngx_http_upstream.h	/^    time_t                           response_sec;$/;"	m	struct:__anon340
 rest	src/http/modules/ngx_http_memcached_module.c	/^    size_t                     rest;$/;"	m	struct:__anon283	file:
 rest	src/http/ngx_http_request.h	/^    off_t                             rest;$/;"	m	struct:__anon128
 reusable	src/core/ngx_connection.h	/^    unsigned            reusable:1;$/;"	m	struct:ngx_connection_s
@@ -7091,8 +7100,8 @@ root	src/core/ngx_radix_tree.h	/^    ngx_radix_node_t  *root;$/;"	m	struct:__ano
 root	src/core/ngx_rbtree.h	/^    ngx_rbtree_node_t     *root;$/;"	m	struct:ngx_rbtree_s
 root	src/http/ngx_http_core_module.h	/^    ngx_str_t     root;                    \/* root, alias *\/$/;"	m	struct:ngx_http_core_loc_conf_s
 root_lengths	src/http/ngx_http_core_module.h	/^    ngx_array_t  *root_lengths;$/;"	m	struct:ngx_http_core_loc_conf_s
-root_prefix	src/http/ngx_http_script.h	/^    unsigned                    root_prefix:1;$/;"	m	struct:__anon323
-root_prefix	src/http/ngx_http_script.h	/^    unsigned                    root_prefix:1;$/;"	m	struct:__anon325
+root_prefix	src/http/ngx_http_script.h	/^    unsigned                    root_prefix:1;$/;"	m	struct:__anon324
+root_prefix	src/http/ngx_http_script.h	/^    unsigned                    root_prefix:1;$/;"	m	struct:__anon326
 root_tested	src/http/ngx_http_request.h	/^    unsigned                          root_tested:1;$/;"	m	struct:ngx_http_request_s
 root_values	src/http/ngx_http_core_module.h	/^    ngx_array_t  *root_values;$/;"	m	struct:ngx_http_core_loc_conf_s
 rrp	src/http/modules/ngx_http_upstream_ip_hash_module.c	/^    ngx_http_upstream_rr_peer_data_t   rrp;$/;"	m	struct:__anon215	file:
@@ -7144,10 +7153,10 @@ send_chain	src/core/ngx_connection.h	/^    ngx_send_chain_pt   send_chain;$/;"	m
 send_chain	src/os/unix/ngx_os.h	/^    ngx_send_chain_pt  send_chain;$/;"	m	struct:__anon113
 send_lowat	src/event/ngx_event_pipe.h	/^    ssize_t            send_lowat;$/;"	m	struct:ngx_event_pipe_s
 send_lowat	src/http/ngx_http_core_module.h	/^    size_t        send_lowat;              \/* send_lowat *\/$/;"	m	struct:ngx_http_core_loc_conf_s
-send_lowat	src/http/ngx_http_upstream.h	/^    size_t                           send_lowat;$/;"	m	struct:__anon344
+send_lowat	src/http/ngx_http_upstream.h	/^    size_t                           send_lowat;$/;"	m	struct:__anon345
 send_timeout	src/event/ngx_event_pipe.h	/^    ngx_msec_t         send_timeout;$/;"	m	struct:ngx_event_pipe_s
 send_timeout	src/http/ngx_http_core_module.h	/^    ngx_msec_t    send_timeout;            \/* send_timeout *\/$/;"	m	struct:ngx_http_core_loc_conf_s
-send_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       send_timeout;$/;"	m	struct:__anon344
+send_timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       send_timeout;$/;"	m	struct:__anon345
 send_window	src/http/ngx_http_spdy.h	/^    size_t                           send_window;$/;"	m	struct:ngx_http_spdy_connection_s
 send_window	src/http/ngx_http_spdy.h	/^    ssize_t                          send_window;$/;"	m	struct:ngx_http_spdy_stream_s
 sendfile	src/core/ngx_buf.h	/^    unsigned                     sendfile:1;$/;"	m	struct:ngx_output_chain_ctx_s
@@ -7170,7 +7179,7 @@ server	src/core/ngx_resolver.h	/^    ngx_str_t                 server;$/;"	m	str
 server	src/http/ngx_http_core_module.h	/^    ngx_http_core_srv_conf_t  *server;   \/* virtual name server conf *\/$/;"	m	struct:__anon302
 server	src/http/ngx_http_request.h	/^    ngx_str_t                         server;$/;"	m	struct:__anon126
 server	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *server;$/;"	m	struct:__anon127
-server	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *server;$/;"	m	struct:__anon346
+server	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *server;$/;"	m	struct:__anon347
 server_name	src/http/ngx_http_core_module.h	/^    ngx_str_t                   server_name;$/;"	m	struct:__anon301
 server_name	src/mail/ngx_mail.h	/^    ngx_str_t               server_name;$/;"	m	struct:__anon15
 server_name	src/mail/ngx_mail_smtp_module.h	/^    ngx_str_t    server_name;$/;"	m	struct:__anon4
@@ -7273,8 +7282,8 @@ size	src/http/modules/ngx_http_mp4_module.c	/^    u_char    size[4];$/;"	m	struc
 size	src/http/modules/ngx_http_mp4_module.c	/^    u_char    size[4];$/;"	m	struct:__anon262	file:
 size	src/http/ngx_http.h	/^    off_t                size;$/;"	m	struct:ngx_http_chunked_s
 size	src/http/ngx_http_cache.h	/^    off_t                            size;$/;"	m	struct:__anon137
-size	src/http/ngx_http_script.h	/^    ngx_uint_t                  size;$/;"	m	struct:__anon323
-size	src/http/ngx_http_script.h	/^    uintptr_t                   size;$/;"	m	struct:__anon330
+size	src/http/ngx_http_script.h	/^    ngx_uint_t                  size;$/;"	m	struct:__anon324
+size	src/http/ngx_http_script.h	/^    uintptr_t                   size;$/;"	m	struct:__anon331
 size	src/os/unix/ngx_darwin_init.c	/^    size_t       size;$/;"	m	struct:__anon108	file:
 size	src/os/unix/ngx_files.h	/^    size_t                       size;$/;"	m	struct:__anon110
 size	src/os/unix/ngx_freebsd_init.c	/^    size_t       size;$/;"	m	struct:__anon109	file:
@@ -7282,9 +7291,9 @@ size	src/os/unix/ngx_shmem.h	/^    size_t       size;$/;"	m	struct:__anon122
 size64	src/http/modules/ngx_http_mp4_module.c	/^    u_char    size64[8];$/;"	m	struct:__anon246	file:
 skip	src/http/modules/ngx_http_browser_module.c	/^    size_t                      skip;$/;"	m	struct:__anon286	file:
 skip	src/http/modules/ngx_http_browser_module.c	/^    size_t                      skip;$/;"	m	struct:__anon287	file:
-skip	src/http/ngx_http_script.h	/^    unsigned                    skip:1;$/;"	m	struct:__anon322
+skip	src/http/ngx_http_script.h	/^    unsigned                    skip:1;$/;"	m	struct:__anon323
 skip_data	src/http/ngx_http_spdy.h	/^    unsigned                         skip_data:2;$/;"	m	struct:ngx_http_spdy_stream_s
-skip_empty	src/http/ngx_http_upstream.h	/^    ngx_uint_t  skip_empty;$/;"	m	struct:__anon349
+skip_empty	src/http/ngx_http_upstream.h	/^    ngx_uint_t  skip_empty;$/;"	m	struct:__anon350
 slab	src/core/ngx_slab.h	/^    uintptr_t         slab;$/;"	m	struct:ngx_slab_page_s
 sleep	src/mail/ngx_mail_auth_http_module.c	/^    time_t                          sleep;$/;"	m	struct:ngx_mail_auth_http_ctx_s	file:
 slot	src/core/ngx_times.c	/^static ngx_uint_t        slot;$/;"	v	file:
@@ -7327,7 +7336,7 @@ sockaddr	src/event/ngx_event_connect.h	/^    struct sockaddr                 *so
 sockaddr	src/http/modules/ngx_http_realip_module.c	/^    struct sockaddr   *sockaddr;$/;"	m	struct:__anon165	typeref:struct:__anon165::sockaddr	file:
 sockaddr	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    u_char                             sockaddr[NGX_SOCKADDRLEN];$/;"	m	struct:__anon275	file:
 sockaddr	src/http/ngx_http_core_module.h	/^        struct sockaddr        sockaddr;$/;"	m	union:__anon295::__anon296	typeref:struct:__anon295::__anon296::sockaddr
-sockaddr	src/http/ngx_http_upstream.h	/^    struct sockaddr                 *sockaddr;$/;"	m	struct:__anon347	typeref:struct:__anon347::sockaddr
+sockaddr	src/http/ngx_http_upstream.h	/^    struct sockaddr                 *sockaddr;$/;"	m	struct:__anon348	typeref:struct:__anon348::sockaddr
 sockaddr	src/http/ngx_http_upstream_round_robin.h	/^    struct sockaddr                *sockaddr;$/;"	m	struct:__anon318	typeref:struct:__anon318::sockaddr
 sockaddr	src/mail/ngx_mail.h	/^    struct sockaddr        *sockaddr;$/;"	m	struct:__anon13	typeref:struct:__anon13::sockaddr
 sockaddr	src/mail/ngx_mail.h	/^    u_char                  sockaddr[NGX_SOCKADDRLEN];$/;"	m	struct:__anon7
@@ -7344,13 +7353,13 @@ socklen	src/event/ngx_event_connect.h	/^    socklen_t                        soc
 socklen	src/http/modules/ngx_http_realip_module.c	/^    socklen_t          socklen;$/;"	m	struct:__anon165	file:
 socklen	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    socklen_t                          socklen;$/;"	m	struct:__anon275	file:
 socklen	src/http/ngx_http_core_module.h	/^    socklen_t                  socklen;$/;"	m	struct:__anon295
-socklen	src/http/ngx_http_upstream.h	/^    socklen_t                        socklen;$/;"	m	struct:__anon347
+socklen	src/http/ngx_http_upstream.h	/^    socklen_t                        socklen;$/;"	m	struct:__anon348
 socklen	src/http/ngx_http_upstream_round_robin.h	/^    socklen_t                       socklen;$/;"	m	struct:__anon318
 socklen	src/mail/ngx_mail.h	/^    socklen_t               socklen;$/;"	m	struct:__anon13
 socklen	src/mail/ngx_mail.h	/^    socklen_t               socklen;$/;"	m	struct:__anon7
-source	src/http/ngx_http_script.h	/^    ngx_str_t                  *source;$/;"	m	struct:__anon323
+source	src/http/ngx_http_script.h	/^    ngx_str_t                  *source;$/;"	m	struct:__anon324
 source_charset	src/http/modules/ngx_http_charset_filter_module.c	/^    ngx_int_t                   source_charset;$/;"	m	struct:__anon185	file:
-sp	src/http/ngx_http_script.h	/^    ngx_http_variable_value_t  *sp;$/;"	m	struct:__anon322
+sp	src/http/ngx_http_script.h	/^    ngx_http_variable_value_t  *sp;$/;"	m	struct:__anon323
 space_in_uri	src/http/ngx_http_request.h	/^    unsigned                          space_in_uri:1;$/;"	m	struct:ngx_http_request_s
 spare0	src/core/ngx_conf_file.h	/^    ngx_uint_t            spare0;$/;"	m	struct:ngx_module_s
 spare1	src/core/ngx_conf_file.h	/^    ngx_uint_t            spare1;$/;"	m	struct:ngx_module_s
@@ -7375,7 +7384,7 @@ split_regex	src/http/modules/ngx_http_fastcgi_module.c	/^    ngx_regex_t        
 src	src/http/modules/ngx_http_charset_filter_module.c	/^    ngx_int_t                   src;$/;"	m	struct:__anon182	file:
 src	src/http/modules/ngx_http_charset_filter_module.c	/^    ngx_int_t                   src;$/;"	m	struct:__anon183	file:
 src2dst	src/http/modules/ngx_http_charset_filter_module.c	/^    u_char                     *src2dst;$/;"	m	struct:__anon183	file:
-srv_conf	src/http/ngx_http_config.h	/^    void        **srv_conf;$/;"	m	struct:__anon320
+srv_conf	src/http/ngx_http_config.h	/^    void        **srv_conf;$/;"	m	struct:__anon321
 srv_conf	src/http/ngx_http_request.h	/^    void                            **srv_conf;$/;"	m	struct:ngx_http_request_s
 srv_conf	src/http/ngx_http_upstream.h	/^    void                           **srv_conf;$/;"	m	struct:ngx_http_upstream_srv_conf_s
 srv_conf	src/mail/ngx_mail.h	/^    void                  **srv_conf;$/;"	m	struct:__anon20
@@ -7408,7 +7417,7 @@ ssl	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_uint_t                 ss
 ssl	src/http/ngx_http_core_module.h	/^    unsigned                   ssl:1;$/;"	m	struct:__anon295
 ssl	src/http/ngx_http_core_module.h	/^    unsigned                   ssl:1;$/;"	m	struct:ngx_http_addr_conf_s
 ssl	src/http/ngx_http_request.h	/^    unsigned                          ssl:1;$/;"	m	struct:__anon129
-ssl	src/http/ngx_http_upstream.h	/^    ngx_ssl_t                       *ssl;$/;"	m	struct:__anon344
+ssl	src/http/ngx_http_upstream.h	/^    ngx_ssl_t                       *ssl;$/;"	m	struct:__anon345
 ssl	src/http/ngx_http_upstream.h	/^    unsigned                         ssl:1;$/;"	m	struct:ngx_http_upstream_s
 ssl	src/mail/ngx_mail.h	/^    ngx_uint_t              ssl;    \/* unsigned   ssl:1; *\/$/;"	m	struct:__anon8
 ssl	src/mail/ngx_mail.h	/^    unsigned                ssl:1;$/;"	m	struct:__anon13
@@ -7422,7 +7431,7 @@ ssl_protocols	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_uint_t         
 ssl_servername	src/http/ngx_http_request.h	/^    ngx_str_t                        *ssl_servername;$/;"	m	struct:__anon129
 ssl_servername_regex	src/http/ngx_http_request.h	/^    ngx_http_regex_t                 *ssl_servername_regex;$/;"	m	struct:__anon129
 ssl_session	src/http/ngx_http_upstream_round_robin.h	/^    ngx_ssl_session_t              *ssl_session;   \/* local to a process *\/$/;"	m	struct:__anon318
-ssl_session_reuse	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       ssl_session_reuse;$/;"	m	struct:__anon344
+ssl_session_reuse	src/http/ngx_http_upstream.h	/^    ngx_flag_t                       ssl_session_reuse;$/;"	m	struct:__anon345
 stack_size	src/http/modules/ngx_http_rewrite_module.c	/^    ngx_uint_t    stack_size;$/;"	m	struct:__anon276	file:
 staple	src/event/ngx_event_openssl_stapling.c	/^    ngx_str_t                    staple;$/;"	m	struct:__anon35	file:
 stapling	src/http/modules/ngx_http_ssl_module.h	/^    ngx_flag_t                      stapling;$/;"	m	struct:__anon263
@@ -7474,26 +7483,26 @@ status	src/http/modules/ngx_http_proxy_module.c	/^    ngx_http_status_t         
 status	src/http/ngx_http_cache.h	/^    ngx_uint_t                       status;$/;"	m	struct:__anon134
 status	src/http/ngx_http_core_module.h	/^    ngx_int_t                  status;$/;"	m	struct:__anon309
 status	src/http/ngx_http_request.h	/^    ngx_uint_t                        status;$/;"	m	struct:__anon127
-status	src/http/ngx_http_script.h	/^    ngx_int_t                   status;$/;"	m	struct:__anon322
-status	src/http/ngx_http_script.h	/^    uintptr_t                   status;$/;"	m	struct:__anon330
-status	src/http/ngx_http_script.h	/^    uintptr_t                   status;$/;"	m	struct:__anon333
-status	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *status;$/;"	m	struct:__anon346
-status	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       status;$/;"	m	struct:__anon339
-status	src/http/ngx_http_upstream.h	/^    ngx_uint_t                      status;$/;"	m	struct:__anon348
+status	src/http/ngx_http_script.h	/^    ngx_int_t                   status;$/;"	m	struct:__anon323
+status	src/http/ngx_http_script.h	/^    uintptr_t                   status;$/;"	m	struct:__anon331
+status	src/http/ngx_http_script.h	/^    uintptr_t                   status;$/;"	m	struct:__anon334
+status	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *status;$/;"	m	struct:__anon347
+status	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       status;$/;"	m	struct:__anon340
+status	src/http/ngx_http_upstream.h	/^    ngx_uint_t                      status;$/;"	m	struct:__anon349
 status	src/os/unix/ngx_process.h	/^    int                 status;$/;"	m	struct:__anon106
 status_code	src/http/modules/ngx_http_limit_conn_module.c	/^    ngx_uint_t          status_code;$/;"	m	struct:__anon281	file:
 status_code	src/http/modules/ngx_http_limit_req_module.c	/^    ngx_uint_t                   status_code;$/;"	m	struct:__anon192	file:
 status_line	src/http/ngx_http_request.h	/^    ngx_str_t                         status_line;$/;"	m	struct:__anon127
-status_line	src/http/ngx_http_upstream.h	/^    ngx_str_t                        status_line;$/;"	m	struct:__anon346
-status_n	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       status_n;$/;"	m	struct:__anon346
+status_line	src/http/ngx_http_upstream.h	/^    ngx_str_t                        status_line;$/;"	m	struct:__anon347
+status_n	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       status_n;$/;"	m	struct:__anon347
 stbl_atom_buf	src/http/modules/ngx_http_mp4_module.c	/^    ngx_buf_t             stbl_atom_buf;$/;"	m	struct:__anon242	file:
 stco_atom_buf	src/http/modules/ngx_http_mp4_module.c	/^    ngx_buf_t             stco_atom_buf;$/;"	m	struct:__anon242	file:
 stco_data_buf	src/http/modules/ngx_http_mp4_module.c	/^    ngx_buf_t             stco_data_buf;$/;"	m	struct:__anon242	file:
-store	src/http/ngx_http_upstream.h	/^    signed                           store:2;$/;"	m	struct:__anon344
+store	src/http/ngx_http_upstream.h	/^    signed                           store:2;$/;"	m	struct:__anon345
 store	src/http/ngx_http_upstream.h	/^    unsigned                         store:1;$/;"	m	struct:ngx_http_upstream_s
-store_access	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       store_access;$/;"	m	struct:__anon344
-store_lengths	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *store_lengths;$/;"	m	struct:__anon344
-store_values	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *store_values;$/;"	m	struct:__anon344
+store_access	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       store_access;$/;"	m	struct:__anon345
+store_lengths	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *store_lengths;$/;"	m	struct:__anon345
+store_values	src/http/ngx_http_upstream.h	/^    ngx_array_t                     *store_values;$/;"	m	struct:__anon345
 str	src/core/ngx_string.h	/^    ngx_str_t                 str;$/;"	m	struct:__anon47
 stream	src/http/ngx_http_spdy.h	/^    ngx_http_spdy_stream_t          *stream;$/;"	m	struct:ngx_http_spdy_connection_s
 stream	src/http/ngx_http_spdy.h	/^    ngx_http_spdy_stream_t          *stream;$/;"	m	struct:ngx_http_spdy_out_frame_s
@@ -7558,25 +7567,25 @@ temp_file	src/event/ngx_event_pipe.h	/^    ngx_temp_file_t   *temp_file;$/;"	m	s
 temp_file	src/http/ngx_http_cache.h	/^    unsigned                         temp_file:1;$/;"	m	struct:ngx_http_cache_s
 temp_file	src/http/ngx_http_request.h	/^    ngx_temp_file_t                  *temp_file;$/;"	m	struct:__anon128
 temp_file_write_size	src/event/ngx_event_pipe.h	/^    ssize_t            temp_file_write_size;$/;"	m	struct:ngx_event_pipe_s
-temp_file_write_size	src/http/ngx_http_upstream.h	/^    size_t                           temp_file_write_size;$/;"	m	struct:__anon344
-temp_file_write_size_conf	src/http/ngx_http_upstream.h	/^    size_t                           temp_file_write_size_conf;$/;"	m	struct:__anon344
+temp_file_write_size	src/http/ngx_http_upstream.h	/^    size_t                           temp_file_write_size;$/;"	m	struct:__anon345
+temp_file_write_size_conf	src/http/ngx_http_upstream.h	/^    size_t                           temp_file_write_size_conf;$/;"	m	struct:__anon345
 temp_number	src/core/ngx_file.c	/^static ngx_atomic_t   temp_number = 0;$/;"	v	file:
-temp_path	src/http/ngx_http_upstream.h	/^    ngx_path_t                      *temp_path;$/;"	m	struct:__anon344
+temp_path	src/http/ngx_http_upstream.h	/^    ngx_path_t                      *temp_path;$/;"	m	struct:__anon345
 temp_pool	src/core/ngx_conf_file.h	/^    ngx_pool_t           *temp_pool;$/;"	m	struct:ngx_conf_s
 temp_pool	src/core/ngx_hash.h	/^    ngx_pool_t       *temp_pool;$/;"	m	struct:__anon71
 temp_pool	src/core/ngx_hash.h	/^    ngx_pool_t       *temp_pool;$/;"	m	struct:__anon72
 temp_pool	src/http/modules/ngx_http_geo_module.c	/^    ngx_pool_t                      *temp_pool;$/;"	m	struct:__anon232	file:
 temporary	src/core/ngx_buf.h	/^    unsigned         temporary:1;$/;"	m	struct:ngx_buf_s
 terminal_posted_request	src/http/ngx_http_request.h	/^    ngx_http_posted_request_t         terminal_posted_request;$/;"	m	struct:__anon131
-test	src/http/ngx_http_script.h	/^    uintptr_t                   test:1;$/;"	m	struct:__anon330
+test	src/http/ngx_http_script.h	/^    uintptr_t                   test:1;$/;"	m	struct:__anon331
 test	src/os/unix/ngx_files.h	/^    ngx_uint_t                   test;$/;"	m	struct:__anon112
 test_dir	src/core/ngx_open_file_cache.h	/^    unsigned                 test_dir:1;$/;"	m	struct:__anon95
 test_dir	src/http/ngx_http_core_module.h	/^    unsigned                   test_dir:1;$/;"	m	struct:__anon310
 test_only	src/core/ngx_open_file_cache.h	/^    unsigned                 test_only:1;$/;"	m	struct:__anon95
-text	src/http/ngx_http_script.h	/^    ngx_http_complex_value_t    text;$/;"	m	struct:__anon333
+text	src/http/ngx_http_script.h	/^    ngx_http_complex_value_t    text;$/;"	m	struct:__anon334
 text	src/mail/ngx_mail.h	/^    ngx_str_t               text;$/;"	m	struct:__anon20
-text_data	src/http/ngx_http_script.h	/^    uintptr_t                   text_data;$/;"	m	struct:__anon338
-text_len	src/http/ngx_http_script.h	/^    uintptr_t                   text_len;$/;"	m	struct:__anon338
+text_data	src/http/ngx_http_script.h	/^    uintptr_t                   text_data;$/;"	m	struct:__anon339
+text_len	src/http/ngx_http_script.h	/^    uintptr_t                   text_len;$/;"	m	struct:__anon339
 thr_attr	src/os/unix/ngx_pthread_thread.c	/^static pthread_attr_t  thr_attr;$/;"	v	file:
 thread_stack_size	src/core/ngx_cycle.h	/^     size_t                   thread_stack_size;$/;"	m	struct:__anon78
 tid	src/os/unix/ngx_freebsd_rfork_thread.h	/^    ngx_tid_t     tid;$/;"	m	struct:__anon120
@@ -7593,7 +7602,7 @@ timeout	src/core/ngx_resolver.h	/^    ngx_msec_t                timeout;$/;"	m	s
 timeout	src/event/ngx_event_openssl_stapling.c	/^    ngx_msec_t                   timeout;$/;"	m	struct:__anon35	file:
 timeout	src/event/ngx_event_openssl_stapling.c	/^    ngx_msec_t                   timeout;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 timeout	src/http/ngx_http_busy_lock.h	/^    time_t              timeout;$/;"	m	struct:__anon293
-timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       timeout;$/;"	m	struct:__anon344
+timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       timeout;$/;"	m	struct:__anon345
 timeout	src/http/ngx_http_upstream.h	/^    ngx_msec_t                       timeout;$/;"	m	struct:ngx_http_upstream_s
 timeout	src/mail/ngx_mail.h	/^    ngx_msec_t              timeout;$/;"	m	struct:__anon15
 timeout	src/mail/ngx_mail_auth_http_module.c	/^    ngx_msec_t                      timeout;$/;"	m	struct:__anon2	file:
@@ -7624,7 +7633,7 @@ trak	src/http/modules/ngx_http_mp4_module.c	/^    ngx_array_t           trak;$/;
 trak_atom_buf	src/http/modules/ngx_http_mp4_module.c	/^    ngx_buf_t             trak_atom_buf;$/;"	m	struct:__anon242	file:
 traks	src/http/modules/ngx_http_mp4_module.c	/^    ngx_http_mp4_trak_t   traks[2];$/;"	m	struct:__anon243	file:
 transfer_encoding	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *transfer_encoding;$/;"	m	struct:__anon126
-transfer_encoding	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *transfer_encoding;$/;"	m	struct:__anon346
+transfer_encoding	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *transfer_encoding;$/;"	m	struct:__anon347
 transform	src/http/modules/ngx_http_xslt_filter_module.c	/^    xsltTransformContextPtr    transform;$/;"	m	struct:__anon221	file:
 transparency	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_flag_t                   transparency;$/;"	m	struct:__anon211	file:
 tree	src/http/modules/ngx_http_geo_module.c	/^    ngx_radix_tree_t                *tree;$/;"	m	struct:__anon229	file:
@@ -7707,22 +7716,22 @@ upstream	src/http/modules/ngx_http_scgi_module.c	/^    ngx_http_upstream_conf_t 
 upstream	src/http/modules/ngx_http_upstream_keepalive_module.c	/^    ngx_http_upstream_t               *upstream;$/;"	m	struct:__anon274	file:
 upstream	src/http/modules/ngx_http_uwsgi_module.c	/^    ngx_http_upstream_conf_t   upstream;$/;"	m	struct:__anon213	file:
 upstream	src/http/ngx_http_request.h	/^    ngx_http_upstream_t              *upstream;$/;"	m	struct:ngx_http_request_s
-upstream	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_srv_conf_t    *upstream;$/;"	m	struct:__anon344
+upstream	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_srv_conf_t    *upstream;$/;"	m	struct:__anon345
 upstream	src/mail/ngx_mail.h	/^    ngx_peer_connection_t   upstream;$/;"	m	struct:__anon19
 upstream_blocked	src/event/ngx_event_pipe.h	/^    unsigned           upstream_blocked:1;$/;"	m	struct:ngx_event_pipe_s
 upstream_done	src/event/ngx_event_pipe.h	/^    unsigned           upstream_done:1;$/;"	m	struct:ngx_event_pipe_s
 upstream_eof	src/event/ngx_event_pipe.h	/^    unsigned           upstream_eof:1;$/;"	m	struct:ngx_event_pipe_s
 upstream_error	src/event/ngx_event_pipe.h	/^    unsigned           upstream_error:1;$/;"	m	struct:ngx_event_pipe_s
 upstream_states	src/http/ngx_http_request.h	/^    ngx_array_t                      *upstream_states;$/;"	m	struct:ngx_http_request_s
-upstreams	src/http/ngx_http_upstream.h	/^    ngx_array_t                      upstreams;$/;"	m	struct:__anon340
+upstreams	src/http/ngx_http_upstream.h	/^    ngx_array_t                      upstreams;$/;"	m	struct:__anon341
 uri	src/core/ngx_inet.h	/^    ngx_str_t                 uri;$/;"	m	struct:__anon53
 uri	src/event/ngx_event_openssl_stapling.c	/^    ngx_str_t                    uri;$/;"	m	struct:__anon35	file:
 uri	src/event/ngx_event_openssl_stapling.c	/^    ngx_str_t                    uri;$/;"	m	struct:ngx_ssl_ocsp_ctx_s	file:
 uri	src/http/modules/ngx_http_auth_request_module.c	/^    ngx_str_t                 uri;$/;"	m	struct:__anon159	file:
 uri	src/http/modules/ngx_http_proxy_module.c	/^    ngx_str_t                      uri;$/;"	m	struct:__anon142	file:
 uri	src/http/ngx_http_request.h	/^    ngx_str_t                         uri;$/;"	m	struct:ngx_http_request_s
-uri	src/http/ngx_http_script.h	/^    uintptr_t                   uri:1;$/;"	m	struct:__anon330
 uri	src/http/ngx_http_script.h	/^    uintptr_t                   uri:1;$/;"	m	struct:__anon331
+uri	src/http/ngx_http_script.h	/^    uintptr_t                   uri:1;$/;"	m	struct:__anon332
 uri	src/http/ngx_http_upstream.h	/^    ngx_str_t                        uri;$/;"	m	struct:ngx_http_upstream_s
 uri	src/mail/ngx_mail_auth_http_module.c	/^    ngx_str_t                       uri;$/;"	m	struct:__anon2	file:
 uri_changed	src/http/ngx_http_request.h	/^    unsigned                          uri_changed:1;$/;"	m	struct:ngx_http_request_s
@@ -7786,11 +7795,11 @@ value	src/http/modules/ngx_http_sub_filter_module.c	/^    ngx_http_complex_value
 value	src/http/modules/ngx_http_xslt_filter_module.c	/^    ngx_http_complex_value_t   value;$/;"	m	struct:__anon218	file:
 value	src/http/modules/perl/ngx_http_perl_module.h	/^    ngx_str_t     value;$/;"	m	struct:__anon269
 value	src/http/ngx_http_core_module.h	/^    ngx_http_complex_value_t   value;$/;"	m	struct:__anon309
-value	src/http/ngx_http_script.h	/^    ngx_str_t                   value;$/;"	m	struct:__anon324
-value	src/http/ngx_http_script.h	/^    ngx_str_t                  *value;$/;"	m	struct:__anon325
-value	src/http/ngx_http_script.h	/^    uintptr_t                   value;$/;"	m	struct:__anon338
-value	src/http/ngx_http_upstream.h	/^    ngx_http_complex_value_t        *value;$/;"	m	struct:__anon343
-value	src/http/ngx_http_upstream.h	/^    ngx_str_t   value;$/;"	m	struct:__anon349
+value	src/http/ngx_http_script.h	/^    ngx_str_t                   value;$/;"	m	struct:__anon325
+value	src/http/ngx_http_script.h	/^    ngx_str_t                  *value;$/;"	m	struct:__anon326
+value	src/http/ngx_http_script.h	/^    uintptr_t                   value;$/;"	m	struct:__anon339
+value	src/http/ngx_http_upstream.h	/^    ngx_http_complex_value_t        *value;$/;"	m	struct:__anon344
+value	src/http/ngx_http_upstream.h	/^    ngx_str_t   value;$/;"	m	struct:__anon350
 value	src/http/ngx_http_variables.h	/^    void                         *value;$/;"	m	struct:__anon315
 value	src/os/unix/ngx_darwin_init.c	/^    void        *value;$/;"	m	struct:__anon108	file:
 value	src/os/unix/ngx_freebsd_init.c	/^    void        *value;$/;"	m	struct:__anon109	file:
@@ -7800,8 +7809,8 @@ value_len	src/http/modules/ngx_http_ssi_filter_module.h	/^    size_t            
 values	src/http/modules/ngx_http_index_module.c	/^    ngx_array_t             *values;$/;"	m	struct:__anon226	file:
 values	src/http/modules/ngx_http_log_module.c	/^    ngx_array_t                *values;$/;"	m	struct:__anon149	file:
 values	src/http/ngx_http_core_module.h	/^    ngx_array_t               *values;$/;"	m	struct:__anon310
-values	src/http/ngx_http_script.h	/^    ngx_array_t               **values;$/;"	m	struct:__anon323
-values	src/http/ngx_http_script.h	/^    void                       *values;$/;"	m	struct:__anon324
+values	src/http/ngx_http_script.h	/^    ngx_array_t               **values;$/;"	m	struct:__anon324
+values	src/http/ngx_http_script.h	/^    void                       *values;$/;"	m	struct:__anon325
 values_hash	src/http/modules/ngx_http_map_module.c	/^    ngx_array_t                *values_hash;$/;"	m	struct:__anon177	file:
 var	src/http/modules/ngx_http_limit_conn_module.c	/^    ngx_str_t           var;$/;"	m	struct:__anon279	file:
 var	src/http/modules/ngx_http_limit_req_module.c	/^    ngx_str_t                    var;$/;"	m	struct:__anon190	file:
@@ -7811,7 +7820,7 @@ variables	src/http/modules/ngx_http_ssi_filter_module.h	/^    ngx_list_t        
 variables	src/http/modules/perl/ngx_http_perl_module.h	/^    ngx_array_t              *variables;  \/* array of ngx_http_perl_var_t *\/$/;"	m	struct:__anon268
 variables	src/http/ngx_http_core_module.h	/^    ngx_array_t                variables;       \/* ngx_http_variable_t *\/$/;"	m	struct:__anon300
 variables	src/http/ngx_http_request.h	/^    ngx_http_variable_value_t        *variables;$/;"	m	struct:ngx_http_request_s
-variables	src/http/ngx_http_script.h	/^    ngx_uint_t                  variables;$/;"	m	struct:__anon323
+variables	src/http/ngx_http_script.h	/^    ngx_uint_t                  variables;$/;"	m	struct:__anon324
 variables	src/http/ngx_http_variables.h	/^    ngx_http_regex_variable_t    *variables;$/;"	m	struct:__anon314
 variables_hash	src/http/ngx_http_core_module.h	/^    ngx_hash_t                 variables_hash;$/;"	m	struct:__anon300
 variables_hash_bucket_size	src/http/ngx_http_core_module.h	/^    ngx_uint_t                 variables_hash_bucket_size;$/;"	m	struct:__anon300
@@ -7871,7 +7880,7 @@ wc_tail	src/core/ngx_hash.h	/^    ngx_hash_wildcard_t  *wc_tail;$/;"	m	struct:__
 wc_tail	src/http/ngx_http_core_module.h	/^    ngx_hash_wildcard_t       *wc_tail;$/;"	m	struct:__anon308
 wcv	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_http_complex_value_t    *wcv;$/;"	m	struct:__anon211	file:
 week	src/core/ngx_times.c	/^static char  *week[] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };$/;"	v	file:
-weight	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       weight;$/;"	m	struct:__anon342
+weight	src/http/ngx_http_upstream.h	/^    ngx_uint_t                       weight;$/;"	m	struct:__anon343
 weight	src/http/ngx_http_upstream_round_robin.h	/^    ngx_int_t                       weight;$/;"	m	struct:__anon318
 weighted	src/http/ngx_http_upstream_round_robin.h	/^    unsigned                        weighted:1;$/;"	m	struct:ngx_http_upstream_rr_peers_s
 width	src/http/modules/ngx_http_image_filter_module.c	/^    ngx_uint_t                   width;$/;"	m	struct:__anon211	file:
@@ -7897,16 +7906,16 @@ write_event_handler	src/http/ngx_http_upstream.h	/^    ngx_http_upstream_handler
 write_events	src/core/ngx_cycle.h	/^    ngx_event_t              *write_events; \/*写事件*\/$/;"	m	struct:ngx_cycle_s
 writer	src/http/ngx_http_upstream.h	/^    ngx_chain_writer_ctx_t           writer;$/;"	m	struct:ngx_http_upstream_s
 www_authenticate	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *www_authenticate;$/;"	m	struct:__anon127
-www_authenticate	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *www_authenticate;$/;"	m	struct:__anon346
-x_accel_expires	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *x_accel_expires;$/;"	m	struct:__anon346
-x_accel_limit_rate	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *x_accel_limit_rate;$/;"	m	struct:__anon346
-x_accel_redirect	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *x_accel_redirect;$/;"	m	struct:__anon346
+www_authenticate	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *www_authenticate;$/;"	m	struct:__anon347
+x_accel_expires	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *x_accel_expires;$/;"	m	struct:__anon347
+x_accel_limit_rate	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *x_accel_limit_rate;$/;"	m	struct:__anon347
+x_accel_redirect	src/http/ngx_http_upstream.h	/^    ngx_table_elt_t                 *x_accel_redirect;$/;"	m	struct:__anon347
 x_forwarded_for	src/http/ngx_http_request.h	/^    ngx_array_t                       x_forwarded_for;$/;"	m	struct:__anon126
 x_real_ip	src/http/ngx_http_request.h	/^    ngx_table_elt_t                  *x_real_ip;$/;"	m	struct:__anon126
 xclient	src/mail/ngx_mail_proxy_module.c	/^    ngx_flag_t  xclient;$/;"	m	struct:__anon23	file:
 zero	src/core/ngx_slab.h	/^    u_char            zero;$/;"	m	struct:__anon85
-zero	src/http/ngx_http_script.h	/^    unsigned                    zero:1;$/;"	m	struct:__anon323
-zero	src/http/ngx_http_script.h	/^    unsigned                    zero:1;$/;"	m	struct:__anon325
+zero	src/http/ngx_http_script.h	/^    unsigned                    zero:1;$/;"	m	struct:__anon324
+zero	src/http/ngx_http_script.h	/^    unsigned                    zero:1;$/;"	m	struct:__anon326
 zin	src/http/modules/ngx_http_gzip_filter_module.c	/^    size_t               zin;$/;"	m	struct:__anon196	file:
 zlen	src/http/modules/ngx_http_gzip_filter_module.c	/^    u_char  zlen[4];$/;"	m	struct:gztrailer	file:
 zlen	src/http/modules/ngx_http_gzip_filter_module.c	/^    uint32_t  zlen;$/;"	m	struct:gztrailer	file:

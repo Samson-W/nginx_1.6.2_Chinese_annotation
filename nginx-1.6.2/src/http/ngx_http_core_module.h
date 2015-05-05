@@ -141,13 +141,16 @@ typedef ngx_int_t (*ngx_http_phase_handler_pt)(ngx_http_request_t *r,
     ngx_http_phase_handler_t *ph);
 
 struct ngx_http_phase_handler_s {
+	//每个handler方法必须对应着一个checker方法，这个chechker方法由http框架实现
     ngx_http_phase_handler_pt  checker;
+	//各个http模块实现的方法, 不会执行handler方法，handler仅能在checker方法中被调用，且checker方法由http框架实现
     ngx_http_handler_pt        handler;
     ngx_uint_t                 next;
 };
 
 
 typedef struct {
+	//由ngx_http_phase_handler_t结构体构成的数组，每一个数组成员代表着一个http模块所添加的一个处理方法
     ngx_http_phase_handler_t  *handlers;
     ngx_uint_t                 server_rewrite_index;
     ngx_uint_t                 location_rewrite_index;
@@ -161,7 +164,7 @@ typedef struct {
 
 typedef struct {
     ngx_array_t                servers;         /* ngx_http_core_srv_conf_t */
-
+	//http框架初始化后各个http模块构造的处理方法将组成phase_engine
     ngx_http_phase_engine_t    phase_engine;
 
     ngx_hash_t                 headers_in_hash;

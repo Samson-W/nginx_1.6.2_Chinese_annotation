@@ -86,7 +86,7 @@ ngx_http_upstream_init_ip_hash(ngx_conf_t *cf, ngx_http_upstream_srv_conf_t *us)
     if (ngx_http_upstream_init_round_robin(cf, us) != NGX_OK) {
         return NGX_ERROR;
     }
-
+	//ngx_http_upstream_init_request时调用,调用了此接口后才会进行连接的创建 
     us->peer.init = ngx_http_upstream_init_ip_hash_peer;
 
     return NGX_OK;

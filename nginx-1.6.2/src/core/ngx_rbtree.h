@@ -20,11 +20,17 @@ typedef ngx_int_t   ngx_rbtree_key_int_t;
 typedef struct ngx_rbtree_node_s  ngx_rbtree_node_t;
 
 struct ngx_rbtree_node_s {
+	//无符号整型的关键字
     ngx_rbtree_key_t       key;
+	//左子节点
     ngx_rbtree_node_t     *left;
+	//右子节点
     ngx_rbtree_node_t     *right;
+	//父节点
     ngx_rbtree_node_t     *parent;
+	//节点的颜色，0表黑色 1表红色
     u_char                 color;
+	//仅1个字节的节点数据。由于表示的空间太小，所以一般很少使用
     u_char                 data;
 };
 

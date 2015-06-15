@@ -54,7 +54,7 @@ struct ngx_log_s {
     ngx_atomic_uint_t    connection;
 	//记录日志的回调方法。当handler已经实现，并不是Debug级别时，才会调用handler方法
     ngx_log_handler_pt   handler;
-	//每个模块都可以自定义data的使用方法
+	//每个模块都可以自定义data的使用方法。通常，data参数都是在实现了上面的handler回调方法后才使用的。
     void                *data;
 
     /*
@@ -62,7 +62,7 @@ struct ngx_log_s {
      * the static strings and in the "u_char *" case we have to override
      * their types all the time
      */
-	//表示当前的动作
+	//表示当前的动作。实际上，action与data是一样的，只有在实现了handler回调方法后才会使用。
     char                *action;
 
     ngx_log_t           *next;

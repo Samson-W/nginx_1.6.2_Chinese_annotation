@@ -32,7 +32,8 @@ void ngx_array_destroy(ngx_array_t *a);
 void *ngx_array_push(ngx_array_t *a);
 void *ngx_array_push_n(ngx_array_t *a, ngx_uint_t n);
 
-
+//若一个数组对象是被分配在堆上的，那么调用ngx_array_destory销毁后，若想再次使用，就可以调用此函数
+//若一个数组对象是被分配在栈上的，那么就需要调用此函数，进行初始化的工作以后，才可以使用
 static ngx_inline ngx_int_t
 ngx_array_init(ngx_array_t *array, ngx_pool_t *pool, ngx_uint_t n, size_t size)
 {

@@ -81,6 +81,7 @@ typedef struct {
 #define ngx_http_conf_get_module_loc_conf(cf, module)                         \
     ((ngx_http_conf_ctx_t *) cf->ctx)->loc_conf[module.ctx_index]
 
+//由ngx_cycle_t核心结构体中找到main级别的配置结构体
 #define ngx_http_cycle_get_module_main_conf(cycle, module)                    \
     (cycle->conf_ctx[ngx_http_module.index] ?                                 \
         ((ngx_http_conf_ctx_t *) cycle->conf_ctx[ngx_http_module.index])      \

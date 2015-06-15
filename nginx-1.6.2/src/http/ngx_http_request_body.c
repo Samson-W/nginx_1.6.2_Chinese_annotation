@@ -48,17 +48,17 @@ ngx_http_read_client_request_body(ngx_http_request_t *r,
         goto done;
     }
 #endif
-
+	//检查请求体是否已经读取或已经被丢弃
     if (r != r->main || r->request_body || r->discard_body) {
         post_handler(r);
         return NGX_OK;
     }
-
+	//检查客户端是否发送了Expect: 100-continue
     if (ngx_http_test_expect(r) != NGX_OK) {
         rc = NGX_HTTP_INTERNAL_SERVER_ERROR;
         goto done;
     }
-
+	//用来保存请求体读取过程用到的缓存引用，临时文件引用，剩余请求体大小等信息
     rb = ngx_pcalloc(r->pool, sizeof(ngx_http_request_body_t));
     if (rb == NULL) {
         rc = NGX_HTTP_INTERNAL_SERVER_ERROR;
@@ -79,7 +79,7 @@ ngx_http_read_client_request_body(ngx_http_request_t *r,
     rb->post_handler = post_handler;
 
     r->request_body = rb;
-
+	//检查是否带有content_length头，表明没有消息体
     if (r->headers_in.content_length_n < 0 && !r->headers_in.chunked) {
         post_handler(r);
         return NGX_OK;
@@ -104,7 +104,7 @@ ngx_http_read_client_request_body(ngx_http_request_t *r,
         }
 
         r->request_length += preread - (r->header_in->last - r->header_in->pos);
-
+		//若没有预读数据或预读不完整，分配一块新的内存
         if (!r->headers_in.chunked
             && rb->rest > 0
             && rb->rest <= (off_t) (r->header_in->end - r->header_in->last))
@@ -242,7 +242,7 @@ ngx_http_read_client_request_body_handler(ngx_http_request_t *r)
     }
 }
 
-
+//循环读取请求体并保存在缓存中，若缓存被写満了，其中的数据会被清空并写回到临时文件中。
 static ngx_int_t
 ngx_http_do_read_client_request_body(ngx_http_request_t *r)
 {

@@ -141,10 +141,11 @@ typedef ngx_int_t (*ngx_http_phase_handler_pt)(ngx_http_request_t *r,
     ngx_http_phase_handler_t *ph);
 
 struct ngx_http_phase_handler_s {
-	//每个handler方法必须对应着一个checker方法，这个chechker方法由http框架实现
+	//每个handler方法必须对应着一个checker方法，这个chechker方法由http框架实现，相同阶段的节点具有相同的checker函数，handler保存的是模块处理函数
     ngx_http_phase_handler_pt  checker;
 	//各个http模块实现的方法, 不会执行handler方法，handler仅能在checker方法中被调用，且checker方法由http框架实现
     ngx_http_handler_pt        handler;
+	//此阶段的注册的handler的总个数
     ngx_uint_t                 next;
 };
 
@@ -354,7 +355,7 @@ struct ngx_http_core_loc_conf_s {
 
     uint32_t      limit_except;
     void        **limit_except_loc_conf;
-
+	//location对应的处理方法,如proxy模块的设置为ngx_http_proxy_handler
     ngx_http_handler_pt  handler;
 
     /* location name length for inclusive location with inherited alias */

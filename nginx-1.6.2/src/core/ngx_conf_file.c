@@ -387,7 +387,7 @@ ngx_conf_handler(ngx_conf_t *cf, ngx_int_t last)
                     conf = confp[ngx_modules[i]->ctx_index];
                 }
             }
-
+			//对应于每个模块中的ngx_command_t结构中的set方法
             rv = cmd->set(cf, cmd, conf);
 
             if (rv == NGX_CONF_OK) {
@@ -1080,25 +1080,27 @@ ngx_conf_set_keyval_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 char *
 ngx_conf_set_num_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
+	//conf就是存储参数的结构体的地址
     char  *p = conf;
 
     ngx_int_t        *np;
     ngx_str_t        *value;
     ngx_conf_post_t  *post;
 
-
+	//根据ngx_command_t中的offset偏移量，可以找到结构体中的成员，而对于ngx_conf_set_num_slot方法而言，存储数字的必须是ngx_int_t类型
     np = (ngx_int_t *) (p + cmd->offset);
-
+	//在这里可以知道为什么要把使用ngx_conf_set_num_slot方法解析成员在create_loc_conf等方法中初始化为NGX_CONF_UNSET，否则是会报错的
     if (*np != NGX_CONF_UNSET) {
         return "is duplicate";
     }
-
+	//value将指向配置项的参数
     value = cf->args->elts;
+	//将字符串的参数转化为整数，并设置create_loc_conf等方法生成的结构体的相关成员上
     *np = ngx_atoi(value[1].data, value[1].len);
     if (*np == NGX_ERROR) {
         return "invalid number";
     }
-
+	//若ngx_command_t中的post已经实现，那么还需要调用post->post_handler方法
     if (cmd->post) {
         post = cmd->post;
         return post->post_handler(cf, post, np);

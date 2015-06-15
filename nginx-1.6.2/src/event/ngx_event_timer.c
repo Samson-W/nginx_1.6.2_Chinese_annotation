@@ -72,7 +72,7 @@ ngx_event_find_timer(void)
     return (ngx_msec_t) (timer > 0 ? timer : 0);
 }
 
-
+//检查定时器中的所有事件，按照红黑树关键字由小到大的顺序依次调用已经满足超时条件需要被触发事件的handler回调方法
 void
 ngx_event_expire_timers(void)
 {

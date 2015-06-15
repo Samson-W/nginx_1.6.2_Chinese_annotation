@@ -39,7 +39,7 @@ typedef void (*ngx_event_save_peer_session_pt)(ngx_peer_connection_t *pc,
 struct ngx_peer_connection_s {
 	//一个主动连接实际上也需要ngx_connection_t结构体中的大部分成员，并且出于重用的考虑而定义了connection成员
     ngx_connection_t                *connection;
-	//无端服务器的socket地址
+	//远端服务器的socket地址
     struct sockaddr                 *sockaddr;
 	//sockaddr地址的长度
     socklen_t                        socklen;
@@ -51,7 +51,8 @@ struct ngx_peer_connection_s {
     ngx_event_get_peer_pt            get;
 	//与get方法对应的释放连接的方法
     ngx_event_free_peer_pt           free;
-	//
+	//这个data仅用于和上面的get free方法配合传递参数 可参照
+	//ngx_event_get_peer_pt  ngx_event_free_peer_pt方法原型中的data参数
     void                            *data;
 
 #if (NGX_SSL)

@@ -80,7 +80,9 @@ typedef ngx_int_t (*ngx_http_upstream_init_peer_pt)(ngx_http_request_t *r,
 
 
 typedef struct {
+	//此回调将在ngx_http_upstream_init_main_conf时进行调用
     ngx_http_upstream_init_pt        init_upstream;
+	//此回调将在ngx_http_upstream_init_request时进行调用
     ngx_http_upstream_init_peer_pt   init;
     void                            *data;
 } ngx_http_upstream_peer_t;
@@ -89,20 +91,30 @@ typedef struct {
 typedef struct {
     ngx_addr_t                      *addrs;
     ngx_uint_t                       naddrs;
+	//权重,默认为1.weight越大，负载的权重就越大 
     ngx_uint_t                       weight;
+	//允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream
+	//模块定义的错误
     ngx_uint_t                       max_fails;
+	//max_fails次失败后，暂停的时间
     time_t                           fail_timeout;
-
+	//表示当前的server暂时不参与负载
     unsigned                         down:1;
+	//备用,其它所有的非backup机器down或者忙的时候，请求backup机器。所以这台机器压力会最轻。
     unsigned                         backup:1;
 } ngx_http_upstream_server_t;
 
-
+//创建标志，如果含有创建标志的话，nginx会检查重复创建，以及必要参数是否填写
 #define NGX_HTTP_UPSTREAM_CREATE        0x0001
+//可以在server中使用weight
 #define NGX_HTTP_UPSTREAM_WEIGHT        0x0002
+//可以在server中使用max_fails
 #define NGX_HTTP_UPSTREAM_MAX_FAILS     0x0004
+//可能在server中使用fail_timeout
 #define NGX_HTTP_UPSTREAM_FAIL_TIMEOUT  0x0008
+//可以在server中使用down属性
 #define NGX_HTTP_UPSTREAM_DOWN          0x0010
+//可以在server中使用backup
 #define NGX_HTTP_UPSTREAM_BACKUP        0x0020
 
 
@@ -270,10 +282,10 @@ typedef struct {
     ngx_str_t                        host;
     in_port_t                        port;
     ngx_uint_t                       no_port; /* unsigned no_port:1 */
-	//地址个数
+	//地址个数,必须设置的
     ngx_uint_t                       naddrs;
     ngx_addr_t                      *addrs;
-	//上游服务器地址
+	//上游服务器地址，以下两项也是必须设置的
     struct sockaddr                 *sockaddr;
     socklen_t                        socklen;
 
@@ -294,7 +306,7 @@ struct ngx_http_upstream_s {
     ngx_peer_connection_t            peer;
 	//当向下游客户端转发响应时(ngx_http_request_t中的subrequest_in_memory标志位为0)，如果打开了缓存且认为上游网络更快(conf配置中的buffering标志位为1)，这时会使用pipe成员来转发响应。在使用这种方式转发响应时，必须由http模块在使用upstream机制前构造pipe结构体，否则会出现严重的coredump错误
     ngx_event_pipe_t                *pipe;
-	//request_bufs以链表的方式把ngx_buf_t缓冲区链接起来，它表示所有需要发送到上游服务器的请求内容。所以，http模块实现的create_request回调方法就在于构建request_bufs链表
+	//决定发送什么样的请求给上游服务器 request_bufs以链表的方式把ngx_buf_t缓冲区链接起来，它表示所有需要发送到上游服务器的请求内容。所以，http模块实现的create_request回调方法就在于构建request_bufs链表
     ngx_chain_t                     *request_bufs;
 	//定义了向下游发送响应的方式
     ngx_output_chain_ctx_t           output;
@@ -365,7 +377,7 @@ struct ngx_http_upstream_s {
 #if (NGX_HTTP_CACHE)
     unsigned                         cache_status:3;
 #endif
-	//在向客户端转发上游服务器的包体时才有用。是否开启更大的内存及临时磁盘文件用于缓存来不及时发送到下游的响应包体。
+	//在向客户端转发上游服务器的包体时才有用。是否开启更大的内存及临时磁盘文件用于缓存来不及时发送到下游的响应包体。当为1时，表示使用多个缓冲区及磁盘文件来转发上游的响应包体。当nginx与上游间的网速远大于nginx与下游客户端间的网速时，让nginx开辟更多的内存甚至使用磁盘文件来缓存上游的响应包体，这是有意义的，它可以减轻上游服务器的并发压力。当buffering为0时，表示只使用上面的这一个buffer缓冲区来向下游转发响应包体
     unsigned                         buffering:1;
     unsigned                         keepalive:1;
     unsigned                         upgrade:1;

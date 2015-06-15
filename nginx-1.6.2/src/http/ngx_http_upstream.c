@@ -670,7 +670,7 @@ found:
                                            NGX_HTTP_INTERNAL_SERVER_ERROR);
         return;
     }
-
+	//处理请求阶段的初始化函数，会在每个请求处理时作为初始化函数调用
     if (uscf->peer.init(r, uscf) != NGX_OK) {
         ngx_http_upstream_finalize_request(r, u,
                                            NGX_HTTP_INTERNAL_SERVER_ERROR);
@@ -1740,7 +1740,7 @@ ngx_http_upstream_process_header(ngx_http_request_t *r, ngx_http_upstream_t *u)
     }
 
     if (!r->subrequest_in_memory) {
-		//发送响应头给客户端
+		//发送响应给客户端
         ngx_http_upstream_send_response(r, u);
         return;
     }
@@ -1952,6 +1952,7 @@ ngx_http_upstream_intercept_errors(ngx_http_request_t *r,
 static ngx_int_t
 ngx_http_upstream_test_connect(ngx_connection_t *c)
 {
+/*
     int        err;
     socklen_t  len;
 
@@ -1977,25 +1978,25 @@ ngx_http_upstream_test_connect(ngx_connection_t *c)
     {
         err = 0;
         len = sizeof(int);
-
-        /*
+         //   
          * BSDs and Linux return 0 and set a pending error in err
          * Solaris returns -1 and sets errno
          */
-
-        if (getsockopt(c->fd, SOL_SOCKET, SO_ERROR, (void *) &err, &len)
+       /* if (getsockopt(c->fd, SOL_SOCKET, SO_ERROR, (void *) &err, &len)
             == -1)
         {
-            err = ngx_socket_errno;
+			ngx_log_error(NGX_LOG_DEBUG, c->log, err, "333  getsockopt optval is %d", err);
+            //err = ngx_socket_errno;
         }
 
         if (err) {
             c->log->action = "connecting to upstream";
             (void) ngx_connection_error(c, err, "connect() failed");
+			ngx_log_error(NGX_LOG_DEBUG, c->log, err, "upstream getsockopt fd is %d", c->fd);
             return NGX_ERROR;
         }
-    }
-
+		
+    }*/
     return NGX_OK;
 }
 
@@ -5277,10 +5278,10 @@ ngx_http_upstream_init_main_conf(ngx_conf_t *cf, void *conf)
     uscfp = umcf->upstreams.elts;
 
     for (i = 0; i < umcf->upstreams.nelts; i++) {
-
+		//若设置了peer.init_upstream回调方法，则使用设置的回调方法
         init = uscfp[i]->peer.init_upstream ? uscfp[i]->peer.init_upstream:
                                             ngx_http_upstream_init_round_robin;
-
+		//初始化所有的upstream请求列表
         if (init(cf, uscfp[i]) != NGX_OK) {
             return NGX_CONF_ERROR;
         }

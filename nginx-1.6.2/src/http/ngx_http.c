@@ -68,7 +68,7 @@ static ngx_int_t ngx_http_add_addrs6(ngx_conf_t *cf, ngx_http_port_t *hport,
 
 ngx_uint_t   ngx_http_max_module;
 
-
+//http框架定义的过滤模块的链表入口  第一个为过滤包头的   第二个为过滤包体的
 ngx_int_t  (*ngx_http_top_header_filter) (ngx_http_request_t *r);
 ngx_int_t  (*ngx_http_top_body_filter) (ngx_http_request_t *r, ngx_chain_t *ch);
 
@@ -233,7 +233,7 @@ ngx_http_block(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     }
 
     /* parse inside the http{} block */
-
+	//解析http{}块中的配置
     cf->module_type = NGX_HTTP_MODULE;
     cf->cmd_type = NGX_HTTP_MAIN_CONF;
     rv = ngx_conf_parse(cf, NULL);
@@ -289,7 +289,7 @@ ngx_http_block(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
         }
     }
 
-
+	//初始化http可以处理的7个阶段
     if (ngx_http_init_phases(cf, cmcf) != NGX_OK) {
         return NGX_CONF_ERROR;
     }
@@ -546,7 +546,7 @@ ngx_http_init_phase_handlers(ngx_conf_t *cf, ngx_http_core_main_conf_t *cmcf)
         }
 
         n += cmcf->phases[i].handlers.nelts;
-
+		//将当前对应的阶段的所有注册的handler方法添加到对应阶段中
         for (j = cmcf->phases[i].handlers.nelts - 1; j >=0; j--) {
             ph->checker = checker;
             ph->handler = h[j];

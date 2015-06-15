@@ -35,15 +35,18 @@ static void ngx_cache_loader_process_handler(ngx_event_t *ev);
 ngx_uint_t    ngx_process;
 ngx_pid_t     ngx_pid;
 ngx_uint_t    ngx_threaded;
-
+//有子进程意外结束，这里需要监控所有的子进程，也就是ngx_reap_children方法所做的工作
 sig_atomic_t  ngx_reap;
 sig_atomic_t  ngx_sigio;
 sig_atomic_t  ngx_sigalrm;
+//强制关闭进程
 sig_atomic_t  ngx_terminate;
+//优雅地关闭进程 
 sig_atomic_t  ngx_quit;
 sig_atomic_t  ngx_debug_quit;
 ngx_uint_t    ngx_exiting;
 sig_atomic_t  ngx_reconfigure;
+//重新打开所有文件
 sig_atomic_t  ngx_reopen;
 
 sig_atomic_t  ngx_change_binary;
@@ -788,7 +791,7 @@ ngx_worker_process_cycle(ngx_cycle_t *cycle, void *data)
 #endif
 
     for ( ;; ) {
-
+		//如果有退出标志，进行退出的操作
         if (ngx_exiting) {
 
             c = cycle->connections;

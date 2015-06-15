@@ -214,7 +214,7 @@ ngx_init_cycle(ngx_cycle_t *old_cycle)
         }
 
         module = ngx_modules[i]->ctx;
-
+		//调用核心模块结构ngx_core_module_t的create_conf
         if (module->create_conf) {
             rv = module->create_conf(cycle);
             if (rv == NULL) {
@@ -260,7 +260,7 @@ ngx_init_cycle(ngx_cycle_t *old_cycle)
         ngx_destroy_cycle_pools(&conf);
         return NULL;
     }
-
+	//解析配置文件
     if (ngx_conf_parse(&conf, &cycle->conf_file) != NGX_CONF_OK) {
         environ = senv;
         ngx_destroy_cycle_pools(&conf);
@@ -278,7 +278,7 @@ ngx_init_cycle(ngx_cycle_t *old_cycle)
         }
 
         module = ngx_modules[i]->ctx;
-
+		//调用核心模块中的ngx_core_module_t的init_conf方法
         if (module->init_conf) {
             if (module->init_conf(cycle, cycle->conf_ctx[ngx_modules[i]->index])
                 == NGX_CONF_ERROR)
@@ -592,7 +592,7 @@ ngx_init_cycle(ngx_cycle_t *old_cycle)
     }
 
     pool->log = cycle->log;
-
+	//调用所有模块的ngx_module_s结构中的init_module方法
     for (i = 0; ngx_modules[i]; i++) {
         if (ngx_modules[i]->init_module) {
             if (ngx_modules[i]->init_module(cycle) != NGX_OK) {

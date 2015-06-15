@@ -96,18 +96,25 @@ typedef void (*ngx_output_chain_aio_pt)(ngx_output_chain_ctx_t *ctx,
 #endif
 
 struct ngx_output_chain_ctx_s {
+	//保存临时的buf
     ngx_buf_t                   *buf;
+	//保存了将要发送的chain
     ngx_chain_t                 *in;
+	//保存了已经发送完毕的chain，以便于重复利用
     ngx_chain_t                 *free;
+	//保存了还未发送的chain
     ngx_chain_t                 *busy;
-
+	//sendfile标记
     unsigned                     sendfile:1;
+	//directio标志
     unsigned                     directio:1;
 #if (NGX_HAVE_ALIGNED_DIRECTIO)
     unsigned                     unaligned:1;
 #endif
+	//是否需要在内存中保存一份(使用sendfile的话，内存中没有文件的拷贝的，而我们有时需要处理文件，此时就需要设置这个标记)
     unsigned                     need_in_memory:1;
     unsigned                     need_in_temp:1;
+	//是否需要在内存中重复复制一份，不管buf是在内存还是在文件，这样的话，后续模块可以直接修改这块内存
 #if (NGX_HAVE_FILE_AIO)
     unsigned                     aio:1;
 
@@ -117,11 +124,15 @@ struct ngx_output_chain_ctx_s {
     off_t                        alignment;
 
     ngx_pool_t                  *pool;
+	//已经分配的buf个数
     ngx_int_t                    allocated;
+	//对应loc conf中设置的bufs
     ngx_bufs_t                   bufs;
+	//模块标记，主要用于buf回收
     ngx_buf_tag_t                tag;
-
+	//一般是ngx_http_next_filter，也就是继续调用filter链
     ngx_output_chain_filter_pt   output_filter;
+	//当前filter的上下文，这里是由于upstream也会调用output_chain
     void                        *filter_ctx;
 };
 

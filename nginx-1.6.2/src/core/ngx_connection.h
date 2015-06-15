@@ -55,7 +55,7 @@ struct ngx_listening_s {
     /* should be here because of the deferred accept */
     ngx_msec_t          post_accept_timeout;
 	//前一个ngx_listening_t结构
-    ngx_listening_t    *previousa;
+    ngx_listening_t    *previous;
 	//当前监听名柄对应着的结构
     ngx_connection_t   *connection;
 

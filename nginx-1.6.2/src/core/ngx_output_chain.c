@@ -54,6 +54,7 @@ ngx_output_chain(ngx_output_chain_ctx_t *ctx, ngx_chain_t *in)
          */
 
         if (in == NULL) {
+		//output_filter回调的ngx_chain_writer
             return ctx->output_filter(ctx->filter_ctx, in);
         }
 

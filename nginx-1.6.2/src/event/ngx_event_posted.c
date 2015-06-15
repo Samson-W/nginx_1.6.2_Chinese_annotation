@@ -17,7 +17,8 @@ ngx_thread_volatile ngx_event_t  *ngx_posted_events;
 ngx_mutex_t                      *ngx_posted_events_mutex;
 #endif
 
-
+//cycle是进程的核心结构体ngx_cycle_t的指针，posted是要操作的post事件队列，它的取值目前仅可以为ngx_posted_events或ngx_posted_accept_events。
+//调用post事件队列中所有事件的handler回调方法后，就会从posted事件队列中删除
 void
 ngx_event_process_posted(ngx_cycle_t *cycle,
     ngx_thread_volatile ngx_event_t **posted)

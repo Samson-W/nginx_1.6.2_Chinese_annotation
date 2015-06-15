@@ -499,7 +499,7 @@ ngx_http_wait_request_handler(ngx_event_t *rev)
     ngx_http_process_request_line(rev);
 }
 
-
+//根据连接结构创建request结构
 ngx_http_request_t *
 ngx_http_create_request(ngx_connection_t *c)
 {
@@ -927,13 +927,14 @@ ngx_http_process_request_line(ngx_event_t *rev)
     for ( ;; ) {
 
         if (rc == NGX_AGAIN) {
+			//读取请求头
             n = ngx_http_read_request_header(r);
 
             if (n == NGX_AGAIN || n == NGX_ERROR) {
                 return;
             }
         }
-
+		//解析请求行
         rc = ngx_http_parse_request_line(r, r->header_in);
 
         if (rc == NGX_OK) {
@@ -953,7 +954,7 @@ ngx_http_process_request_line(ngx_event_t *rev)
             if (r->http_protocol.data) {
                 r->http_protocol.len = r->request_end - r->http_protocol.data;
             }
-
+			//处理请求的URI
             if (ngx_http_process_request_uri(r) != NGX_OK) {
                 return;
             }
@@ -983,7 +984,7 @@ ngx_http_process_request_line(ngx_event_t *rev)
 
                 r->headers_in.server = host;
             }
-
+			//若http version版本低于1.0时处理方式 
             if (r->http_version < NGX_HTTP_VERSION_10) {
 
                 if (r->headers_in.server.len == 0
@@ -1165,7 +1166,7 @@ ngx_http_process_request_uri(ngx_http_request_t *r)
     return NGX_OK;
 }
 
-
+//循环的读取所有的请求头，并保存和初始化和请求头相关的结构
 static void
 ngx_http_process_request_headers(ngx_event_t *rev)
 {
@@ -1422,7 +1423,12 @@ ngx_http_alloc_large_header_buffer(ngx_http_request_t *r,
 
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                    "http alloc large header buffer");
-
+	/*
+	 *      * 在解析请求行阶段，如果客户端在发送请求行之前发送了大量回车换行符将
+	 *           *
+	 *           缓冲区塞满了，针对这种情况，nginx只是简单的重置缓冲区，丢弃这些垃圾
+	 *                * 数据，不需要分配更大的内存。
+	 *                     */
     if (request_line && r->state == 0) {
 
         /* the client fills up the buffer with "\r\n" */
@@ -1432,27 +1438,28 @@ ngx_http_alloc_large_header_buffer(ngx_http_request_t *r,
 
         return NGX_OK;
     }
-
+	///* 保存请求行或者请求头在旧缓冲区中的起始地址 */
     old = request_line ? r->request_start : r->header_name_start;
 
     cscf = ngx_http_get_module_srv_conf(r, ngx_http_core_module);
-
+	/* 如果一个大缓冲区还装不下请求行或者一个请求头，则返回错误 */
     if (r->state != 0
         && (size_t) (r->header_in->pos - old)
                                      >= cscf->large_client_header_buffers.size)
     {
         return NGX_DECLINED;
     }
-
     hc = r->http_connection;
 
+	/* 首先在ngx_http_connection_t结构中查找是否有空闲缓冲区，有的话，直接取之
+	 * */
     if (hc->nfree) {
         b = hc->free[--hc->nfree];
 
         ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                        "http large header free: %p %uz",
                        b->pos, b->end - b->last);
-
+	/* 检查给该请求分配的请求头缓冲区个数是否已经超过限制，默认最大个数为4个 */
     } else if (hc->nbusy < cscf->large_client_header_buffers.num) {
 
         if (hc->busy == NULL) {
@@ -1462,7 +1469,7 @@ ngx_http_alloc_large_header_buffer(ngx_http_request_t *r,
                 return NGX_ERROR;
             }
         }
-
+		/* 如果还没有达到最大分配数量，则分配一个新的大缓冲区 */
         b = ngx_create_temp_buf(r->connection->pool,
                                 cscf->large_client_header_buffers.size);
         if (b == NULL) {
@@ -1474,11 +1481,21 @@ ngx_http_alloc_large_header_buffer(ngx_http_request_t *r,
                        b->pos, b->end - b->last);
 
     } else {
+		/* 如果已经达到最大的分配限制，则返回错误 */
         return NGX_DECLINED;
     }
-
+	/* 将从空闲队列取得的或者新分配的缓冲区加入已使用队列 */
     hc->busy[hc->nbusy++] = b;
-
+	/*
+	 *      * 因为nginx中，所有的请求头的保存形式都是指针（起始和结束地址），
+	 *           *
+	 *           所以一行完整的请求头必须放在连续的内存块中。如果旧的缓冲区不能
+	 *                *
+	 *                再放下整行请求头，则分配新缓冲区，并从旧缓冲区拷贝已经读取的部分请求头，
+	 *                     * 拷贝完之后，需要修改所有相关指针指向到新缓冲区。
+	 *                          *
+	 *                          status为0表示解析完一行请求头之后，缓冲区正好被用完，这种情况不需要拷贝
+	 *                               */
     if (r->state == 0) {
         /*
          * r->state == 0 means that a header line was parsed successfully
@@ -1495,12 +1512,12 @@ ngx_http_alloc_large_header_buffer(ngx_http_request_t *r,
                    "http large header copy: %d", r->header_in->pos - old);
 
     new = b->start;
-
+	/* 拷贝旧缓冲区中不完整的请求头 */
     ngx_memcpy(new, old, r->header_in->pos - old);
 
     b->pos = new + (r->header_in->pos - old);
     b->last = new + (r->header_in->pos - old);
-
+	/* 修改相应的指针指向新缓冲区 */
     if (request_line) {
         r->request_start = new;
 
@@ -1995,7 +2012,7 @@ ngx_http_validate_host(ngx_str_t *host, ngx_pool_t *pool, ngx_uint_t alloc)
     return NGX_OK;
 }
 
-
+//查找用来处理请求的虚拟服务器配置
 static ngx_int_t
 ngx_http_set_virtual_server(ngx_http_request_t *r, ngx_str_t *host)
 {

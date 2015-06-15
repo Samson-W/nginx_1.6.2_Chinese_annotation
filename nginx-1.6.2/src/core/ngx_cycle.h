@@ -56,10 +56,12 @@ struct ngx_cycle_s {
 
     ngx_uint_t                connection_n; /*连接个数*/
     ngx_uint_t                files_n; /*打开文件个数*/
-
-    ngx_connection_t         *connections; /*连接*/
-    ngx_event_t              *read_events; /*读事件*/
-    ngx_event_t              *write_events; /*写事件*/
+	//创建的所有连接
+    ngx_connection_t         *connections; 
+	//有多少个连接就有多少个读事件
+    ngx_event_t              *read_events; 
+	//有多少个连接就有多少个写事件
+    ngx_event_t              *write_events; 
 
     ngx_cycle_t              *old_cycle; /*old cycle指针*/
 
@@ -71,13 +73,13 @@ struct ngx_cycle_s {
     ngx_str_t                 hostname; /*主机名*/
 };
 
-
+//nginx核心配置
 typedef struct {
      ngx_flag_t               daemon;
      ngx_flag_t               master;
 
      ngx_msec_t               timer_resolution;
-
+	 //工作进程数
      ngx_int_t                worker_processes;
      ngx_int_t                debug_points;
 

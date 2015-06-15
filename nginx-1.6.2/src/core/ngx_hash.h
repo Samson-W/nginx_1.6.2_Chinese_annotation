@@ -14,27 +14,37 @@
 
 
 typedef struct {
+	//指向用户自定义元素数据的指针，若当前ngx_hash_elt_t槽为空，则value值为0
     void             *value;
+	//元素关键字的长度
     u_short           len;
+	//元素关键字的首地址
     u_char            name[1];
 } ngx_hash_elt_t;
 
 
 typedef struct {
+	//指向散列表的首地址，也是第1个槽的地址
     ngx_hash_elt_t  **buckets;
+	//散列表中槽的总数
     ngx_uint_t        size;
 } ngx_hash_t;
 
 
 typedef struct {
+	//基本散列表
     ngx_hash_t        hash;
+	//当使用这个ngx_hash_wildcard_t通配符散列表作为某容器的元素时，可以使用这个value指针指向用户数据
     void             *value;
 } ngx_hash_wildcard_t;
 
 
 typedef struct {
+	//元素关键字
     ngx_str_t         key;
+	//由散列方法算出来的关键码
     ngx_uint_t        key_hash;
+	//指向实际的用户数据
     void             *value;
 } ngx_hash_key_t;
 
@@ -43,21 +53,29 @@ typedef ngx_uint_t (*ngx_hash_key_pt) (u_char *data, size_t len);
 
 
 typedef struct {
+	//用于精确匹配的基本散列表
     ngx_hash_t            hash;
+	//用于查询前置通配符的散列表
     ngx_hash_wildcard_t  *wc_head;
+	//用于查询后置通配符的散列表
     ngx_hash_wildcard_t  *wc_tail;
 } ngx_hash_combined_t;
 
 
 typedef struct {
+	//指向普通的完全匹配散列表
     ngx_hash_t       *hash;
+	//用于初始化预添加元素的散列方法 
     ngx_hash_key_pt   key;
-
+	//散列表中槽的最大数目
     ngx_uint_t        max_size;
+	//散列表中一个槽的空间大小，它限制了每个散列表元素关键字的最大长度
     ngx_uint_t        bucket_size;
-
+	//散列表的名称
     char             *name;
+	//内存池，它分配散列表中的所有槽
     ngx_pool_t       *pool;
+	//临时内存池，它仅存在于初始化散列表之前。主要用于分配一些临时的动态数组，带通配符的元素在初始化时需要用于这些数组
     ngx_pool_t       *temp_pool;
 } ngx_hash_init_t;
 

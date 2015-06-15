@@ -305,7 +305,7 @@ ngx_init_signals(ngx_log_t *log)
     return NGX_OK;
 }
 
-
+//处理信号
 void
 ngx_signal_handler(int signo)
 {

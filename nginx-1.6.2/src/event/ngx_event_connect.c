@@ -21,7 +21,7 @@ ngx_event_connect_peer(ngx_peer_connection_t *pc)
     ngx_socket_t       s;
     ngx_event_t       *rev, *wev;
     ngx_connection_t  *c;
-
+	//若有get回调，则调用此回调，ngx_zeromq对应的是ngx_http_upstream_get_zeromq_peer
     rc = pc->get(pc, pc->data);
     if (rc != NGX_OK) {
         return rc;

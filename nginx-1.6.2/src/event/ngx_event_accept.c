@@ -105,7 +105,6 @@ ngx_event_accept(ngx_event_t *ev)
                 if (ngx_event_flags & NGX_USE_KQUEUE_EVENT) {
                     ev->available--;
                 }
-
                 if (ev->available) {
                     continue;
                 }
@@ -137,10 +136,10 @@ ngx_event_accept(ngx_event_t *ev)
 #if (NGX_STAT_STUB)
         (void) ngx_atomic_fetch_add(ngx_stat_accepted, 1);
 #endif
-
+		//
         ngx_accept_disabled = ngx_cycle->connection_n / 8
                               - ngx_cycle->free_connection_n;
-
+		///由连接池中获取一个ngx_connection_t连接对象
         c = ngx_get_connection(s, ev->log);
 
         if (c == NULL) {
@@ -155,7 +154,7 @@ ngx_event_accept(ngx_event_t *ev)
 #if (NGX_STAT_STUB)
         (void) ngx_atomic_fetch_add(ngx_stat_active, 1);
 #endif
-
+		//为pool指针建立内存池。在这个连接释放到空闲连接时，释放pool内存池
         c->pool = ngx_create_pool(ls->pool_size, ev->log);
         if (c->pool == NULL) {
             ngx_close_accepted_connection(c);
@@ -355,13 +354,14 @@ ngx_event_accept(ngx_event_t *ev)
 
         log->data = NULL;
         log->handler = NULL;
-
+		//调用监听对象ngx_listening_t中的handler回调方法
         ls->handler(c);
 
         if (ngx_event_flags & NGX_USE_KQUEUE_EVENT) {
             ev->available--;
         }
-
+	
+	//若监听事件的available标志位为1,再次循环，否则结束 
     } while (ev->available);
 }
 

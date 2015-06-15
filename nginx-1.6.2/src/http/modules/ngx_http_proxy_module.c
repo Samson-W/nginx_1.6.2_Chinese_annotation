@@ -679,7 +679,7 @@ ngx_http_proxy_handler(ngx_http_request_t *r)
     ngx_http_upstream_t        *u;
     ngx_http_proxy_ctx_t       *ctx;
     ngx_http_proxy_loc_conf_t  *plcf;
-	//创建upstream
+	//对每1个要使用upstream的请求，必须调用且只能调用1次ngx_http_upstream_create方法，创建upstream
     if (ngx_http_upstream_create(r) != NGX_OK) {
         return NGX_HTTP_INTERNAL_SERVER_ERROR;
     }
@@ -688,11 +688,11 @@ ngx_http_proxy_handler(ngx_http_request_t *r)
     if (ctx == NULL) {
         return NGX_ERROR;
     }
-
+	//将新建的上下文与请求关联起来
     ngx_http_set_ctx(r, ctx, ngx_http_proxy_module);
-
+	//得到配置结构体ngx_http_proxy_module_conf_t
     plcf = ngx_http_get_module_loc_conf(r, ngx_http_proxy_module);
-
+	
     u = r->upstream;
 
     if (plcf->proxy_lengths == NULL) {
@@ -709,7 +709,7 @@ ngx_http_proxy_handler(ngx_http_request_t *r)
     }
 
     u->output.tag = (ngx_buf_tag_t) &ngx_http_proxy_module;
-
+	//这里用配置文件中的结构体来赋给r->upstream->conf成员
     u->conf = &plcf->upstream;
 
 #if (NGX_HTTP_CACHE)
@@ -730,7 +730,7 @@ ngx_http_proxy_handler(ngx_http_request_t *r)
     if (plcf->cookie_domains || plcf->cookie_paths) {
         u->rewrite_cookie = ngx_http_proxy_rewrite_cookie;
     }
-
+	//决定转发包体时使用的缓冲区
     u->buffering = plcf->upstream.buffering;
 
     u->pipe = ngx_pcalloc(r->pool, sizeof(ngx_event_pipe_t));
@@ -752,7 +752,7 @@ ngx_http_proxy_handler(ngx_http_request_t *r)
     if (rc >= NGX_HTTP_SPECIAL_RESPONSE) {
         return rc;
     }
-
+	//返回此值时告诉http框架暂停执行请求的下一个阶段
     return NGX_DONE;
 }
 
@@ -1323,7 +1323,8 @@ ngx_http_proxy_process_status_line(ngx_http_request_t *r)
     ngx_int_t              rc;
     ngx_http_upstream_t   *u;
     ngx_http_proxy_ctx_t  *ctx;
-
+	//char *mm = NULL;
+	//上下文中会保存多次解析http响应行的状态，取出请求的上下文
     ctx = ngx_http_get_module_ctx(r, ngx_http_proxy_module);
 
     if (ctx == NULL) {
@@ -1331,13 +1332,19 @@ ngx_http_proxy_process_status_line(ngx_http_request_t *r)
     }
 
     u = r->upstream;
-
+	//http框架提供的ngx_http_parse_status_line方法可以解析http响应行，它的输入就是收到的字符流和上下文中的ngx_http_status_t结构
+	//testtest
+	/*if((mm = ngx_strstr(u->buffer.start, "Hello")) != NULL)
+	{
+		strncpy(mm, "Hahaa", 5);
+	}*/
+	//testtest
     rc = ngx_http_parse_status_line(r, &u->buffer, &ctx->status);
-
+	//表示还没有解析出完整的http响应行，需要接收更多的字符流再进行解析
     if (rc == NGX_AGAIN) {
         return rc;
     }
-
+	//表示没有收到合法的http响应行
     if (rc == NGX_ERROR) {
 
 #if (NGX_HTTP_CACHE)
@@ -1364,7 +1371,7 @@ ngx_http_proxy_process_status_line(ngx_http_request_t *r)
 
         return NGX_OK;
     }
-
+	//以下表示在解析到完整的http响应行时，会做一些简单的赋值操作，将解析出的信息设置到r->upstream->headers_in结构体中。当upstream解析完所有的包头时，会把headers_in中的成员设置到将要向下游发送的r->headers_out结构体中，为什么不直接设置headers_out呢？因为upstream希望能够按照ngx_http_upstream_conf_t配置结构中的hide_headers等成员对发往下游的响应头部做统一处理
     if (u->state && u->state->status == 0) {
         u->state->status = ctx->status.code;
     }
@@ -1388,9 +1395,9 @@ ngx_http_proxy_process_status_line(ngx_http_request_t *r)
     if (ctx->status.http_version < NGX_HTTP_VERSION_11) {
         u->headers_in.connection_close = 1;
     }
-
+	//下一步将开始解析http头部。设置process_header回调方法，之后再收到的新字符流将由此回调进行解析
     u->process_header = ngx_http_proxy_process_header;
-
+	//若本次收到的字符流除了http响应行外，还有多余的字符，那么将由以下接口进行解析
     return ngx_http_proxy_process_header(r);
 }
 
@@ -1404,27 +1411,27 @@ ngx_http_proxy_process_header(ngx_http_request_t *r)
     ngx_http_proxy_ctx_t           *ctx;
     ngx_http_upstream_header_t     *hh;
     ngx_http_upstream_main_conf_t  *umcf;
-
+	//取出upstream模块配置项，目的只有一个，就是对将要转发给下游客户端的http响应头部进行统一处理。此结构体存储了需要进行统一处理的http头部名称和回调方法
     umcf = ngx_http_get_module_main_conf(r, ngx_http_upstream_module);
-
+	//循环地解析所有的http头部
     for ( ;; ) {
-
+		//解析http头部
         rc = ngx_http_parse_header_line(r, &r->upstream->buffer, 1);
-
+		//表示解析出一行http头部
         if (rc == NGX_OK) {
 
             /* a header line has been parsed successfully */
-
+			//向headers_in.headers这个ngx_list_t链表中添加http头部
             h = ngx_list_push(&r->upstream->headers_in.headers);
             if (h == NULL) {
                 return NGX_ERROR;
             }
-
+			//构造刚刚添加到headers链表中的http头部
             h->hash = r->header_hash;
 
             h->key.len = r->header_name_end - r->header_name_start;
             h->value.len = r->header_end - r->header_start;
-
+			//必须在内存池中分配存放http头部的内存空间
             h->key.data = ngx_pnalloc(r->pool,
                                h->key.len + 1 + h->value.len + 1 + h->key.len);
             if (h->key.data == NULL) {
@@ -1445,7 +1452,7 @@ ngx_http_proxy_process_header(ngx_http_request_t *r)
             } else {
                 ngx_strlow(h->lowcase_key, h->key.data, h->key.len);
             }
-
+			//upstream模块会对一些http头部做特殊处理
             hh = ngx_hash_find(&umcf->headers_in_hash, h->hash,
                                h->lowcase_key, h->key.len);
 
@@ -1459,7 +1466,7 @@ ngx_http_proxy_process_header(ngx_http_request_t *r)
 
             continue;
         }
-
+		//表示响应中所有的http头部都解析完毕，接下来再接收到的是http包体
         if (rc == NGX_HTTP_PARSE_HEADER_DONE) {
 
             /* a whole header has been parsed successfully */
@@ -1471,7 +1478,7 @@ ngx_http_proxy_process_header(ngx_http_request_t *r)
              * if no "Server" and "Date" in header line,
              * then add the special empty headers
              */
-
+			//如果之前解析http头部时没有发现server和date头部，那么下面会根据http协议规范添加这两个头部
             if (r->upstream->headers_in.server == NULL) {
                 h = ngx_list_push(&r->upstream->headers_in.headers);
                 if (h == NULL) {
@@ -1533,13 +1540,13 @@ ngx_http_proxy_process_header(ngx_http_request_t *r)
 
             return NGX_OK;
         }
-
+		//表示状态机还没有解析到完整的http头部，此时要求upstream模块继续接收新的字符流，然后交由process_header回调方法解析
         if (rc == NGX_AGAIN) {
             return NGX_AGAIN;
         }
 
         /* there was error while a header line parsing */
-
+		//其它返回值是非法的
         ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                       "upstream sent invalid header");
 
@@ -3146,7 +3153,7 @@ ngx_http_proxy_pass(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     }
 	//得到当前模块的location块的conf信息结构体
     clcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_core_module);
-	//覆盖核心模块配置中的handler,使用ngx_http_proxy_handler产生http响应
+	//覆盖核心模块配置中的handler,使用ngx_http_proxy_handler产生http响应，在ngx_http_core_content_phase进行r->content_handler调用
     clcf->handler = ngx_http_proxy_handler;
 
     if (clcf->name.data[clcf->name.len - 1] == '/') {

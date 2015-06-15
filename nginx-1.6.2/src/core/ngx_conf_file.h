@@ -259,7 +259,7 @@ char *ngx_conf_check_num_bounds(ngx_conf_t *cf, void *post, void *data);
         conf = default;                                                      \
     }
 
-#define ngx_conf_merge_value(conf, prev, defaulTt)                            \
+#define ngx_conf_merge_value(conf, prev, default)                            \
     if (conf == NGX_CONF_UNSET) {                                            \
         conf = (prev == NGX_CONF_UNSET) ? default : prev;                    \
     }

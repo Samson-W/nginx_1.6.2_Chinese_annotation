@@ -11,11 +11,12 @@
 
 
 typedef struct {
+	//最大缓存连接个数，keepalive的参数指定
     ngx_uint_t                         max_cached;
-
+	//长连接队列，其中cache为缓存连接池，free为空闲连接池，初始化时根据keepalive指令的参数初始化free队列，后续有连接过来从free队列取连接，请求处理结束后将长连接缓存到cache队列，连接被断开（或超时）再从cache队列放入free队列
     ngx_queue_t                        cache;
     ngx_queue_t                        free;
-
+	
     ngx_http_upstream_init_pt          original_init_upstream;
     ngx_http_upstream_init_peer_pt     original_init_peer;
 
@@ -28,7 +29,7 @@ typedef struct {
     ngx_http_upstream_t               *upstream;
 
     void                              *data;
-
+	//保存原始获取peer和释放peer的钩子，它们通常是ngx_http_upstream_get_round_robin_peer和ngx_http_upstream_free_round_robin_peer，nginx负载均衡默认是使用轮询算法
     ngx_event_get_peer_pt              original_get_peer;
     ngx_event_free_peer_pt             original_free_peer;
 
@@ -45,7 +46,7 @@ typedef struct {
 
     ngx_queue_t                        queue;
     ngx_connection_t                  *connection;
-
+	//缓存连接池中保存的后端服务器的地址，后续就是根据相同的socket地址来找出对应的连接，并使用该连接 
     socklen_t                          socklen;
     u_char                             sockaddr[NGX_SOCKADDRLEN];
 
@@ -133,13 +134,13 @@ ngx_http_upstream_init_keepalive(ngx_conf_t *cf,
 
     kcf = ngx_http_conf_upstream_srv_conf(us,
                                           ngx_http_upstream_keepalive_module);
-
+	//先执行原始初始化upstream函数
     if (kcf->original_init_upstream(cf, us) != NGX_OK) {
         return NGX_ERROR;
     }
-
+	//保存原钩子，并用keepalive的钩子覆盖旧钩子，初始化后端请求的时候会调用这个
     kcf->original_init_peer = us->peer.init;
-
+	//新钩子
     us->peer.init = ngx_http_upstream_init_keepalive_peer;
 
     /* allocate cache items and add to free queue */
@@ -179,11 +180,11 @@ ngx_http_upstream_init_keepalive_peer(ngx_http_request_t *r,
     if (kp == NULL) {
         return NGX_ERROR;
     }
-
+	//先执行原始的初始化peer函数，若只使用server的情况为ngx_http_upstream_init_round_robin_peer。该函数内部处理一些与负载均衡相关的操作并分别设置以下四个钩子
     if (kcf->original_init_peer(r, us) != NGX_OK) {
         return NGX_ERROR;
     }
-
+	//keepalive模块则保存上述原始钩子，并使用新的各类钩子覆盖旧钩子
     kp->conf = kcf;
     kp->upstream = r->upstream;
     kp->data = r->upstream->peer.data;
@@ -236,7 +237,7 @@ ngx_http_upstream_get_keepalive_peer(ngx_peer_connection_t *pc, void *data)
     {
         item = ngx_queue_data(q, ngx_http_upstream_keepalive_cache_t, queue);
         c = item->connection;
-
+		//对比缓冲中的地址与请求的地址是否一致，若一致则得到并返回NGX_DONE，上层调用就不会获取新的连接
         if (ngx_memn2cmp((u_char *) &item->sockaddr, (u_char *) pc->sockaddr,
                          item->socklen, pc->socklen)
             == 0)
@@ -304,7 +305,8 @@ ngx_http_upstream_free_keepalive_peer(ngx_peer_connection_t *pc, void *data,
 
     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, pc->log, 0,
                    "free keepalive peer: saving connection %p", c);
-
+	//如果free队列中可用cache
+	//items为空，则从cache队列取一个最近最少使用item，将该item对应的那个连接关闭，该item用于保存当前需要释放的连接
     if (ngx_queue_empty(&kp->conf->free)) {
 
         q = ngx_queue_last(&kp->conf->cache);
@@ -313,14 +315,14 @@ ngx_http_upstream_free_keepalive_peer(ngx_peer_connection_t *pc, void *data,
         item = ngx_queue_data(q, ngx_http_upstream_keepalive_cache_t, queue);
 
         ngx_http_upstream_keepalive_close(item->connection);
-
+	//free队列不为空则直接从队列头取一个item用于保存当前连接 
     } else {
         q = ngx_queue_head(&kp->conf->free);
         ngx_queue_remove(q);
 
         item = ngx_queue_data(q, ngx_http_upstream_keepalive_cache_t, queue);
     }
-
+	//缓存当前连接，将item插入cache队列，然后将pc->connection置空，防止上层调用ngx_http_upstream_finalize_request关闭该连接
     item->connection = c;
     ngx_queue_insert_head(&kp->conf->cache, q);
 
@@ -342,7 +344,7 @@ ngx_http_upstream_free_keepalive_peer(ngx_peer_connection_t *pc, void *data,
     c->read->log = ngx_cycle->log;
     c->write->log = ngx_cycle->log;
     c->pool->log = ngx_cycle->log;
-
+	//保存socket地址相关信息，后续就是通过查找相同的socket地址来复用该连接 
     item->socklen = pc->socklen;
     ngx_memcpy(&item->sockaddr, pc->sockaddr, pc->socklen);
 
@@ -486,13 +488,13 @@ ngx_http_upstream_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     ngx_int_t    n;
     ngx_str_t   *value;
     ngx_uint_t   i;
-
+	//获取upstream模块的server conf
     uscf = ngx_http_conf_get_module_srv_conf(cf, ngx_http_upstream_module);
 
     if (kcf->original_init_upstream) {
         return "is duplicate";
     }
-
+	//保存原来的初始化upstream的钩子，并设置新的钩子
     kcf->original_init_upstream = uscf->peer.init_upstream
                                   ? uscf->peer.init_upstream
                                   : ngx_http_upstream_init_round_robin;
@@ -511,7 +513,7 @@ ngx_http_upstream_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
                            &value[1], &cmd->name);
         return NGX_CONF_ERROR;
     }
-
+	//得到最大缓存连接数
     kcf->max_cached = n;
 
     for (i = 2; i < cf->args->nelts; i++) {

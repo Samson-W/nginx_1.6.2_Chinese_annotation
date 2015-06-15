@@ -124,49 +124,49 @@ static ngx_str_t  event_core_name = ngx_string("event_core");
 
 
 static ngx_command_t  ngx_event_core_commands[] = {
-
+	//连接池的大小，也就是每个worker进程中支持的tcp最大连接数，它与下面的connections配置项的意义是重复的
     { ngx_string("worker_connections"),
       NGX_EVENT_CONF|NGX_CONF_TAKE1,
       ngx_event_connections,
       0,
       0,
       NULL },
-
+	//连接池的大小，与上面的意义一样
     { ngx_string("connections"),
       NGX_EVENT_CONF|NGX_CONF_TAKE1,
       ngx_event_connections,
       0,
       0,
       NULL },
-
+	//确定选择哪一个事件模块作为事件驱动机制
     { ngx_string("use"),
       NGX_EVENT_CONF|NGX_CONF_TAKE1,
       ngx_event_use,
       0,
       0,
       NULL },
-
+	//对应事件定义的available字段。对于epoll事件驱动模式来说，意味着在接收到一个新连接事件时，调用accept以尽可能多地接收连接
     { ngx_string("multi_accept"),
       NGX_EVENT_CONF|NGX_CONF_FLAG,
       ngx_conf_set_flag_slot,
       0,
       offsetof(ngx_event_conf_t, multi_accept),
       NULL },
-
+	//确定是否使用accept_mutex负载均衡锁，默认为开启
     { ngx_string("accept_mutex"),
       NGX_EVENT_CONF|NGX_CONF_FLAG,
       ngx_conf_set_flag_slot,
       0,
       offsetof(ngx_event_conf_t, accept_mutex),
       NULL },
-
+	//启用accpt_mutex负载均衡锁后，延迟accept_mutex_delay毫秒后再试图处理新连接事件
     { ngx_string("accept_mutex_delay"),
       NGX_EVENT_CONF|NGX_CONF_TAKE1,
       ngx_conf_set_msec_slot,
       0,
       offsetof(ngx_event_conf_t, accept_mutex_delay),
       NULL },
-
+	//需要对来自指定IP的TCP连接打印debug级的调试日志 
     { ngx_string("debug_connection"),
       NGX_EVENT_CONF|NGX_CONF_TAKE1,
       ngx_event_debug_connection,
@@ -202,7 +202,7 @@ ngx_module_t  ngx_event_core_module = {
     NGX_MODULE_V1_PADDING
 };
 
-
+//处理事件和定时器，进行事件的轮循
 void
 ngx_process_events_and_timers(ngx_cycle_t *cycle)
 {
@@ -227,6 +227,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
     }
 
     if (ngx_use_accept_mutex) {
+		//当ngx_accept_disabled是正数时当前进程将不再处理新连接事件，仅减1
         if (ngx_accept_disabled > 0) {
             ngx_accept_disabled--;
 
@@ -249,7 +250,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
     }
 
     delta = ngx_current_msec;
-
+	//使用epoll时，调用的对应的是 ngx_epoll_process_events方法
     (void) ngx_process_events(cycle, timer, flags);
 
     delta = ngx_current_msec - delta;
@@ -258,6 +259,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
                    "timer delta: %M", delta);
 
     if (ngx_posted_accept_events) {
+		//处理posted_accept
         ngx_event_process_posted(cycle, &ngx_posted_accept_events);
     }
 
@@ -266,6 +268,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
     }
 
     if (delta) {
+		//检查定时器中的所有事件，按照红黑树关键字由小到大的顺序依次调用已经满足超时条件需要被触发事件的handler回调方法
         ngx_event_expire_timers();
     }
 
@@ -442,7 +445,7 @@ ngx_event_init_conf(ngx_cycle_t *cycle, void *conf)
     return NGX_CONF_OK;
 }
 
-
+//初始化一些变量，尤其是ngx_http_stub_status_module统计模块使用的一些原子性的统计变量
 static ngx_int_t
 ngx_event_module_init(ngx_cycle_t *cycle)
 {
@@ -588,7 +591,7 @@ ngx_timer_signal_handler(int signo)
 
 #endif
 
-
+//ngx_event_core_module模块在启动过程中的主要工作都是在ngx_event_process_init方法中进行的
 static ngx_int_t
 ngx_event_process_init(ngx_cycle_t *cycle)
 {
@@ -756,7 +759,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
         c[i].lock = 0;
 #endif
     } while (i);
-
+	//此时指针的是第一个连接
     cycle->free_connections = next;
     cycle->free_connection_n = cycle->connection_n;
 
@@ -810,7 +813,7 @@ ngx_event_process_init(ngx_cycle_t *cycle)
         if (ngx_event_flags & NGX_USE_IOCP_EVENT) {
             ngx_iocp_conf_t  *iocpcf;
 
-            rev->handler = ngx_event_acceptex;
+            rev->handler = ngx_event_accept;
 
             if (ngx_use_accept_mutex) {
                 continue;

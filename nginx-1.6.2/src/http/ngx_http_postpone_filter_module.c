@@ -48,20 +48,20 @@ ngx_module_t  ngx_http_postpone_filter_module = {
 
 static ngx_http_output_body_filter_pt    ngx_http_next_body_filter;
 
-
+//参数in就是将要发送给客户端的一段包体
 static ngx_int_t
 ngx_http_postpone_filter(ngx_http_request_t *r, ngx_chain_t *in)
 {
     ngx_connection_t              *c;
     ngx_http_postponed_request_t  *pr;
-
+	//c是nginx与下游客户端间的连接，c->data保存的是原始请求
     c = r->connection;
 
     ngx_log_debug3(NGX_LOG_DEBUG_HTTP, c->log, 0,
                    "http postpone filter \"%V?%V\" %p", &r->uri, &r->args, in);
-
+	//如果当前请求r是一个子请求(c->data指向原始请求)
     if (r != c->data) {
-
+		//如果待发送的in包体不为空，则把in加到postponed链表中属于当前请求的ngx_http_postponed_request_t结构体的out链表中，同时返回NGX_OK，这意味着本次不会把in包体发给客户端
         if (in) {
             ngx_http_postpone_filter_add(r, in);
             return NGX_OK;
@@ -72,26 +72,26 @@ ngx_http_postpone_filter(ngx_http_request_t *r, ngx_chain_t *in)
         ngx_log_error(NGX_LOG_ALERT, c->log, 0,
                       "http postpone filter NULL inactive request");
 #endif
-
+		//如果当前请求是子请求，而in包体又为空，那么直接返回即可
         return NGX_OK;
     }
-
+	//若postponed为空，表示请求r没有子请求产生的响应需要转发
     if (r->postponed == NULL) {
-
+		//直接调用下一个http过滤模块继续处理in包体即可。若没有错误的话，就会开始向下游客户端发送响应
         if (in || c->buffered) {
             return ngx_http_next_body_filter(r->main, in);
         }
 
         return NGX_OK;
     }
-
+	//至此，说明postponed链表中是有子请求产生的响应需要转发的，可以先把in包体加到待转发响应的末尾
     if (in) {
         ngx_http_postpone_filter_add(r, in);
     }
-
+	//循环处理postponed链表中所有子请求待转发的包体
     do {
         pr = r->postponed;
-
+		//若pr->request是子请求，则加入到原始请求的posted_requests队列中，等待http框架下次调用这个请求时再来处理
         if (pr->request) {
 
             ngx_log_debug2(NGX_LOG_DEBUG_HTTP, c->log, 0,
@@ -104,7 +104,7 @@ ngx_http_postpone_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
             return ngx_http_post_request(pr->request, NULL);
         }
-
+		//调用下一个http过滤模块转发out链表中保存的待转发的包体
         if (pr->out == NULL) {
             ngx_log_error(NGX_LOG_ALERT, c->log, 0,
                           "http postpone filter NULL output");
@@ -118,7 +118,7 @@ ngx_http_postpone_filter(ngx_http_request_t *r, ngx_chain_t *in)
                 return NGX_ERROR;
             }
         }
-
+		//遍历完postponed链表
         r->postponed = pr->next;
 
     } while (r->postponed);
